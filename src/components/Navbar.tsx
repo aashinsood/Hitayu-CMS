@@ -14,7 +14,6 @@ export default async function Navbar() {
         <div className="logo">
           {siteName}
         </div>
-
         <ul className="nav-links">
           <li><Link href="/">Hosting</Link></li>
           <li><Link href="/">Domain</Link></li>
@@ -22,7 +21,6 @@ export default async function Navbar() {
           <li><Link href="/">Pages</Link></li>
           <li><Link href="/">Contact</Link></li>
         </ul>
-
         <div className="nav-actions">
           <button className="signin-btn">
             Sign In
