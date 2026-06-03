@@ -1,6 +1,16 @@
 // src/components/Contact.tsx
 
-export default function Contact() {
+import { getSiteSettings } from '@/lib/payload-utils'
+
+export default async function Contact() {
+  const settings = await getSiteSettings()
+
+  const address = settings?.contactAddress || 'King Street\nMelbourne, Australia'
+  const email = settings?.contactEmail || 'info@hostiko.com'
+  const supportEmail = settings?.contactEmail || 'support@hostiko.com'
+  const phone = settings?.contactPhone || '+1 (234) 567-8900'
+  const hours = settings?.contactPhoneHours || 'Mon-Fri, 9AM-6PM EST'
+
   return (
     <section className="contact-section">
       <div className="container">
@@ -26,15 +36,15 @@ export default function Contact() {
           <div className="contact-info">
             <div className="info-item">
               <h3>📍 Address</h3>
-              <p>King Street<br />Melbourne, Australia</p>
+              <p>{address}</p>
             </div>
             <div className="info-item">
               <h3>📧 Email</h3>
-              <p>info@hostiko.com<br />support@hostiko.com</p>
+              <p>{email}<br />{supportEmail}</p>
             </div>
             <div className="info-item">
               <h3>📞 Phone</h3>
-              <p>+1 (234) 567-8900<br />Mon-Fri, 9AM-6PM EST</p>
+              <p>{phone}<br />{hours}</p>
             </div>
             <div className="info-item">
               <h3>💬 Live Chat</h3>

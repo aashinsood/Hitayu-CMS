@@ -1,13 +1,20 @@
 // src/components/Footer.tsx
 
-export default function Footer() {
+import { getSiteSettings } from '@/lib/payload-utils'
+
+export default async function Footer() {
+  const settings = await getSiteSettings()
+
+  const siteName = settings?.siteName || 'HOSTIKO'
+  const companyDescription = settings?.companyDescription || 'Providing reliable and fast web hosting solutions since 2015.'
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
-            <h4>HOSTIKO</h4>
-            <p>Providing reliable and fast web hosting solutions since 2015.</p>
+            <h4>{siteName}</h4>
+            <p>{companyDescription}</p>
           </div>
           <div className="footer-col">
             <h4>Quick Links</h4>
@@ -38,7 +45,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2024 HOSTIKO. All rights reserved. Powered by Payload CMS.</p>
+          <p>&copy; 2024 {siteName}. All rights reserved. Powered by Payload CMS.</p>
         </div>
       </div>
     </footer>

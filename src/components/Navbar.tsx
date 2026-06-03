@@ -1,14 +1,18 @@
 // src/components/Navbar.tsx
 
 import Link from "next/link"
+import { getSiteSettings } from '@/lib/payload-utils'
 
-export default function Navbar() {
+export default async function Navbar() {
+  const settings = await getSiteSettings()
+  const siteName = settings?.siteName || 'HOSTIKO'
+
   return (
     <nav className="navbar">
       <div className="container navbar-wrapper">
 
         <div className="logo">
-          HOSTIKO
+          {siteName}
         </div>
 
         <ul className="nav-links">

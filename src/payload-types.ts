@@ -71,6 +71,12 @@ export interface Config {
     media: Media;
     posts: Post;
     pages: Page;
+    hero: Hero;
+    services: Service;
+    'pricing-plans': PricingPlan;
+    testimonials: Testimonial;
+    'site-settings': SiteSetting;
+    'about-items': AboutItem;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +88,12 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    hero: HeroSelect<false> | HeroSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'about-items': AboutItemsSelect<false> | AboutItemsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -204,6 +216,134 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero".
+ */
+export interface Hero {
+  id: number;
+  title: string;
+  description: string;
+  primaryButtonText?: string | null;
+  secondaryButtonText?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  /**
+   * Emoji or icon symbol (e.g., 🌐, 📧, 🔄)
+   */
+  icon: string;
+  title: string;
+  description: string;
+  /**
+   * Order in which services appear
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-plans".
+ */
+export interface PricingPlan {
+  id: number;
+  name: string;
+  /**
+   * Price in format like "$2.99"
+   */
+  price: string;
+  period: string;
+  description: string;
+  features: {
+    feature: string;
+    id?: string | null;
+  }[];
+  /**
+   * Mark this plan as popular/featured
+   */
+  isPopular?: boolean | null;
+  /**
+   * Order in which plans appear
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  name: string;
+  /**
+   * Job title or company role
+   */
+  role: string;
+  /**
+   * The testimonial text
+   */
+  text: string;
+  /**
+   * Star rating (1-5)
+   */
+  rating?: number | null;
+  /**
+   * Order in which testimonials appear
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  siteName: string;
+  heroTitle: string;
+  heroDescription: string;
+  /**
+   * Description in footer about the company
+   */
+  companyDescription?: string | null;
+  footerAddress?: string | null;
+  footerPhone?: string | null;
+  footerEmail?: string | null;
+  contactEmail?: string | null;
+  contactPhone?: string | null;
+  contactAddress?: string | null;
+  contactPhoneHours?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-items".
+ */
+export interface AboutItem {
+  id: number;
+  /**
+   * Emoji icon for the card
+   */
+  icon: string;
+  title: string;
+  description: string;
+  /**
+   * Order in which items appear
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -241,6 +381,30 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'hero';
+        value: number | Hero;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'pricing-plans';
+        value: number | PricingPlan;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'site-settings';
+        value: number | SiteSetting;
+      } | null)
+    | ({
+        relationTo: 'about-items';
+        value: number | AboutItem;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -342,6 +506,94 @@ export interface PagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero_select".
+ */
+export interface HeroSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  primaryButtonText?: T;
+  secondaryButtonText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  icon?: T;
+  title?: T;
+  description?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-plans_select".
+ */
+export interface PricingPlansSelect<T extends boolean = true> {
+  name?: T;
+  price?: T;
+  period?: T;
+  description?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  isPopular?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  text?: T;
+  rating?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  siteName?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  companyDescription?: T;
+  footerAddress?: T;
+  footerPhone?: T;
+  footerEmail?: T;
+  contactEmail?: T;
+  contactPhone?: T;
+  contactAddress?: T;
+  contactPhoneHours?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-items_select".
+ */
+export interface AboutItemsSelect<T extends boolean = true> {
+  icon?: T;
+  title?: T;
+  description?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }
