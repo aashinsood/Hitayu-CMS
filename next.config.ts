@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
       {
         pathname: '/api/media/file/**',
       },
+       {
+        pathname: '/hitayu-1.png',
+      },
+        {
+        pathname: '/**',
+      },
     ],
   },
   webpack: (webpackConfig) => {
