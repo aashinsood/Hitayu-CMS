@@ -15,6 +15,25 @@ export const SiteSettings: CollectionConfig = {
       },
     },
     {
+      name: 'headerInfo',
+      type: 'group',
+      label: 'Header Info',
+      fields: [
+        { name: 'email', type: 'text', required: true, defaultValue: 'info@hostiko.com' },
+        { name: 'phone', type: 'text', required: true, defaultValue: '+1 (234 567 89)' },
+        {
+          name: 'socialLinks',
+          type: 'array',
+          label: 'Social Links',
+          fields: [
+            { name: 'label', type: 'text', required: true },
+            { name: 'url', type: 'text', required: true },
+            { name: 'icon', type: 'text', required: true, admin: { description: 'Use emoji or icon class' } },
+          ],
+        },
+      ],
+    },
+    {
       name: 'navigation',
       label: 'Navigation Menu',
       type: 'array',

@@ -1,28 +1,45 @@
-// src/components/HeaderTop.tsx
+import { getSiteSettings } from '@/lib/payload-utils'
 
-export default function HeaderTop() {
+export default async function HeaderTop() {
+  const settings = await getSiteSettings()
+  const headerInfo = settings?.headerInfo
+
   return (
     <div className="top-header">
-      <div className="container">
-        <div className="header-content">
-          <div className="header-group">
-            <span className="header-icon">✉</span>
-            <span>info@hostiko.com</span>
-          </div>
-          <div className="header-group">
-            <span className="header-icon">📍</span>
-            <span>King Street Melbourne, Australia</span>
-          </div>
-          <div className="header-group">
-            <span className="header-icon">📞</span>
-            <span>+1 (234 567 89)</span>
-          </div>
+      <div className="container header-inner">
+
+        {/* LEFT SIDE: Email + Phone */}
+        <div className="header-left">
+          {headerInfo?.email && (
+            <div className="header-group">
+              <span className="header-icon">✉</span>
+              <span>{headerInfo.email}</span>
+            </div>
+          )}
+          {headerInfo?.phone && (
+            <div className="header-group">
+              <span className="header-icon">📞</span>
+              <span>{headerInfo.phone}</span>
+            </div>
+          )}
         </div>
-        <div className="header-social">
-          <a href="#" className="social-link" title="LinkedIn">in</a>
-          <a href="#" className="social-link" title="Twitter">𝕏</a>
-          <a href="#" className="social-link" title="Facebook">f</a>
+
+        {/* RIGHT SIDE: Social Icons */}
+        <div className="header-right">
+          {headerInfo?.socialLinks?.map((social, index) => (
+            <a
+              key={index}
+              href={social.url}
+              className="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={social.label}
+            >
+              {social.icon}
+            </a>
+          ))}
         </div>
+
       </div>
     </div>
   )

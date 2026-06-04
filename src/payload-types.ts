@@ -310,6 +310,21 @@ export interface SiteSetting {
    * Upload your site logo
    */
   logo?: (number | null) | Media;
+  headerInfo: {
+    email: string;
+    phone: string;
+    socialLinks?:
+      | {
+          label: string;
+          url: string;
+          /**
+           * Use emoji or icon class
+           */
+          icon: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   navigation?:
     | {
         label: string;
@@ -589,6 +604,20 @@ export interface TestimonialsSelect<T extends boolean = true> {
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
   logo?: T;
+  headerInfo?:
+    | T
+    | {
+        email?: T;
+        phone?: T;
+        socialLinks?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              icon?: T;
+              id?: T;
+            };
+      };
   navigation?:
     | T
     | {
