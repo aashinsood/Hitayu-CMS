@@ -20,7 +20,9 @@ export default async function Hero() {
           </div>
         </div>
         <div className="hero-image">
-          <div className="hero-illustration">🚀</div>
+          <div className="hero-illustration">
+            <img src="https://madebydesignesia.com/themes/hostco/images/misc/server-2.png" />
+          </div>
         </div>
       </div>
     </section>

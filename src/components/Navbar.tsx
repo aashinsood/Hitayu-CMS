@@ -17,8 +17,8 @@ export default async function Navbar() {
               <Image
                 src={settings.logo.url}
                 alt="Logo"
-                width={40}
-                height={40}
+                width={249}
+                height={50}
               />
             ) : (
               <>

@@ -1,6 +1,6 @@
 :root {
   --primary: #38b1ed;
-  --secondary: #38b1ed;
+  --secondary: #080A47;
   --text: #000000;
   --light: #f3f4f6;
   --border: #e5e7eb;
@@ -22,8 +22,9 @@
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(135deg, #061d5d 0%, #0f3a96 100%);
-  color: white;
+  background: url('https://madebydesignesia.com/themes/hostco/images/background/1.jpg') no-repeat center center;
+  background-size: cover;
+  color: rgb(0, 0, 0);
   padding: 100px 20px;
   display: flex;
   align-items: center;
@@ -31,6 +32,9 @@
   min-height: 600px;
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .hero-section::before {
@@ -91,7 +95,7 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #3157ff 0%, #1d3cc9 100%);
+  background: #080A47;
   color: white;
   border: none;
   padding: 16px 32px;
@@ -110,8 +114,8 @@
 
 .btn-secondary {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: #080A47;
+  border: 2px solid #080A47;
   padding: 14px 30px;
   border-radius: 8px;
   font-size: 1rem;
@@ -121,7 +125,6 @@
 }
 
 .btn-secondary:hover {
-  background: white;
   color: #061d5d;
   transform: translateY(-2px);
 }
@@ -1281,4 +1284,15 @@ body {
   .header-right {
     display: none;
   }
+}
+
+.hero-illustration img {
+  width: 89% !important;
+  height: auto;
+  display: block;
+}
+
+
+.hero-image img {
+    width: 90% !important;
 }
