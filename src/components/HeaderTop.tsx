@@ -1,4 +1,5 @@
 import { getSiteSettings } from '@/lib/payload-utils'
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from 'react'
 
 export default async function HeaderTop() {
   const settings = await getSiteSettings()
@@ -26,7 +27,7 @@ export default async function HeaderTop() {
 
         {/* RIGHT SIDE: Social Icons */}
         <div className="header-right">
-          {headerInfo?.socialLinks?.map((social, index) => (
+          {headerInfo?.socialLinks?.map((social: { url: string | undefined; label: string | undefined; icon: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined }, index: Key | null | undefined) => (
             <a
               key={index}
               href={social.url}
