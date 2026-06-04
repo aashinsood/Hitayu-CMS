@@ -7,6 +7,7 @@ export default async function Navbar() {
   const settings = await getSiteSettings()
   const siteName = settings?.siteName || 'HOSTIKO'
   const navItems = settings?.navigation || []
+  const localImageUrl =  "https://madebydesignesia.com/themes/hostco/images/logo.png"
 
   return (
     <nav className="navbar">
@@ -15,7 +16,8 @@ export default async function Navbar() {
           <div className="logo-container">
             {settings?.logo?.url ? (
               <Image
-                src={settings.logo.url}
+                // src={settings.logo.url}
+                src={localImageUrl}
                 alt="Logo"
                 width={249}
                 height={50}
