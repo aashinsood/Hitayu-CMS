@@ -7,6 +7,45 @@ export const SiteSettings: CollectionConfig = {
   },
   fields: [
     {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Upload your site logo',
+      },
+    },
+    {
+      name: 'navigation',
+      label: 'Navigation Menu',
+      type: 'array',
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'url',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'openInNewTab',
+          type: 'checkbox',
+          defaultValue: false,
+        },
+      ],
+    },
+    {
+      name: 'headerButton',
+      type: 'group',
+      fields: [
+        { name: 'label', type: 'text', defaultValue: 'Sign In' },
+        { name: 'url', type: 'text', defaultValue: '/signin' },
+        { name: 'openInNewTab', type: 'checkbox', defaultValue: false },
+      ],
+    },
+    {
       name: 'siteName',
       type: 'text',
       required: true,

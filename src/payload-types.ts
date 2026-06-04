@@ -306,6 +306,23 @@ export interface Testimonial {
  */
 export interface SiteSetting {
   id: number;
+  /**
+   * Upload your site logo
+   */
+  logo?: (number | null) | Media;
+  navigation?:
+    | {
+        label: string;
+        url: string;
+        openInNewTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  headerButton?: {
+    label?: string | null;
+    url?: string | null;
+    openInNewTab?: boolean | null;
+  };
   siteName: string;
   heroTitle: string;
   heroDescription: string;
@@ -571,6 +588,22 @@ export interface TestimonialsSelect<T extends boolean = true> {
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
+  logo?: T;
+  navigation?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        openInNewTab?: T;
+        id?: T;
+      };
+  headerButton?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        openInNewTab?: T;
+      };
   siteName?: T;
   heroTitle?: T;
   heroDescription?: T;
