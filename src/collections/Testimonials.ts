@@ -10,15 +10,7 @@ export const Testimonials: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-    },
-    {
-      name: 'role',
-      type: 'text',
-      required: true,
-      admin: {
-        description: 'Job title or company role',
-      },
-    },
+    },  
     {
       name: 'text',
       type: 'textarea',

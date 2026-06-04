@@ -258,7 +258,7 @@ export interface PricingPlan {
    */
   price: string;
   period: string;
-  description: string;
+  description?: string | null;
   features: {
     feature: string;
     id?: string | null;
@@ -281,10 +281,6 @@ export interface PricingPlan {
 export interface Testimonial {
   id: number;
   name: string;
-  /**
-   * Job title or company role
-   */
-  role: string;
   /**
    * The testimonial text
    */
@@ -591,7 +587,6 @@ export interface PricingPlansSelect<T extends boolean = true> {
  */
 export interface TestimonialsSelect<T extends boolean = true> {
   name?: T;
-  role?: T;
   text?: T;
   rating?: T;
   order?: T;

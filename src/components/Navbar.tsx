@@ -1,5 +1,5 @@
 // src/components/Navbar.tsx
-
+import Image from 'next/image'
 import Link from "next/link"
 import { getSiteSettings } from '@/lib/payload-utils'
 
@@ -13,10 +13,18 @@ export default async function Navbar() {
       <div className="container navbar-wrapper">
         <div className="navbar-start">
           <div className="logo-container">
-            <span className="logo-icon">◆</span>
-            <div className="logo">
-              {siteName}
-            </div>
+            {settings?.logo?.url ? (
+              <Image
+                src={settings.logo.url}
+                alt="Logo"
+                width={40}
+                height={40}
+              />
+            ) : (
+              <>
+                <div className="logo">{siteName}</div>
+              </>
+            )}
           </div>
         </div>
 

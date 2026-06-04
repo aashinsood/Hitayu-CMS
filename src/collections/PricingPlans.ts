@@ -28,7 +28,6 @@ export const PricingPlans: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
-      required: true,
     },
     {
       name: 'features',
