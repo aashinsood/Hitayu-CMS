@@ -8,7 +8,7 @@ import logo from '../../media/hitayu-1.png'
 
 export default async function Navbar() {
   const settings = await getSiteSettings()
-  const siteName = settings?.siteName || 'HOSTIKO'
+  const siteName = settings?.siteName || 'Hitayu'
 
   return (
     <nav className="navbar">
