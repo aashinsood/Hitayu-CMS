@@ -22,7 +22,6 @@ export default async function Footer() {
               <a href="#" className="footer-social-link" title="LinkedIn">in</a>
               <a href="#" className="footer-social-link" title="Twitter">𝕏</a>
               <a href="#" className="footer-social-link" title="Facebook">f</a>
-              <a href="#" className="footer-social-link" title="Instagram">📷</a>
             </div>
           </div>
 
@@ -72,8 +71,8 @@ export default async function Footer() {
         <div className="footer-divider"></div>
 
         <div className="footer-bottom">
-          <p>&copy; 2024 {siteName}. All rights reserved.</p>
-          <p className="powered-by">Powered by Payload CMS</p>
+          <p>&copy; 2026 {siteName}. All rights reserved.</p>
+          <p className="powered-by">Powered by Hitayu Hosting</p>
         </div>
       </div>
     </footer>
