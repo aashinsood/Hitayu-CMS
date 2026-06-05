@@ -2,6 +2,7 @@
 import React from 'react'
 import HeaderTop from '@/components/HeaderTop'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HeaderTop />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )

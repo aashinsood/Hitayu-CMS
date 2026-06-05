@@ -4,6 +4,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import dotenv from 'dotenv'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -16,9 +17,17 @@ import { Testimonials } from './collections/Testimonials'
 import { SiteSettings } from './collections/SiteSettings'
 import { AboutItems } from './collections/AboutItems'
 
+dotenv.config()
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const databaseUrl = process.env.DATABASE_URL
+
+if (!databaseUrl) {
+  throw new Error(
+    'DATABASE_URL is not defined in the environment. Add it to .env or your deployment environment.',
+  )
+}
 
 export default buildConfig({
   admin: {
@@ -27,7 +36,18 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Pages, Hero, Services, PricingPlans, Testimonials, SiteSettings, AboutItems],
+  collections: [
+    Users,
+    Media,
+    Posts,
+    Pages,
+    Hero,
+    Services,
+    PricingPlans,
+    Testimonials,
+    SiteSettings,
+    AboutItems,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -35,7 +55,8 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: databaseUrl,
+      ssl: { rejectUnauthorized: false },
     },
   }),
   sharp,
