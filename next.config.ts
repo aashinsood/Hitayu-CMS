@@ -8,15 +8,23 @@ const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
   images: {
+    // Keep your local patterns
     localPatterns: [
       {
         pathname: '/api/media/file/**',
       },
-       {
+      {
         pathname: '/hitayu-1.png',
       },
-        {
+      {
         pathname: '/**',
+      },
+    ],
+    // Allow all external domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**', // allows any domain
       },
     ],
   },
@@ -26,7 +34,6 @@ const nextConfig: NextConfig = {
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
     }
-
     return webpackConfig
   },
   turbopack: {
@@ -35,3 +42,4 @@ const nextConfig: NextConfig = {
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
+  

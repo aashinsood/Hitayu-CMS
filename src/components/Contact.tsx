@@ -1,57 +1,114 @@
-// src/components/Contact.tsx
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+} from 'lucide-react'
 
-import { getSiteSettings } from '@/lib/payload-utils'
-
-export default async function Contact() {
-  const settings = await getSiteSettings()
-
-  const address = settings?.contactAddress || 'King Street\nMelbourne, Australia'
-  const email = settings?.contactEmail || 'info@hostiko.com'
-  const supportEmail = settings?.contactEmail || 'support@hostiko.com'
-  const phone = settings?.contactPhone || '+1 (234) 567-8900'
-  const hours = settings?.contactPhoneHours || 'Mon-Fri, 9AM-6PM EST'
-
+export default function ContactSection() {
   return (
     <section className="contact-section">
       <div className="container">
-        <h2>Get In Touch</h2>
-        <p className="contact-subtitle">Have questions? We're here to help!</p>
-        <div className="contact-content">
-          <form className="contact-form">
-            <div className="form-group">
-              <input type="text" placeholder="Your Name" required />
-            </div>
-            <div className="form-group">
-              <input type="email" placeholder="Your Email" required />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Subject" required />
-            </div>
-            <div className="form-group">
-              <textarea rows={6} placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" className="btn-primary">Send Message</button>
-          </form>
 
+        <div className="contact-wrapper">
+
+          {/* Left Side */}
           <div className="contact-info">
-            <div className="info-item">
-              <h3>📍 Address</h3>
-              <p>{address}</p>
+
+            <span className="section-tag">
+              CONTACT US
+            </span>
+
+            <h2>
+              Let's Talk About
+              <br />
+              Your Hosting Needs
+            </h2>
+
+            <p>
+              Our cloud hosting experts are ready to help
+              you choose the perfect AWS hosting solution.
+            </p>
+
+            <div className="contact-item">
+              <Mail size={22} />
+              <div>
+                <h4>Email</h4>
+                <p>support@hitayu.com</p>
+              </div>
             </div>
-            <div className="info-item">
-              <h3>📧 Email</h3>
-              <p>{email}<br />{supportEmail}</p>
+
+            <div className="contact-item">
+              <Phone size={22} />
+              <div>
+                <h4>Phone</h4>
+                <p>+91 98765 43210</p>
+              </div>
             </div>
-            <div className="info-item">
-              <h3>📞 Phone</h3>
-              <p>{phone}<br />{hours}</p>
+
+            <div className="contact-item">
+              <MapPin size={22} />
+              <div>
+                <h4>Location</h4>
+                <p>India</p>
+              </div>
             </div>
-            <div className="info-item">
-              <h3>💬 Live Chat</h3>
-              <p>Available 24/7 for<br />quick support</p>
-            </div>
+
+            {/* <div className="contact-item">
+              <Clock size={22} />
+              <div>
+                <h4>Support Hours</h4>
+                <p>24/7 Technical Support</p>
+              </div>
+            </div> */}
+
           </div>
+
+          {/* Right Side */}
+          <div className="contact-form-card">
+
+            <h3>Request A Callback</h3>
+
+            <form>
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                />
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                />
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                />
+              </div>
+
+              <div className="form-group">
+                <textarea
+                  rows={5}
+                  placeholder="Tell us about your hosting requirements..."
+                />
+              </div>
+
+              <button type="submit">
+                Send Message
+              </button>
+
+            </form>
+
+          </div>
+
         </div>
+
       </div>
     </section>
   )
