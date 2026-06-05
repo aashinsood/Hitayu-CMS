@@ -5,12 +5,20 @@ node_modules/
 .pnp
 .pnp.js
 
-# Yarn
+# Yarn                          ← Ye rakho (dusre projects ke liye)
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
+
+# pnpm                          ← YE ADD KARO
+.pnpm-store/
+pnpm-debug.log*
+# Note: pnpm-lock.yaml COMMIT karo — ignore mat karo!
+
+# npm
+package-lock.json               ← YE ADD KARO (pnpm use kar rahe ho)
 
 # ==========================
 # Environment Variables

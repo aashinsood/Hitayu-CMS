@@ -4,9 +4,11 @@
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "dev:webpack": "cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
     "migrate": "ts-node src/migrate.ts",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
@@ -28,6 +30,7 @@
     "graphql": "^16.8.1",
     "next": "16.2.6",
     "payload": "^3.85.0",
+    "pg": "^8.21.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "sharp": "0.34.2"
@@ -36,6 +39,7 @@
     "@playwright/test": "1.58.2",
     "@testing-library/react": "16.3.0",
     "@types/node": "22.19.9",
+    "@types/pg": "^8.20.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "4.5.2",

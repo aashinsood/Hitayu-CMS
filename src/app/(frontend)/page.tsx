@@ -8,6 +8,8 @@ import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import { getSiteSettings } from '@/lib/payload-utils'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   const settings = await getSiteSettings()
   const siteName = settings?.siteName || 'HOSTIKO'
