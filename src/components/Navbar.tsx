@@ -17,7 +17,7 @@ export default async function Navbar() {
       <div className="container navbar-wrapper">
         <div className="navbar-start">
           <div className="logo-container">
-            <Image src={logoUrl} alt={`${siteName} logo`} width={249} height={50} />
+            <Image src={logoUrl} alt={`${siteName} logo`} width={200} height={30} />
           </div>
         </div>
 

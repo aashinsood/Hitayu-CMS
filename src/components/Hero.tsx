@@ -11,7 +11,7 @@ export default async function Hero() {
   const primaryUrl      = hero?.primaryButtonUrl   || '#'
   const secondaryText   = hero?.secondaryButtonText || 'View Plans'
   const secondaryUrl    = hero?.secondaryButtonUrl  || '#pricing'
-  const heroImageUrl    = (hero?.heroImage as any)?.url || hero?.heroImageUrl || 'https://wp.xpeedstudio.com/hostinza/wp-content/uploads/revslider/home-04/banner_image-41.png'
+  const heroImageUrl    = (hero?.heroImage as any)?.url || hero?.heroImageUrl || 'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/new-header.png'
 
   const stats: { value: string; label: string }[] =
     hero?.stats && (hero.stats as any[]).length > 0

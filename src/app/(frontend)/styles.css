@@ -305,7 +305,7 @@ section {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 92vh;
+  min-height: 650px;
   display: flex;
   align-items: center;
   position: relative;
@@ -363,7 +363,7 @@ section {
 }
 
 .hero-content h1 {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-size: 35px;
   font-weight: 800;
   line-height: 1.15;
   color: #080a47;
@@ -374,7 +374,7 @@ section {
 
 .hero-content p {
   font-size: 1.1rem;
-  color: #475569;
+  color: black;
   line-height: 1.8;
   max-width: 520px;
   margin-bottom: 32px;
@@ -675,4 +675,9 @@ section {
   .newsletter-form {
     flex-direction: column;
   }
+}
+
+
+.hero-image img {
+    border-radius: 8px !important;
 }
