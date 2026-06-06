@@ -22,7 +22,6 @@ export default async function Hero() {
           { value: '500+',   label: 'Clients' },
           { value: 'AWS',    label: 'Cloud'   },
         ]
-
   return (
     <section className="hero">
       <div className="container w-full">
