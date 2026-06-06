@@ -1,114 +1,92 @@
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-} from 'lucide-react'
+import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { getSiteSettings } from '@/lib/payload-utils'
 
-export default function ContactSection() {
+export default async function ContactSection() {
+  const settings = await getSiteSettings()
+  const section  = settings?.contactSection
+
+  const tag         = section?.tag         || 'CONTACT US'
+  const title       = section?.title       || "Let's Talk About\nYour Hosting Needs"
+  const description = section?.description || 'Our cloud hosting experts are ready to help you choose the perfect AWS hosting solution.'
+  const formTitle   = section?.formTitle   || 'Request A Callback'
+
+  const email   = settings?.contactEmail  || settings?.headerInfo?.email || 'support@hitayu.com'
+  const phone   = settings?.contactPhone  || settings?.headerInfo?.phone || '+91 98765 43210'
+  const address = settings?.contactAddress || 'India'
+
+  const contactItems = [
+    { Icon: Mail,   label: 'Email',    value: email   },
+    { Icon: Phone,  label: 'Phone',    value: phone   },
+    { Icon: MapPin, label: 'Location', value: address },
+    { Icon: Clock,  label: 'Support',  value: '24/7 Technical Support' },
+  ]
+
   return (
-    <section className="contact-section">
+    <section id="contact" className="py-20 bg-white">
       <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-        <div className="contact-wrapper">
-
-          {/* Left Side */}
-          <div className="contact-info">
-
-            <span className="section-tag">
-              CONTACT US
-            </span>
-
-            <h2>
-              Let's Talk About
-              <br />
-              Your Hosting Needs
+          {/* Left */}
+          <div>
+            <span className="section-tag">{tag}</span>
+            <h2 className="text-4xl font-extrabold text-[#0f172a] mt-3 mb-5 leading-tight" style={{ whiteSpace: 'pre-line' }}>
+              {title}
             </h2>
+            <p className="text-slate-500 leading-relaxed mb-10">{description}</p>
 
-            <p>
-              Our cloud hosting experts are ready to help
-              you choose the perfect AWS hosting solution.
-            </p>
-
-            <div className="contact-item">
-              <Mail size={22} />
-              <div>
-                <h4>Email</h4>
-                <p>support@hitayu.com</p>
-              </div>
+            <div className="space-y-5">
+              {contactItems.map(({ Icon, label, value }, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#38b1ed]/10 flex items-center justify-center text-[#38b1ed] flex-shrink-0">
+                    <Icon size={20} strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-0.5">{label}</p>
+                    <p className="font-semibold text-[#0f172a] text-sm">{value}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <div className="contact-item">
-              <Phone size={22} />
-              <div>
-                <h4>Phone</h4>
-                <p>+91 98765 43210</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <MapPin size={22} />
-              <div>
-                <h4>Location</h4>
-                <p>India</p>
-              </div>
-            </div>
-
-            {/* <div className="contact-item">
-              <Clock size={22} />
-              <div>
-                <h4>Support Hours</h4>
-                <p>24/7 Technical Support</p>
-              </div>
-            </div> */}
-
           </div>
 
-          {/* Right Side */}
-          <div className="contact-form-card">
+          {/* Right – form card */}
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
+            <h3 className="text-2xl font-bold text-[#0f172a] mb-7">{formTitle}</h3>
 
-            <h3>Request A Callback</h3>
-
-            <form>
-
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                />
+            <form className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wide">Your Name</label>
+                  <input type="text" placeholder="Sandeep Kumar"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-[#38b1ed] focus:ring-2 focus:ring-[#38b1ed]/10 transition-all" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wide">Email Address</label>
+                  <input type="email" placeholder="you@example.com"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-[#38b1ed] focus:ring-2 focus:ring-[#38b1ed]/10 transition-all" />
+                </div>
               </div>
 
-              <div className="form-group">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                />
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wide">Phone Number</label>
+                <input type="tel" placeholder="+91 98765 43210"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-[#38b1ed] focus:ring-2 focus:ring-[#38b1ed]/10 transition-all" />
               </div>
 
-              <div className="form-group">
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                />
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wide">Message</label>
+                <textarea rows={4} placeholder="Tell us about your hosting requirements..."
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-[#38b1ed] focus:ring-2 focus:ring-[#38b1ed]/10 transition-all resize-none" />
               </div>
 
-              <div className="form-group">
-                <textarea
-                  rows={5}
-                  placeholder="Tell us about your hosting requirements..."
-                />
-              </div>
-
-              <button type="submit">
-                Send Message
+              <button type="submit"
+                className="w-full bg-[#080A47] hover:bg-[#38b1ed] text-white font-bold py-4 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-[#080A47]/20">
+                Send Message →
               </button>
-
             </form>
-
           </div>
 
         </div>
-
       </div>
     </section>
   )

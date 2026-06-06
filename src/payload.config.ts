@@ -15,6 +15,7 @@ import { PricingPlans } from './collections/PricingPlans'
 import { Testimonials } from './collections/Testimonials'
 import { SiteSettings } from './collections/SiteSettings'
 import { AboutItems } from './collections/AboutItems'
+import { FAQCollection } from './collections/FAQ'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -27,7 +28,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Pages, Hero, Services, PricingPlans, Testimonials, SiteSettings, AboutItems],
+  collections: [Users, Media, Posts, Pages, Hero, Services, PricingPlans, Testimonials, SiteSettings, AboutItems, FAQCollection],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

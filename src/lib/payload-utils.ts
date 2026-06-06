@@ -47,6 +47,15 @@ export async function getAboutItems() {
   return docs
 }
 
+export async function getFAQs() {
+  const payload = await getPayloadInstance()
+  const { docs } = await payload.find({
+    collection: 'faqs',
+    sort: 'order',
+  })
+  return docs
+}
+
 export async function getSiteSettings() {
   const payload = await getPayloadInstance()
   const { docs } = await payload.find({

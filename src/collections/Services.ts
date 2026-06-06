@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { iconOptions } from '../lib/iconMap'
 
 export const Services: CollectionConfig = {
   slug: 'services',
@@ -9,9 +10,16 @@ export const Services: CollectionConfig = {
     {
       name: 'icon',
       type: 'text',
-      required: true,
       admin: {
-        description: 'Emoji or icon symbol (e.g., 🌐, 📧, 🔄)',
+        description: 'Emoji icon (e.g., 🌐, 🖥️, 🗄️) — used if Lucide Icon is not set',
+      },
+    },
+    {
+      name: 'iconName',
+      type: 'select',
+      options: iconOptions,
+      admin: {
+        description: 'Lucide icon — overrides emoji icon above',
       },
     },
     {
@@ -23,6 +31,27 @@ export const Services: CollectionConfig = {
       name: 'description',
       type: 'textarea',
       required: true,
+    },
+    {
+      name: 'imageUrl',
+      type: 'text',
+      admin: {
+        description: 'External image URL for the service card (optional)',
+      },
+    },
+    {
+      name: 'serviceImage',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Upload an image for the service card (overrides URL)',
+      },
+    },
+    {
+      name: 'learnMoreUrl',
+      type: 'text',
+      defaultValue: '#',
+      admin: { description: 'Link for the Learn More button' },
     },
     {
       name: 'order',

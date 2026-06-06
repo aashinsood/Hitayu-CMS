@@ -50,6 +50,18 @@ export const PricingPlans: CollectionConfig = {
       },
     },
     {
+      name: 'buttonText',
+      type: 'text',
+      defaultValue: 'Get Started',
+      admin: { description: 'CTA button label for this plan' },
+    },
+    {
+      name: 'buttonUrl',
+      type: 'text',
+      defaultValue: '#',
+      admin: { description: 'CTA button link URL' },
+    },
+    {
       name: 'order',
       type: 'number',
       defaultValue: 0,

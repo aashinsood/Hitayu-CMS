@@ -1,59 +1,61 @@
-import Image from 'next/image'
+import { getSiteSettings } from '@/lib/payload-utils'
 
-export default function Hero() {
+export default async function Hero() {
+  const settings = await getSiteSettings()
+  const hero = settings?.heroSection
+
+  const badge           = hero?.badge           || 'AWS Powered Cloud Hosting'
+  const title           = hero?.title           || 'Managed AWS Hosting\nBuilt For Speed,\nSecurity & Scale'
+  const description     = hero?.description     || 'Deploy your website on enterprise-grade AWS infrastructure with lightning-fast performance, daily backups and 24/7 expert support.'
+  const primaryText     = hero?.primaryButtonText  || 'Get Started'
+  const primaryUrl      = hero?.primaryButtonUrl   || '#'
+  const secondaryText   = hero?.secondaryButtonText || 'View Plans'
+  const secondaryUrl    = hero?.secondaryButtonUrl  || '#pricing'
+  const heroImageUrl    = (hero?.heroImage as any)?.url || hero?.heroImageUrl || 'https://wp.xpeedstudio.com/hostinza/wp-content/uploads/revslider/home-04/banner_image-41.png'
+
+  const stats: { value: string; label: string }[] =
+    hero?.stats && (hero.stats as any[]).length > 0
+      ? (hero.stats as any[])
+      : [
+          { value: '99.99%', label: 'Uptime' },
+          { value: '24/7',   label: 'Support' },
+          { value: '500+',   label: 'Clients' },
+          { value: 'AWS',    label: 'Cloud'   },
+        ]
+
   return (
     <section className="hero">
-      <div className="container hero-grid">
-        <div className="hero-content">
-          <span className="hero-badge">AWS Powered Cloud Hosting</span>
+      <div className="container w-full">
+        <div className="hero-grid">
 
-          <h1>
-            Managed AWS Hosting
-            <br />
-            Built For Speed,
-            <br />
-            Security & Scale
-          </h1>
+          {/* Left */}
+          <div className="hero-content">
+            <span className="hero-badge">{badge}</span>
 
-          <p>
-            Deploy your website on enterprise-grade AWS infrastructure with lightning-fast
-            performance, daily backups and 24/7 expert support.
-          </p>
+            <h1 style={{ whiteSpace: 'pre-line' }}>{title}</h1>
 
-          <div className="hero-buttons">
-            <button className="btn-primary">Get Started</button>
+            <p>{description}</p>
 
-            <button className="btn-secondary">View Plans</button>
-          </div>
-
-          <div className="hero-stats">
-            <div>
-              <strong>99.99%</strong>
-              <span>Uptime</span>
+            <div className="hero-buttons">
+              <a href={primaryUrl} className="btn-primary">{primaryText}</a>
+              <a href={secondaryUrl} className="btn-secondary">{secondaryText}</a>
             </div>
 
-            <div>
-              <strong>24/7</strong>
-              <span>Support</span>
-            </div>
-
-            <div>
-              <strong>AWS</strong>
-              <span>Cloud</span>
+            <div className="hero-stats">
+              {stats.map((s, i) => (
+                <div key={i}>
+                  <strong>{s.value}</strong>
+                  <span>{s.label}</span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        <div className="hero-image">
-          <img
-            src="https://wp.xpeedstudio.com/hostinza/wp-content/uploads/revslider/home-04/banner_image-41.png"
-            alt="AWS Hosting"
-            style={{
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-            }}
-          />
+          {/* Right */}
+          <div className="hero-image">
+            <img src={heroImageUrl} alt="AWS Hosting" />
+          </div>
+
         </div>
       </div>
     </section>

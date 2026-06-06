@@ -7,41 +7,47 @@ export default async function Navbar() {
   const settings = await getSiteSettings()
   const siteName = settings?.siteName || 'HOSTIKO'
   const navItems = settings?.navigation || []
-  const logoUrl = settings?.logo?.url || null
+  const rawLogoUrl = settings?.logo?.url
+  const logoUrl =
+    rawLogoUrl && !rawLogoUrl.startsWith('/api/media/file/') ? rawLogoUrl : '/hitayu-1.png'
+  const headerButton = settings?.headerButton
 
   return (
     <nav className="navbar">
       <div className="container navbar-wrapper">
         <div className="navbar-start">
           <div className="logo-container">
-            <Image src="/hitayu-1.png" alt="Logo" width={249} height={50} />
-
-            {/* {settings?.logo?.url ? (
-              <Image
-                src={settings.logo.url}
-                alt="Logo"
-                width={249}
-                height={50}
-              />
-            ) : (
-              <>
-                <div className="logo">{siteName}</div>
-              </>
-            )} */}
+            <Image src={logoUrl} alt={`${siteName} logo`} width={249} height={50} />
           </div>
         </div>
 
-        <ul className="nav-links">
-          {settings?.navigation?.length
-            ? settings.navigation.map((item: any, index: number) => (
-                <li key={index}>
-                  <Link href={item.url} className="nav-link">
-                    {item.label}
-                  </Link>
-                </li>
-              ))
-            : null}
-        </ul>
+        <div className="navbar-menu">
+          <ul className="nav-links">
+            {navItems.map((item: any, index: number) => (
+              <li key={index}>
+                <Link
+                  href={item.url}
+                  className="nav-link"
+                  target={item.openInNewTab ? '_blank' : undefined}
+                  rel={item.openInNewTab ? 'noopener noreferrer' : undefined}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {headerButton?.label && headerButton?.url && (
+            <Link
+              href={headerButton.url}
+              className="header-action"
+              target={headerButton.openInNewTab ? '_blank' : undefined}
+              rel={headerButton.openInNewTab ? 'noopener noreferrer' : undefined}
+            >
+              {headerButton.label}
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   )

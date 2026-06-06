@@ -10,7 +10,21 @@ export const Testimonials: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-    },  
+    },
+    {
+      name: 'role',
+      type: 'text',
+      admin: {
+        description: 'Job title or company (e.g. "CEO, Acme Corp")',
+      },
+    },
+    {
+      name: 'company',
+      type: 'text',
+      admin: {
+        description: 'Company name (optional)',
+      },
+    },
     {
       name: 'text',
       type: 'textarea',

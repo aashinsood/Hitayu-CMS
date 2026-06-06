@@ -4,43 +4,44 @@ import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from
 export default async function HeaderTop() {
   const settings = await getSiteSettings()
   const headerInfo = settings?.headerInfo
+  const email = headerInfo?.email || 'info@hitayu.com'
+  const phone = headerInfo?.phone || '+91 98765 43210'
+  const socialLinks = headerInfo?.socialLinks || []
 
   return (
     <div className="top-header">
       <div className="container header-inner">
-
         {/* LEFT SIDE: Email + Phone */}
         <div className="header-left">
-          {headerInfo?.email && (
-            <div className="header-group">
-              <span className="header-icon">✉</span>
-              <span>{headerInfo.email}</span>
-            </div>
-          )}
-          {headerInfo?.phone && (
-            <div className="header-group">
-              <span className="header-icon">📞</span>
-              <span>{headerInfo.phone}</span>
-            </div>
-          )}
+          <div className="header-group">
+            <span className="header-icon">✉</span>
+            <a href={`mailto:${email}`} className="header-link">
+              {email}
+            </a>
+          </div>
+          <div className="header-group">
+            <span className="header-icon">📞</span>
+            <a href={`tel:${phone.replace(/\s+/g, '')}`} className="header-link">
+              {phone}
+            </a>
+          </div>
         </div>
 
         {/* RIGHT SIDE: Social Icons */}
         <div className="header-right">
-          {headerInfo?.socialLinks?.map((social: { url: string | undefined; label: string | undefined; icon: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined }, index: Key | null | undefined) => (
+          {socialLinks.map((social: any, index: Key | null | undefined) => (
             <a
               key={index}
-              href={social.url}
+              href={social.url || '#'}
               className="social-link"
               target="_blank"
               rel="noopener noreferrer"
-              title={social.label}
+              aria-label={social.label || 'Social link'}
             >
-              {social.icon}
+              {social.icon ?? social.label ?? '🔗'}
             </a>
           ))}
         </div>
-
       </div>
     </div>
   )

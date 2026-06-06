@@ -77,6 +77,7 @@ export interface Config {
     testimonials: Testimonial;
     'site-settings': SiteSetting;
     'about-items': AboutItem;
+    faqs: Faq;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -94,6 +95,7 @@ export interface Config {
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
     'about-items': AboutItemsSelect<false> | AboutItemsSelect<true>;
+    faqs: FaqsSelect<false> | FaqsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -234,11 +236,58 @@ export interface Hero {
 export interface Service {
   id: number;
   /**
-   * Emoji or icon symbol (e.g., 🌐, 📧, 🔄)
+   * Emoji icon (e.g., 🌐, 🖥️, 🗄️) — used if Lucide Icon is not set
    */
-  icon: string;
+  icon?: string | null;
+  /**
+   * Lucide icon — overrides emoji icon above
+   */
+  iconName?:
+    | (
+        | 'Zap'
+        | 'ShieldCheck'
+        | 'Cloud'
+        | 'Headphones'
+        | 'Server'
+        | 'Database'
+        | 'Globe'
+        | 'TrendingUp'
+        | 'CheckCircle'
+        | 'Star'
+        | 'Award'
+        | 'Users'
+        | 'Cpu'
+        | 'Lock'
+        | 'BarChart2'
+        | 'Rocket'
+        | 'Shield'
+        | 'Settings'
+        | 'Mail'
+        | 'Phone'
+        | 'MapPin'
+        | 'ArrowRight'
+        | 'Clock'
+        | 'Activity'
+        | 'HardDrive'
+        | 'Wifi'
+        | 'Code'
+        | 'Package'
+      )
+    | null;
   title: string;
   description: string;
+  /**
+   * External image URL for the service card (optional)
+   */
+  imageUrl?: string | null;
+  /**
+   * Upload an image for the service card (overrides URL)
+   */
+  serviceImage?: (number | null) | Media;
+  /**
+   * Link for the Learn More button
+   */
+  learnMoreUrl?: string | null;
   /**
    * Order in which services appear
    */
@@ -268,6 +317,14 @@ export interface PricingPlan {
    */
   isPopular?: boolean | null;
   /**
+   * CTA button label for this plan
+   */
+  buttonText?: string | null;
+  /**
+   * CTA button link URL
+   */
+  buttonUrl?: string | null;
+  /**
    * Order in which plans appear
    */
   order?: number | null;
@@ -281,6 +338,14 @@ export interface PricingPlan {
 export interface Testimonial {
   id: number;
   name: string;
+  /**
+   * Job title or company (e.g. "CEO, Acme Corp")
+   */
+  role?: string | null;
+  /**
+   * Company name (optional)
+   */
+  company?: string | null;
   /**
    * The testimonial text
    */
@@ -297,24 +362,31 @@ export interface Testimonial {
   createdAt: string;
 }
 /**
+ * Global site configuration and home page content
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings".
  */
 export interface SiteSetting {
   id: number;
+  siteName: string;
   /**
    * Upload your site logo
    */
   logo?: (number | null) | Media;
-  headerInfo: {
-    email: string;
-    phone: string;
+  /**
+   * Short company description used in footer
+   */
+  companyDescription?: string | null;
+  headerInfo?: {
+    email?: string | null;
+    phone?: string | null;
     socialLinks?:
       | {
           label: string;
           url: string;
           /**
-           * Use emoji or icon class
+           * Emoji or text symbol (e.g. in, 𝕏, f)
            */
           icon: string;
           id?: string | null;
@@ -334,13 +406,277 @@ export interface SiteSetting {
     url?: string | null;
     openInNewTab?: boolean | null;
   };
-  siteName: string;
-  heroTitle: string;
-  heroDescription: string;
+  heroSection?: {
+    /**
+     * Small badge text above the title
+     */
+    badge?: string | null;
+    /**
+     * Main heading. Use line breaks for multi-line display.
+     */
+    title?: string | null;
+    description?: string | null;
+    primaryButtonText?: string | null;
+    primaryButtonUrl?: string | null;
+    secondaryButtonText?: string | null;
+    secondaryButtonUrl?: string | null;
+    /**
+     * External image URL for hero section
+     */
+    heroImageUrl?: string | null;
+    /**
+     * Uploaded image overrides the URL field above
+     */
+    heroImage?: (number | null) | Media;
+    /**
+     * Small stats shown below buttons (e.g. 99.99% Uptime)
+     */
+    stats?:
+      | {
+          value: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  statsSection?: {
+    isVisible?: boolean | null;
+    stats?:
+      | {
+          /**
+           * e.g. 500+
+           */
+          value: string;
+          /**
+           * e.g. Happy Clients
+           */
+          label: string;
+          iconName?:
+            | (
+                | 'Zap'
+                | 'ShieldCheck'
+                | 'Cloud'
+                | 'Headphones'
+                | 'Server'
+                | 'Database'
+                | 'Globe'
+                | 'TrendingUp'
+                | 'CheckCircle'
+                | 'Star'
+                | 'Award'
+                | 'Users'
+                | 'Cpu'
+                | 'Lock'
+                | 'BarChart2'
+                | 'Rocket'
+                | 'Shield'
+                | 'Settings'
+                | 'Mail'
+                | 'Phone'
+                | 'MapPin'
+                | 'ArrowRight'
+                | 'Clock'
+                | 'Activity'
+                | 'HardDrive'
+                | 'Wifi'
+                | 'Code'
+                | 'Package'
+              )
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  whyChooseSection?: {
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+    features?:
+      | {
+          iconName?:
+            | (
+                | 'Zap'
+                | 'ShieldCheck'
+                | 'Cloud'
+                | 'Headphones'
+                | 'Server'
+                | 'Database'
+                | 'Globe'
+                | 'TrendingUp'
+                | 'CheckCircle'
+                | 'Star'
+                | 'Award'
+                | 'Users'
+                | 'Cpu'
+                | 'Lock'
+                | 'BarChart2'
+                | 'Rocket'
+                | 'Shield'
+                | 'Settings'
+                | 'Mail'
+                | 'Phone'
+                | 'MapPin'
+                | 'ArrowRight'
+                | 'Clock'
+                | 'Activity'
+                | 'HardDrive'
+                | 'Wifi'
+                | 'Code'
+                | 'Package'
+              )
+            | null;
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   /**
-   * Description in footer about the company
+   * Section heading/intro — actual service cards are managed in the Services collection
    */
-  companyDescription?: string | null;
+  servicesSection?: {
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+  };
+  awsSection?: {
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    imageUrl?: string | null;
+    /**
+     * Upload overrides the URL above
+     */
+    sectionImage?: (number | null) | Media;
+    features?:
+      | {
+          iconName?:
+            | (
+                | 'Zap'
+                | 'ShieldCheck'
+                | 'Cloud'
+                | 'Headphones'
+                | 'Server'
+                | 'Database'
+                | 'Globe'
+                | 'TrendingUp'
+                | 'CheckCircle'
+                | 'Star'
+                | 'Award'
+                | 'Users'
+                | 'Cpu'
+                | 'Lock'
+                | 'BarChart2'
+                | 'Rocket'
+                | 'Shield'
+                | 'Settings'
+                | 'Mail'
+                | 'Phone'
+                | 'MapPin'
+                | 'ArrowRight'
+                | 'Clock'
+                | 'Activity'
+                | 'HardDrive'
+                | 'Wifi'
+                | 'Code'
+                | 'Package'
+              )
+            | null;
+          title: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  howItWorksSection?: {
+    isVisible?: boolean | null;
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+    steps?:
+      | {
+          /**
+           * e.g. 01
+           */
+          stepNumber: string;
+          title: string;
+          description: string;
+          iconName?:
+            | (
+                | 'Zap'
+                | 'ShieldCheck'
+                | 'Cloud'
+                | 'Headphones'
+                | 'Server'
+                | 'Database'
+                | 'Globe'
+                | 'TrendingUp'
+                | 'CheckCircle'
+                | 'Star'
+                | 'Award'
+                | 'Users'
+                | 'Cpu'
+                | 'Lock'
+                | 'BarChart2'
+                | 'Rocket'
+                | 'Shield'
+                | 'Settings'
+                | 'Mail'
+                | 'Phone'
+                | 'MapPin'
+                | 'ArrowRight'
+                | 'Clock'
+                | 'Activity'
+                | 'HardDrive'
+                | 'Wifi'
+                | 'Code'
+                | 'Package'
+              )
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Section heading — actual pricing cards are managed in Pricing Plans collection
+   */
+  pricingSection?: {
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+  };
+  /**
+   * Section heading — FAQ items are managed in the FAQs collection
+   */
+  faqSection?: {
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+  };
+  ctaSection?: {
+    badge?: string | null;
+    title?: string | null;
+    description?: string | null;
+    primaryButtonText?: string | null;
+    primaryButtonUrl?: string | null;
+    secondaryButtonText?: string | null;
+    secondaryButtonUrl?: string | null;
+  };
+  /**
+   * Section heading — testimonial cards are managed in the Testimonials collection
+   */
+  testimonialsSection?: {
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+  };
+  contactSection?: {
+    tag?: string | null;
+    title?: string | null;
+    description?: string | null;
+    formTitle?: string | null;
+  };
   footerAddress?: string | null;
   footerPhone?: string | null;
   footerEmail?: string | null;
@@ -348,6 +684,8 @@ export interface SiteSetting {
   contactPhone?: string | null;
   contactAddress?: string | null;
   contactPhoneHours?: string | null;
+  heroTitle?: string | null;
+  heroDescription?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -365,6 +703,23 @@ export interface AboutItem {
   description: string;
   /**
    * Order in which items appear
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Frequently Asked Questions shown on the home page
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+  /**
+   * Display order (lower numbers appear first)
    */
   order?: number | null;
   updatedAt: string;
@@ -433,6 +788,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'about-items';
         value: number | AboutItem;
+      } | null)
+    | ({
+        relationTo: 'faqs';
+        value: number | Faq;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -555,8 +914,12 @@ export interface HeroSelect<T extends boolean = true> {
  */
 export interface ServicesSelect<T extends boolean = true> {
   icon?: T;
+  iconName?: T;
   title?: T;
   description?: T;
+  imageUrl?: T;
+  serviceImage?: T;
+  learnMoreUrl?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -577,6 +940,8 @@ export interface PricingPlansSelect<T extends boolean = true> {
         id?: T;
       };
   isPopular?: T;
+  buttonText?: T;
+  buttonUrl?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -587,6 +952,8 @@ export interface PricingPlansSelect<T extends boolean = true> {
  */
 export interface TestimonialsSelect<T extends boolean = true> {
   name?: T;
+  role?: T;
+  company?: T;
   text?: T;
   rating?: T;
   order?: T;
@@ -598,7 +965,9 @@ export interface TestimonialsSelect<T extends boolean = true> {
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
+  siteName?: T;
   logo?: T;
+  companyDescription?: T;
   headerInfo?:
     | T
     | {
@@ -628,10 +997,136 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         url?: T;
         openInNewTab?: T;
       };
-  siteName?: T;
-  heroTitle?: T;
-  heroDescription?: T;
-  companyDescription?: T;
+  heroSection?:
+    | T
+    | {
+        badge?: T;
+        title?: T;
+        description?: T;
+        primaryButtonText?: T;
+        primaryButtonUrl?: T;
+        secondaryButtonText?: T;
+        secondaryButtonUrl?: T;
+        heroImageUrl?: T;
+        heroImage?: T;
+        stats?:
+          | T
+          | {
+              value?: T;
+              label?: T;
+              id?: T;
+            };
+      };
+  statsSection?:
+    | T
+    | {
+        isVisible?: T;
+        stats?:
+          | T
+          | {
+              value?: T;
+              label?: T;
+              iconName?: T;
+              id?: T;
+            };
+      };
+  whyChooseSection?:
+    | T
+    | {
+        tag?: T;
+        title?: T;
+        description?: T;
+        features?:
+          | T
+          | {
+              iconName?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  servicesSection?:
+    | T
+    | {
+        tag?: T;
+        title?: T;
+        description?: T;
+      };
+  awsSection?:
+    | T
+    | {
+        tag?: T;
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        imageUrl?: T;
+        sectionImage?: T;
+        features?:
+          | T
+          | {
+              iconName?: T;
+              title?: T;
+              id?: T;
+            };
+      };
+  howItWorksSection?:
+    | T
+    | {
+        isVisible?: T;
+        tag?: T;
+        title?: T;
+        description?: T;
+        steps?:
+          | T
+          | {
+              stepNumber?: T;
+              title?: T;
+              description?: T;
+              iconName?: T;
+              id?: T;
+            };
+      };
+  pricingSection?:
+    | T
+    | {
+        tag?: T;
+        title?: T;
+        description?: T;
+      };
+  faqSection?:
+    | T
+    | {
+        tag?: T;
+        title?: T;
+        description?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        badge?: T;
+        title?: T;
+        description?: T;
+        primaryButtonText?: T;
+        primaryButtonUrl?: T;
+        secondaryButtonText?: T;
+        secondaryButtonUrl?: T;
+      };
+  testimonialsSection?:
+    | T
+    | {
+        tag?: T;
+        title?: T;
+        description?: T;
+      };
+  contactSection?:
+    | T
+    | {
+        tag?: T;
+        title?: T;
+        description?: T;
+        formTitle?: T;
+      };
   footerAddress?: T;
   footerPhone?: T;
   footerEmail?: T;
@@ -639,6 +1134,8 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   contactPhone?: T;
   contactAddress?: T;
   contactPhoneHours?: T;
+  heroTitle?: T;
+  heroDescription?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -650,6 +1147,17 @@ export interface AboutItemsSelect<T extends boolean = true> {
   icon?: T;
   title?: T;
   description?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs_select".
+ */
+export interface FaqsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
