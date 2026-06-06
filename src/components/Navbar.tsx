@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { getSiteSettings } from '@/lib/payload-utils'
-import MobileMenu from './MobileMenu'
 
 export default async function Navbar() {
   const settings = await getSiteSettings()
@@ -12,9 +11,7 @@ export default async function Navbar() {
   const rawLogoUrl = settings?.logo?.url
 
   const logoUrl =
-    rawLogoUrl && !rawLogoUrl.startsWith('/api/media/file/')
-      ? rawLogoUrl
-      : '/hitayu-1.png'
+    rawLogoUrl && !rawLogoUrl.startsWith('/api/media/file/') ? rawLogoUrl : '/hitayu-1.png'
 
   const headerButton = settings?.headerButton
 
@@ -24,13 +21,7 @@ export default async function Navbar() {
         {/* Logo */}
         <div className="logo-container">
           <Link href="/">
-            <Image
-              src={logoUrl}
-              alt={`${siteName} logo`}
-              width={200}
-              height={60}
-              priority
-            />
+            <Image src={logoUrl} alt={`${siteName} logo`} width={200} height={60} priority />
           </Link>
         </div>
 
@@ -62,12 +53,6 @@ export default async function Navbar() {
             </Link>
           )}
         </div>
-
-        {/* Mobile Navigation */}
-        <MobileMenu
-          navItems={navItems}
-          headerButton={headerButton}
-        />
       </div>
     </nav>
   )
