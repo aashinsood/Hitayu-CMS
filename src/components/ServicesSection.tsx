@@ -101,7 +101,7 @@ export default async function ServicesSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-60`} />
+                  <div className={`absolute inset-0 -to-br  opacity-60`} />
 
                   {/* Icon chip */}
                   <div className="absolute bottom-4 left-5 w-12 h-12 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md">
