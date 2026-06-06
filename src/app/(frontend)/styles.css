@@ -39,7 +39,7 @@ body {
 }
 
 .top-header {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 60;
   background: rgba(15, 23, 42, 0.96);
@@ -59,7 +59,7 @@ body {
 }
 
 .navbar {
-  position: sticky;
+  position: static;
   top: var(--top-header-height);
   z-index: 55;
   background: rgba(255, 255, 255, 0.96);
@@ -350,9 +350,9 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(56, 177, 237, 0.1);
-  color: #38b1ed;
-  border: 1px solid rgba(56, 177, 237, 0.25);
+  background: #080a47;
+  color: white;
+  border: 1px solid #080a47;
   padding: 8px 18px;
   border-radius: 999px;
   font-size: 0.8rem;
@@ -472,16 +472,16 @@ section {
 
 .section-tag {
   display: inline-block;
-  color: #38b1ed;
+  color: white;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   margin-bottom: 14px;
   padding: 6px 18px;
-  background: rgba(56, 177, 237, 0.08);
+  background: #080a47;
   border-radius: 999px;
-  border: 1px solid rgba(56, 177, 237, 0.2);
+  border: 1px solid #080a47;
 }
 
 .section-title {
@@ -495,7 +495,7 @@ section {
 
 .section-desc {
   font-size: 1.05rem;
-  color: #64748b;
+  color: black;
   max-width: 580px;
   margin: 0 auto;
   line-height: 1.8;
