@@ -16,11 +16,11 @@ export default function Marquee() {
   return (
     <>
       {/* Wave divider */}
-      <div className="ht-wave" style={{ background: 'var(--navy-deep)' }}>
+      {/* <div className="ht-wave" style={{ background: 'var(--navy-deep)' }}>
         <svg viewBox="0 0 1440 40" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 40 }}>
           <path d="M0,20 C360,50 1080,-10 1440,20 L1440,40 L0,40 Z" fill="#2D3480" />
         </svg>
-      </div>
+      </div> */}
       <div className="ht-mstrip">
         <div className="ht-mtrack">
           {doubled.map((item, i) => (

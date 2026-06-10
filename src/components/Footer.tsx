@@ -14,11 +14,11 @@ export default async function Footer() {
           <div className="ht-fbrand">
             <a href="/" className="ht-logo">
               <Image
-                src={logoUrl}
+                src={"https://demo.web-glaze.com/108/wp-content/uploads/2026/06/hitayus-logo-new.png"}
                 alt="Hitayu"
                 width={140}
                 height={50}
-                style={{ objectFit: 'contain', objectPosition: 'left center' }}
+                style={{ objectFit: 'cover', objectPosition: 'left center' }}
               />
             </a>
             <p>{desc}</p>
@@ -66,7 +66,7 @@ export default async function Footer() {
         </div>
 
         <div className="ht-footer-bot">
-          <p>© 2026 Hitayu Technologies Pvt. Ltd. All rights reserved. 🇮🇳 Made in India with ❤️</p>
+          <p>© 2026 Hitayu Technologies Pvt. Ltd. All rights reserved</p>
           <div className="ht-fbl">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>

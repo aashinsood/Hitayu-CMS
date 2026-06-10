@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Scroll progress */}
         <div id="ht-spbar" />
         {/* Loader */}
-        <div id="ht-loader">
+        {/* <div id="ht-loader">
           <svg width="52" height="52" viewBox="0 0 100 100" fill="none">
             <circle cx="50" cy="50" r="47" fill="rgba(0,200,232,0.07)" stroke="rgba(0,200,232,0.18)" strokeWidth="1.5" />
             <path d="M38 72C28 65 22 54 24 43C26 32 35 24 46 24C54 24 60 29 62 36" stroke="white" strokeWidth="7.5" strokeLinecap="round" fill="none" />
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </defs>
           </svg>
           <div className="ht-ltxt">Loading Hitayu</div>
-        </div>
+        </div> */}
 
         <Navbar />
         {children}

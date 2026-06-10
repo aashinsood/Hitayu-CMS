@@ -13,7 +13,7 @@ export default async function Hero() {
   const stats = [
     { t: 200, suffix: '+', label: 'Projects Delivered' },
     { t: 50, suffix: '+', label: 'Enterprise Clients' },
-    { t: 98, suffix: '%', label: 'Client Satisfaction' },
+    // { t: 98, suffix: '%', label: 'Client Satisfaction' },
     { t: 8, suffix: '+', label: 'Years Excellence' },
   ]
 
@@ -39,10 +39,11 @@ export default async function Hero() {
             </div>
 
             <h1 className="ht-htitle">
-              Reimagine, Digitize<br />
+              Reimagine, Digitize
+              <br />
               &amp;{' '}
               <span className="grad" id="ht-typeEl">
-                Unleash Cloud Power
+                Unleash Cloud
               </span>
             </h1>
 
@@ -78,25 +79,31 @@ export default async function Hero() {
               <div className="ht-hring" />
               <div className="ht-hcard">
                 <Image
-                  src="/logo.png"
+                  src="https://demo.web-glaze.com/108/wp-content/uploads/2026/06/hitayus-logo-new.png"
                   alt="Hitayu"
                   width={160}
                   height={120}
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'cover' }}
                   priority
                 />
                 <div className="ht-htag">Technology · Innovation · Excellence</div>
               </div>
               <div className="ht-fc ht-fc1">
                 <div className="ht-fci" style={{ background: 'rgba(0,200,232,.15)' }}>
-                  <i className="fas fa-cloud" style={{ color: 'var(--cyan)', fontSize: '0.8rem' }} />
+                  <i
+                    className="fas fa-cloud"
+                    style={{ color: 'var(--cyan)', fontSize: '0.8rem' }}
+                  />
                 </div>
                 <div className="ht-fcv">99.9%</div>
                 <div className="ht-fcl">Uptime SLA</div>
               </div>
               <div className="ht-fc ht-fc2">
                 <div className="ht-fci" style={{ background: 'rgba(37,43,110,.3)' }}>
-                  <i className="fas fa-shield-alt" style={{ color: '#60A5FA', fontSize: '0.8rem' }} />
+                  <i
+                    className="fas fa-shield-alt"
+                    style={{ color: '#60A5FA', fontSize: '0.8rem' }}
+                  />
                 </div>
                 <div className="ht-fcv">ISO 27001</div>
                 <div className="ht-fcl">Certified</div>
@@ -120,10 +127,10 @@ export default async function Hero() {
         </div>
       </div>
 
-      <div className="ht-hscroll">
+      {/* <div className="ht-hscroll">
         <div className="ht-spill" />
         <span>Scroll to explore</span>
-      </div>
+      </div> */}
     </section>
   )
 }
