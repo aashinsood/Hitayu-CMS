@@ -204,7 +204,7 @@ input, select, textarea { font-family: inherit; }
 .ht-nav-cta {
   padding: 9px 20px;
   background: linear-gradient(135deg, var(--cyan), var(--cyan-dk));
-  color: var(--navy-dark); border-radius: var(--r-md);
+  color: white; border-radius: var(--r-md);
   font-size: 0.84rem; font-weight: 800;
   transition: all var(--t); display: inline-block;
 }

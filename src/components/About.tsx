@@ -13,8 +13,8 @@ export default function About() {
                 src={'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/new-header.png'}
                 alt="Hitayu"
                 width={900}
-                height={650}
-                style={{ objectFit: 'contain', objectPosition: 'left center' }}
+                height={800}
+                style={{ objectFit: 'cover', objectPosition: 'left center' }}
                 priority
               />
             </div>

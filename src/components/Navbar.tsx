@@ -18,8 +18,8 @@ export default async function Navbar() {
             <Image
               src={logoUrl}
               alt="Hitayu"
-              width={20}
-              height={20}
+              width={32}
+              height={32}
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
               priority
             />
