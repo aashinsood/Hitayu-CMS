@@ -9,14 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#38b1ed',
+        primary: '#00C8E8',
+        cyan: {
+          DEFAULT: '#00C8E8',
+          lt: '#33D5EF',
+          dk: '#009BB5',
+        },
         navy: {
-          DEFAULT: '#080A47',
-          50: '#eef0ff',
-          100: '#dde1ff',
-          700: '#080A47',
-          800: '#060838',
-          900: '#040629',
+          DEFAULT: '#252B6E',
+          dark: '#181C4E',
+          deep: '#0F1235',
+          mid: '#2D3480',
         },
       },
       fontFamily: {

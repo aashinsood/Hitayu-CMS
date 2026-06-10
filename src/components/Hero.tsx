@@ -1,61 +1,128 @@
+import Image from 'next/image'
 import { getSiteSettings } from '@/lib/payload-utils'
 
 export default async function Hero() {
   const settings = await getSiteSettings()
   const hero = settings?.heroSection
 
-  const badge           = hero?.badge           || 'AWS Powered Cloud Hosting'
-  const title           = hero?.title           || 'Managed AWS Hosting\nBuilt For Speed,\nSecurity & Scale'
-  const description     = hero?.description     || 'Deploy your website on enterprise-grade AWS infrastructure with lightning-fast performance, daily backups and 24/7 expert support.'
-  const primaryText     = hero?.primaryButtonText  || 'Get Started'
-  const primaryUrl      = hero?.primaryButtonUrl   || '#'
-  const secondaryText   = hero?.secondaryButtonText || 'View Plans'
-  const secondaryUrl    = hero?.secondaryButtonUrl  || '#pricing'
-  const heroImageUrl    = (hero?.heroImage as any)?.url || hero?.heroImageUrl || 'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/new-header.png'
+  const badge = hero?.badge || 'Empowering Growth Through Technology — Since 2016'
+  const description =
+    hero?.description ||
+    'At Hitayu, we specialize in delivering impactful technology solutions that enable businesses to grow and thrive. Our dedicated team of professionals brings your ideas to life with precision and expertise.'
 
-  const stats: { value: string; label: string }[] =
-    hero?.stats && (hero.stats as any[]).length > 0
-      ? (hero.stats as any[])
-      : [
-          { value: '99.99%', label: 'Uptime' },
-          { value: '24/7',   label: 'Support' },
-          { value: '500+',   label: 'Clients' },
-          { value: 'AWS',    label: 'Cloud'   },
-        ]
+  const stats = [
+    { t: 200, suffix: '+', label: 'Projects Delivered' },
+    { t: 50, suffix: '+', label: 'Enterprise Clients' },
+    { t: 98, suffix: '%', label: 'Client Satisfaction' },
+    { t: 8, suffix: '+', label: 'Years Excellence' },
+  ]
+
   return (
-    <section className="hero">
-      <div className="container w-full">
-        <div className="hero-grid">
+    <section className="ht-hero" id="home">
+      {/* Backgrounds */}
+      <div className="ht-hbg">
+        <div className="ht-hbg-grad" />
+        <div className="ht-hbg-grid" />
+        <div className="ht-orb ht-o1" />
+        <div className="ht-orb ht-o2" />
+        <div className="ht-orb ht-o3" />
+        <div className="ht-ptcl" id="ht-ptcl" />
+      </div>
 
-          {/* Left */}
-          <div className="hero-content">
-            <span className="hero-badge">{badge}</span>
-
-            <h1 style={{ whiteSpace: 'pre-line' }}>{title}</h1>
-
-            <p>{description}</p>
-
-            <div className="hero-buttons">
-              <a href={primaryUrl} className="btn-primary">{primaryText}</a>
-              <a href={secondaryUrl} className="btn-secondary">{secondaryText}</a>
+      <div className="ht-container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+        <div className="ht-hero-wrap">
+          {/* Left content */}
+          <div>
+            <div className="ht-hbadge">
+              <span className="ht-hbadge-dot" />
+              {badge}
             </div>
 
-            <div className="hero-stats">
+            <h1 className="ht-htitle">
+              Reimagine, Digitize<br />
+              &amp;{' '}
+              <span className="grad" id="ht-typeEl">
+                Unleash Cloud Power
+              </span>
+            </h1>
+
+            <p className="ht-hsub">{description}</p>
+
+            <div className="ht-hact">
+              <a href="#contact" className="ht-btn ht-btn-p">
+                Get Free Consultation <i className="fas fa-arrow-right" />
+              </a>
+              <a href="#services" className="ht-btn ht-btn-o">
+                <i className="fas fa-play-circle" /> Explore Services
+              </a>
+            </div>
+
+            <div className="ht-hchips">
               {stats.map((s, i) => (
-                <div key={i}>
-                  <strong>{s.value}</strong>
-                  <span>{s.label}</span>
+                <div key={i} className="ht-chip">
+                  <div className="ht-chip-v">
+                    <span className="ht-counter" data-t={s.t}>
+                      0
+                    </span>
+                    <span>{s.suffix}</span>
+                  </div>
+                  <div className="ht-chip-l">{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right */}
-          <div className="hero-image">
-            <img src={heroImageUrl} alt="AWS Hosting" />
+          {/* Right visual */}
+          <div className="ht-hvis">
+            <div className="ht-horb">
+              <div className="ht-hring" />
+              <div className="ht-hcard">
+                <Image
+                  src="/logo.png"
+                  alt="Hitayu"
+                  width={160}
+                  height={120}
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+                <div className="ht-htag">Technology · Innovation · Excellence</div>
+              </div>
+              <div className="ht-fc ht-fc1">
+                <div className="ht-fci" style={{ background: 'rgba(0,200,232,.15)' }}>
+                  <i className="fas fa-cloud" style={{ color: 'var(--cyan)', fontSize: '0.8rem' }} />
+                </div>
+                <div className="ht-fcv">99.9%</div>
+                <div className="ht-fcl">Uptime SLA</div>
+              </div>
+              <div className="ht-fc ht-fc2">
+                <div className="ht-fci" style={{ background: 'rgba(37,43,110,.3)' }}>
+                  <i className="fas fa-shield-alt" style={{ color: '#60A5FA', fontSize: '0.8rem' }} />
+                </div>
+                <div className="ht-fcv">ISO 27001</div>
+                <div className="ht-fcl">Certified</div>
+              </div>
+              <div className="ht-fc ht-fc3">
+                <div className="ht-fci" style={{ background: 'rgba(0,200,232,.15)' }}>
+                  <i className="fas fa-bolt" style={{ color: 'var(--cyan)', fontSize: '0.8rem' }} />
+                </div>
+                <div className="ht-fcv">3× Faster</div>
+                <div className="ht-fcl">Deployment</div>
+              </div>
+              <div className="ht-fc ht-fc4">
+                <div className="ht-fci" style={{ background: 'rgba(37,43,110,.3)' }}>
+                  <i className="fas fa-headset" style={{ color: '#60A5FA', fontSize: '0.8rem' }} />
+                </div>
+                <div className="ht-fcv">24/7</div>
+                <div className="ht-fcl">Expert Support</div>
+              </div>
+            </div>
           </div>
-
         </div>
+      </div>
+
+      <div className="ht-hscroll">
+        <div className="ht-spill" />
+        <span>Scroll to explore</span>
       </div>
     </section>
   )

@@ -37,6 +37,10 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
+      connectionTimeoutMillis: 5000,
+      idleTimeoutMillis: 10000,
+      max: 5,
+      allowExitOnIdle: true,
     },
   }),
   sharp,

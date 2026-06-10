@@ -1,106 +1,49 @@
-import { getPayload } from 'payload'
-import config from '@/payload.config'
+export const dynamic = 'force-dynamic'
+
+import { getSiteSettings } from '@/lib/payload-utils'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import '../../styles.css'
 
-export async function generateStaticParams() {
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-
-  try {
-    const posts = await payload.find({
-      collection: 'posts',
-      limit: 100,
-    })
-
-    return posts.docs.map((post: any) => ({
-      id: String(post.id),
-    }))
-  } catch (error) {
-    console.error('Error generating static params:', error)
-    return []
-  }
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  return { title: 'Blog Post – Hitayu' }
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
+export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  let post: any = null
 
   try {
-    const post = await payload.findByID({
-      collection: 'posts',
-      id: params.id,
-    })
-
-    return {
-      title: `${post.title} - Blog`,
-      description: post.content?.substring(0, 150) || 'Read this post',
-    }
-  } catch (error) {
-    return {
-      title: 'Post Not Found',
-      description: 'This post does not exist',
-    }
-  }
-}
-
-export default async function PostPage({ params }: { params: { id: string } }) {
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-
-  let post = null
-  let error = null
-
-  try {
-    post = await payload.findByID({
-      collection: 'posts',
-      id: params.id,
-    })
-  } catch (err) {
-    error = 'Post not found'
-    console.error('Error fetching post:', err)
+    const { getPayload } = await import('payload')
+    const config = (await import('@/payload.config')).default
+    const payload = await getPayload({ config })
+    post = await payload.findByID({ collection: 'posts', id })
+  } catch {
+    // DB unavailable or post not found — show fallback
   }
 
   return (
-    <div className="home-page">
-      <header className="header">
-        <div className="header-content">
-          <h1>Your Website</h1>
-          <nav className="nav">
-            <Link href="/">Home</Link>
-            <Link href="/posts">Blog</Link>
-            <Link href="/admin">Admin Panel</Link>
-          </nav>
-        </div>
-      </header>
-
-      <main className="main-content">
-        {error ? (
-          <div className="empty-state">
-            <h2>Post Not Found</h2>
-            <p>The post you're looking for doesn't exist.</p>
-            <Link href="/posts">← Back to Posts</Link>
-          </div>
-        ) : post ? (
-          <article className="post-full">
-            <Link href="/posts" className="back-link">
-              ← Back to Posts
+    <>
+      <Navbar />
+      <main style={{ minHeight: '80vh', padding: '120px 24px 80px', maxWidth: 800, margin: '0 auto' }}>
+        {post ? (
+          <article>
+            <Link href="/posts" style={{ color: 'var(--cyan)', display: 'inline-block', marginBottom: 24 }}>
+              ← Back to Blog
             </Link>
-            <h1>{post.title}</h1>
-            <div className="post-content">
-              {post.content}
-            </div>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: 24 }}>{post.title}</h1>
+            <div style={{ color: 'rgba(255,255,255,.75)', lineHeight: 1.9 }}>{post.content}</div>
           </article>
         ) : (
-          <div className="empty-state">
-            <p>Loading...</p>
+          <div style={{ textAlign: 'center', paddingTop: 80 }}>
+            <h2 style={{ fontSize: '1.8rem', marginBottom: 16 }}>Post Not Found</h2>
+            <p style={{ color: 'rgba(255,255,255,.6)', marginBottom: 32 }}>This post doesn&apos;t exist or is unavailable.</p>
+            <Link href="/" className="ht-btn ht-btn-p">Back to Home</Link>
           </div>
         )}
       </main>
-
-      <footer className="footer">
-        <p>&copy; 2024 Your Website. Powered by Payload CMS.</p>
-      </footer>
-    </div>
+      <Footer />
+    </>
   )
 }

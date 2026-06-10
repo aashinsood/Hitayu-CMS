@@ -1,66 +1,83 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 
-let cached: any = null
+let cachedPayload: Awaited<ReturnType<typeof getPayload>> | null = null
+let initFailed = false
 
 async function getPayloadInstance() {
-  if (cached) {
-    return cached
+  if (initFailed) return null
+  if (cachedPayload) return cachedPayload
+  try {
+    cachedPayload = await getPayload({ config })
+    return cachedPayload
+  } catch {
+    initFailed = true
+    return null
   }
-  cached = await getPayload({ config })
-  return cached
 }
 
 export async function getServices() {
-  const payload = await getPayloadInstance()
-  const { docs } = await payload.find({
-    collection: 'services',
-    sort: 'order',
-  })
-  return docs
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await payload.find({ collection: 'services', sort: 'order' })
+    return docs
+  } catch {
+    return []
+  }
 }
 
 export async function getPricingPlans() {
-  const payload = await getPayloadInstance()
-  const { docs } = await payload.find({
-    collection: 'pricing-plans',
-    sort: 'order',
-  })
-  return docs
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await payload.find({ collection: 'pricing-plans', sort: 'order' })
+    return docs
+  } catch {
+    return []
+  }
 }
 
 export async function getTestimonials() {
-  const payload = await getPayloadInstance()
-  const { docs } = await payload.find({
-    collection: 'testimonials',
-    sort: 'order',
-  })
-  return docs
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await payload.find({ collection: 'testimonials', sort: 'order' })
+    return docs
+  } catch {
+    return []
+  }
 }
 
 export async function getAboutItems() {
-  const payload = await getPayloadInstance()
-  const { docs } = await payload.find({
-    collection: 'about-items',
-    sort: 'order',
-  })
-  return docs
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await payload.find({ collection: 'about-items', sort: 'order' })
+    return docs
+  } catch {
+    return []
+  }
 }
 
 export async function getFAQs() {
-  const payload = await getPayloadInstance()
-  const { docs } = await payload.find({
-    collection: 'faqs',
-    sort: 'order',
-  })
-  return docs
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await payload.find({ collection: 'faqs', sort: 'order' })
+    return docs
+  } catch {
+    return []
+  }
 }
 
 export async function getSiteSettings() {
-  const payload = await getPayloadInstance()
-  const { docs } = await payload.find({
-    collection: 'site-settings',
-    limit: 1,
-  })
-  return docs[0] || null
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return null
+    const { docs } = await payload.find({ collection: 'site-settings', limit: 1 })
+    return docs[0] || null
+  } catch {
+    return null
+  }
 }

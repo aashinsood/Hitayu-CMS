@@ -1,83 +1,77 @@
+import Image from 'next/image'
 import { getSiteSettings } from '@/lib/payload-utils'
 
 export default async function Footer() {
-  const settings           = await getSiteSettings()
-  const siteName           = settings?.siteName           || 'HITAYU'
-  const companyDescription = settings?.companyDescription || 'Providing reliable, fast and secure AWS-powered hosting solutions trusted by 500+ businesses worldwide.'
+  const settings = await getSiteSettings()
+  const desc = settings?.companyDescription || 'Hitayu is a next-generation IT solutions company delivering Cloud, AI, Cybersecurity, and DevOps excellence to enterprises across India and beyond.'
+  const logoUrl: string = (settings as any)?.logo?.url || '/logo.png'
 
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-content">
-
+    <footer className="ht-footer">
+      <div className="ht-container">
+        <div className="ht-footer-top">
           {/* Brand */}
-          <div className="footer-section">
-            <div className="footer-logo">
-              <span>◆</span>
-              <h3>{siteName}</h3>
-            </div>
-            <p className="footer-desc">{companyDescription}</p>
-            <div className="footer-social">
-              <a href="#" title="LinkedIn">in</a>
-              <a href="#" title="Twitter">𝕏</a>
-              <a href="#" title="Facebook">f</a>
-              <a href="#" title="Instagram">ig</a>
+          <div className="ht-fbrand">
+            <a href="/" className="ht-logo">
+              <Image
+                src={logoUrl}
+                alt="Hitayu"
+                width={140}
+                height={50}
+                style={{ objectFit: 'contain', objectPosition: 'left center' }}
+              />
+            </a>
+            <p>{desc}</p>
+            <div className="ht-fnl">
+              <p>Subscribe for tech insights &amp; updates</p>
+              <div className="ht-fnf">
+                <input type="email" placeholder="Enter your email" />
+                <button>Subscribe</button>
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="footer-section">
-            <h4>Quick Links</h4>
-            <ul className="footer-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/hosting">Hosting Plans</a></li>
-              <li><a href="/domains">Domain Registration</a></li>
-              <li><a href="/support">Support Center</a></li>
-              <li><a href="/blog">Blog</a></li>
+          {/* Services */}
+          <div className="ht-fcol">
+            <h5>Services</h5>
+            <ul>
+              {['Managed Services', 'Infrastructure Modernisation', 'Data, Analytics & AI', 'Managed Security', 'App Modernisation', 'Cloud Cost Optimisation'].map((s) => (
+                <li key={s}><a href="#services">{s}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solutions */}
+          <div className="ht-fcol">
+            <h5>Solutions</h5>
+            <ul>
+              {['SMB-in-a-Box', 'Web Hosting Kit', 'DR Jumpstart', 'Backup Kit', 'Database Starter', 'BI Solution Kit'].map((s) => (
+                <li key={s}><a href="#solutions">{s}</a></li>
+              ))}
             </ul>
           </div>
 
           {/* Company */}
-          <div className="footer-section">
-            <h4>Company</h4>
-            <ul className="footer-links">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/careers">Careers</a></li>
-              <li><a href="/contact">Contact Us</a></li>
-              <li><a href="/partners">Partners</a></li>
-              <li><a href="/press">Press Kit</a></li>
+          <div className="ht-fcol">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#careers">Careers</a></li>
+              <li><a href="#partners">Partners</a></li>
+              <li><a href="#industries">Industries</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
             </ul>
           </div>
-
-          {/* Legal */}
-          <div className="footer-section">
-            <h4>Legal</h4>
-            <ul className="footer-links">
-              <li><a href="/privacy">Privacy Policy</a></li>
-              <li><a href="/terms">Terms of Service</a></li>
-              <li><a href="/sla">SLA Agreement</a></li>
-              <li><a href="/refund">Refund Policy</a></li>
-              <li><a href="/cookies">Cookie Policy</a></li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="footer-section">
-            <h4>Newsletter</h4>
-            <p className="footer-desc mb-4">Get hosting tips, offers and updates delivered to your inbox.</p>
-            <div className="newsletter-form">
-              <input type="email" placeholder="your@email.com" />
-              <button>Go</button>
-            </div>
-          </div>
-
         </div>
 
-        <div className="footer-divider" />
-
-        <div className="footer-bottom">
-          <p>© 2026 {siteName}. All rights reserved.</p>
-          <p className="powered-by">Powered by Hitayu Hosting</p>
+        <div className="ht-footer-bot">
+          <p>© 2026 Hitayu Technologies Pvt. Ltd. All rights reserved. 🇮🇳 Made in India with ❤️</p>
+          <div className="ht-fbl">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
         </div>
       </div>
     </footer>
