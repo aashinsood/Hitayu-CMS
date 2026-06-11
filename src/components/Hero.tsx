@@ -88,7 +88,7 @@ export default async function Hero() {
                 />
                 <div className="ht-htag">Technology · Innovation · Excellence</div>
               </div>
-              <div className="ht-fc ht-fc1">
+              {/* <div className="ht-fc ht-fc1">
                 <div className="ht-fci" style={{ background: 'rgba(0,200,232,.15)' }}>
                   <i
                     className="fas fa-cloud"
@@ -97,8 +97,8 @@ export default async function Hero() {
                 </div>
                 <div className="ht-fcv">99.9%</div>
                 <div className="ht-fcl">Uptime SLA</div>
-              </div>
-              <div className="ht-fc ht-fc2">
+              </div> */}
+              {/* <div className="ht-fc ht-fc2">
                 <div className="ht-fci" style={{ background: 'rgba(37,43,110,.3)' }}>
                   <i
                     className="fas fa-shield-alt"
@@ -107,21 +107,21 @@ export default async function Hero() {
                 </div>
                 <div className="ht-fcv">ISO 27001</div>
                 <div className="ht-fcl">Certified</div>
-              </div>
-              <div className="ht-fc ht-fc3">
+              </div> */}
+              {/* <div className="ht-fc ht-fc3">
                 <div className="ht-fci" style={{ background: 'rgba(0,200,232,.15)' }}>
                   <i className="fas fa-bolt" style={{ color: 'var(--cyan)', fontSize: '0.8rem' }} />
                 </div>
                 <div className="ht-fcv">3× Faster</div>
                 <div className="ht-fcl">Deployment</div>
-              </div>
-              <div className="ht-fc ht-fc4">
+              </div> */}
+              {/* <div className="ht-fc ht-fc4">
                 <div className="ht-fci" style={{ background: 'rgba(37,43,110,.3)' }}>
                   <i className="fas fa-headset" style={{ color: '#60A5FA', fontSize: '0.8rem' }} />
                 </div>
                 <div className="ht-fcv">24/7</div>
                 <div className="ht-fcl">Expert Support</div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

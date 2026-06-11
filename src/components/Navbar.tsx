@@ -206,9 +206,9 @@ export default async function Navbar() {
 
           {/* Actions */}
           <div className="ht-nav__act">
-            <a href={`tel:${phone.replace(/\s/g, '')}`} className="ht-nav-phone">
+            {/* <a href={`tel:${phone.replace(/\s/g, '')}`} className="ht-nav-phone">
               <i className="fas fa-phone" style={{ color: 'var(--cyan)' }} /> {phone}
-            </a>
+            </a> */}
             <Link href="#contact" className="ht-nav-cta">
               Get Started
             </Link>
