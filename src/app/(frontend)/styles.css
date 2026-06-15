@@ -451,7 +451,7 @@ input, select, textarea { font-family: inherit; }
 .ht-stat:last-child { border-right: none; }
 .ht-snum { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3.1rem; font-weight: 900; color: #fff; line-height: 1; }
 .ht-snum .ac { color: var(--cyan); }
-.ht-slbl { font-size: 0.78rem; color: rgba(255,255,255,.44); margin-top: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+.ht-slbl { font-size: 16px; color: rgb(255, 255, 255); margin-top: 12px; letter-spacing: 0.08em; font-weight: 500; }
 
 /* ══════════════════ ABOUT ══════════════════ */
 .ht-about-g { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -824,4 +824,26 @@ input, select, textarea { font-family: inherit; }
   .ht-proc-g { grid-template-columns: 1fr; }
   .ht-stats-g { grid-template-columns: 1fr; }
   .ht-mvv-grid { grid-template-columns: 1fr; }
+}
+
+
+.contact-header {
+    height: 300px;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, #131850 50%, var(--navy-mid) 100%);
+}
+
+
+.ht-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.ht-logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+  white-space: nowrap;
 }

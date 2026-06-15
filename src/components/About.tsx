@@ -12,7 +12,7 @@ export default function About() {
               <Image
                 src={'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/new-header.png'}
                 alt="Hitayu"
-                width={900}
+                width={450}
                 height={800}
                 style={{ objectFit: 'cover', objectPosition: 'left center' }}
                 priority
@@ -45,11 +45,9 @@ export default function About() {
               Reimagine, Digitize &amp; <span className="hi">Realize Better</span>
             </h2>
             <p className="ht-sub ht-reveal">
-              At Hitayu, we specialize in delivering impactful technology solutions that enable
-              businesses to grow and thrive. Our experience across various sectors allows us to
-              craft solutions that are innovative and results-oriented. Every solution we design,
-              develop, or deliver is thoroughly tested and refined to meet the highest standards
-              before delivery.
+              Hitayu is a technology solutions company dedicated to helping businesses grow through secure, scalable, and innovative cloud services. 
+              We specialize in delivering modern digital solutions that enhance agility, streamline operations, and support long-term business success. 
+              With expertise in cloud technologies, hybrid and multi-cloud environments, and application modernization, our team is committed to delivering high-quality, reliable solutions tailored to client needs. 
             </p>
             <div className="ht-feat-l">
               <div className="ht-feat ht-reveal ht-d1">
@@ -113,8 +111,9 @@ export default function About() {
             </div>
             <h4>Our Mission</h4>
             <p>
-              To empower businesses with secure, scalable, and innovative cloud solutions that drive
-              efficiency, growth, and digital transformation.
+              Our mission is to empower businesses with secure, scalable, and innovative cloud solutions that improve efficiency, 
+              accelerate digital transformation, and drive sustainable growth. We are committed to delivering reliable technology 
+              services that help organizations achieve goals.
             </p>
           </div>
           <div className="ht-mvv-card ht-reveal ht-d1">
@@ -123,8 +122,9 @@ export default function About() {
             </div>
             <h4>Our Vision</h4>
             <p>
-              To be a globally recognized leader in delivering innovative, secure, and scalable
-              cloud solutions that enable sustainable growth.
+              Our vision is to become a globally recognized leader in cloud technology solutions, 
+              enabling organizations to innovate, adapt, and grow in a rapidly evolving digital world. 
+              We strive to create lasting value through excellence, innovation, and customer success.
             </p>
           </div>
           <div className="ht-mvv-card ht-reveal ht-d2">
@@ -133,9 +133,10 @@ export default function About() {
             </div>
             <h4>Our Values</h4>
             <p>
-              Integrity, transparency, and strong ethical principles in all interactions. A
-              client-first approach delivering reliable, high-quality solutions that support
-              long-term success.
+              Our values are rooted in integrity, excellence, and customer commitment. 
+              We conduct business with honesty and transparency, 
+              deliver high-quality solutions, and continuously pursue innovation. 
+              By putting our clients first, we build trusted partnerships that support long-term success.
             </p>
           </div>
         </div>

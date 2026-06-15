@@ -18,11 +18,12 @@ export default async function Navbar() {
             <Image
               src={logoUrl}
               alt="Hitayu"
-              width={32}
-              height={32}
+              width={48}
+              height={48}
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
               priority
             />
+             <span className="ht-logo-text">Hitayu</span>
           </Link>
 
           {/* Desktop links */}
@@ -198,7 +199,7 @@ export default async function Navbar() {
               </Link>
             </li>
             <li className="ht-nitem">
-              <Link href="#contact" className="ht-na">
+              <Link href="/contact" className="ht-na">
                 Contact Us
               </Link>
             </li>

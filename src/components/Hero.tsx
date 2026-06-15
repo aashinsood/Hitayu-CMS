@@ -43,7 +43,7 @@ export default async function Hero() {
               <br />
               &amp;{' '}
               <span className="grad" id="ht-typeEl">
-                Unleash Cloud
+                realize better business outcomes
               </span>
             </h1>
 
