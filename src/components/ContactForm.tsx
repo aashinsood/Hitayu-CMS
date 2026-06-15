@@ -48,7 +48,11 @@ export default function ContactForm() {
               type="text"
               name="first"
               placeholder="First name"
-              style={errors.first ? { borderColor: '#EF4444', boxShadow: '0 0 0 3px rgba(239,68,68,.12)' } : {}}
+              style={
+                errors.first
+                  ? { borderColor: '#EF4444', boxShadow: '0 0 0 3px rgba(239,68,68,.12)' }
+                  : {}
+              }
               onChange={() => setErrors((e) => ({ ...e, first: false }))}
             />
           </div>
@@ -58,7 +62,11 @@ export default function ContactForm() {
               type="text"
               name="last"
               placeholder="Last name"
-              style={errors.last ? { borderColor: '#EF4444', boxShadow: '0 0 0 3px rgba(239,68,68,.12)' } : {}}
+              style={
+                errors.last
+                  ? { borderColor: '#EF4444', boxShadow: '0 0 0 3px rgba(239,68,68,.12)' }
+                  : {}
+              }
               onChange={() => setErrors((e) => ({ ...e, last: false }))}
             />
           </div>
@@ -69,7 +77,11 @@ export default function ContactForm() {
             type="email"
             name="email"
             placeholder="you@company.com"
-            style={errors.email ? { borderColor: '#EF4444', boxShadow: '0 0 0 3px rgba(239,68,68,.12)' } : {}}
+            style={
+              errors.email
+                ? { borderColor: '#EF4444', boxShadow: '0 0 0 3px rgba(239,68,68,.12)' }
+                : {}
+            }
             onChange={() => setErrors((e) => ({ ...e, email: false }))}
           />
         </div>
