@@ -4,6 +4,7 @@ import HeroSlider from './HeroSlider'
 
 export default async function Hero() {
   const [settings, slides] = await Promise.all([getSiteSettings(), getHeroSlides()])
+  const hasSlides = slides.length > 0
   const hero = settings?.heroSection
 
   const badge = hero?.badge || 'Empowering Growth Through Technology — Since 2016'
@@ -14,10 +15,19 @@ export default async function Hero() {
   const stats = [
     { t: 200, suffix: '+', label: 'Projects Delivered' },
     { t: 50, suffix: '+', label: 'Enterprise Clients' },
-    // { t: 98, suffix: '%', label: 'Client Satisfaction' },
     { t: 8, suffix: '+', label: 'Years Excellence' },
   ]
 
+  // ── FULL-PAGE SLIDER MODE (when images are added from Admin → Hero Slides) ──
+  if (hasSlides) {
+    return (
+      <section className="ht-hero ht-hero--full" id="home">
+        <HeroSlider slides={slides} fullPage />
+      </section>
+    )
+  }
+
+  // ── FALLBACK: text layout (when no slides added yet) ─────────────────────
   return (
     <section className="ht-hero" id="home">
       {/* Backgrounds */}
@@ -74,28 +84,22 @@ export default async function Hero() {
             </div>
           </div>
 
-          {/* Right visual */}
+          {/* Right — fallback circular card */}
           <div className="ht-hvis">
-            {slides.length > 0 ? (
-              /* Image slider — images added from Admin → Hero Slides */
-              <HeroSlider slides={slides} />
-            ) : (
-              /* Fallback: original circular card when no slides are added yet */
-              <div className="ht-horb">
-                <div className="ht-hring" />
-                <div className="ht-hcard">
-                  <Image
-                    src="/logo.png"
-                    alt="Hitayu"
-                    width={160}
-                    height={120}
-                    style={{ objectFit: 'contain', mixBlendMode: 'screen' }}
-                    priority
-                  />
-                  <div className="ht-htag">Technology · Innovation · Excellence</div>
-                </div>
+            <div className="ht-horb">
+              <div className="ht-hring" />
+              <div className="ht-hcard">
+                <Image
+                  src="/logo.png"
+                  alt="Hitayu"
+                  width={160}
+                  height={120}
+                  style={{ objectFit: 'contain', mixBlendMode: 'screen' }}
+                  priority
+                />
+                <div className="ht-htag">Technology · Innovation · Excellence</div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

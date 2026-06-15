@@ -244,6 +244,18 @@ input, select, textarea { font-family: inherit; }
   display: flex; align-items: center; padding-top: 76px;
   background: var(--navy-deep);
 }
+/* Full-page slider mode — no padding, slider fills everything */
+.ht-hero--full {
+  padding-top: 0;
+  display: block;
+  height: 100vh;
+  height: 100dvh;
+}
+@media (max-width: 767px) {
+  .ht-hero--full {
+    height: 280px; /* fixed height on mobile — image shown with contain */
+  }
+}
 .ht-hbg { position: absolute; inset: 0; overflow: hidden; }
 .ht-hbg-grad {
   position: absolute; inset: 0;
@@ -338,13 +350,60 @@ input, select, textarea { font-family: inherit; }
               0 0 60px rgba(0,200,232,.08);
 }
 
+/* Full-page mode: fill the entire hero section */
+.ht-slider--full {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: unset;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+}
+
 /* Each slide */
 .ht-slide {
   position: absolute; inset: 0;
   opacity: 0;
+  background: var(--navy-deep); /* dark bg so contain-mode has no white bars */
   transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .ht-slide.active { opacity: 1; }
+
+/* Prev / Next arrow buttons */
+.ht-sarr {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 3; cursor: pointer;
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.22);
+  color: #fff; font-size: 1rem;
+  backdrop-filter: blur(10px);
+  /* hidden by default, show on hover */
+  opacity: 0;
+  transition: opacity 0.3s var(--ease), background 0.25s var(--ease),
+              border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.ht-slider:hover .ht-sarr { opacity: 1; }
+.ht-sarr:hover {
+  background: rgba(0,200,232,.45);
+  border-color: var(--cyan);
+  transform: translateY(-50%) scale(1.1);
+}
+/* Push arrows away from edges so they don't overlap image text */
+.ht-sarr--prev { left: 28px; }
+.ht-sarr--next { right: 28px; }
+
+/* Mobile: always visible, smaller */
+@media (max-width: 640px) {
+  .ht-sarr { opacity: 1; width: 38px; height: 38px; font-size: 0.85rem; }
+  .ht-sarr--prev { left: 12px; }
+  .ht-sarr--next { right: 12px; }
+}
 
 /* Gradient vignette at bottom of each slide */
 .ht-slide-overlay {

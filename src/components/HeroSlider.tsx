@@ -8,12 +8,29 @@ interface Slide {
   alt: string
 }
 
-export default function HeroSlider({ slides }: { slides: Slide[] }) {
+interface Props {
+  slides: Slide[]
+  fullPage?: boolean
+}
+
+export default function HeroSlider({ slides, fullPage = false }: Props) {
   const [current, setCurrent] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length)
+  }, [slides.length])
+
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length)
   }, [slides.length])
 
   useEffect(() => {
@@ -22,20 +39,18 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
     return () => clearInterval(timer)
   }, [slides.length, isHovered, next])
 
-  if (!slides.length) {
-    return (
-      <div className="ht-slider ht-slider--empty">
-        <div className="ht-slider-ph">
-          <i className="fas fa-images" />
-          <span>Add slides from Admin → Hero Slides</span>
-        </div>
-      </div>
-    )
-  }
+  if (!slides.length) return null
+
+  const wrapClass = fullPage ? 'ht-slider ht-slider--full' : 'ht-slider'
+  const multiSlide = slides.length > 1
+
+  // Mobile: contain (show full image), Desktop: cover left-anchored
+  const imgFit = isMobile ? 'contain' : 'cover'
+  const imgPos = isMobile ? 'center center' : 'left center'
 
   return (
     <div
-      className="ht-slider"
+      className={wrapClass}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -45,8 +60,8 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
             src={slide.url}
             alt={slide.alt}
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: 'cover' }}
+            sizes="100vw"
+            style={{ objectFit: imgFit, objectPosition: imgPos }}
             priority={i === 0}
           />
         </div>
@@ -55,8 +70,20 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
       {/* Bottom gradient overlay */}
       <div className="ht-slide-overlay" />
 
-      {/* Dot indicators */}
-      {slides.length > 1 && (
+      {/* Prev / Next arrows — only when more than 1 slide */}
+      {multiSlide && (
+        <>
+          <button className="ht-sarr ht-sarr--prev" onClick={prev} aria-label="Previous slide">
+            <i className="fas fa-chevron-left" />
+          </button>
+          <button className="ht-sarr ht-sarr--next" onClick={next} aria-label="Next slide">
+            <i className="fas fa-chevron-right" />
+          </button>
+        </>
+      )}
+
+      {/* Dot indicators — only when more than 1 slide */}
+      {multiSlide && (
         <div className="ht-dots">
           {slides.map((_, i) => (
             <button
