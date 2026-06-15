@@ -71,6 +71,27 @@ export async function getFAQs() {
   }
 }
 
+export async function getHeroSlides() {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await payload.find({
+      collection: 'hero-slides',
+      sort: 'order',
+      depth: 1, // populate the image relationship
+    })
+    // Return only what the slider needs — filter guarantees url is string (not null)
+    return docs
+      .map((doc: any) => ({
+        url: (doc.image as any)?.url as string | undefined,
+        alt: doc.alt as string,
+      }))
+      .filter((s): s is { url: string; alt: string } => typeof s.url === 'string')
+  } catch {
+    return []
+  }
+}
+
 export async function getSiteSettings() {
   try {
     const payload = await getPayloadInstance()

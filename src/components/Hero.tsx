@@ -1,8 +1,9 @@
 import Image from 'next/image'
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getSiteSettings, getHeroSlides } from '@/lib/payload-utils'
+import HeroSlider from './HeroSlider'
 
 export default async function Hero() {
-  const settings = await getSiteSettings()
+  const [settings, slides] = await Promise.all([getSiteSettings(), getHeroSlides()])
   const hero = settings?.heroSection
 
   const badge = hero?.badge || 'Empowering Growth Through Technology — Since 2016'
@@ -75,62 +76,29 @@ export default async function Hero() {
 
           {/* Right visual */}
           <div className="ht-hvis">
-            <div className="ht-horb">
-              <div className="ht-hring" />
-              <div className="ht-hcard">
-                <Image
-                  src="https://demo.web-glaze.com/108/wp-content/uploads/2026/06/hitayus-logo-new.png"
-                  alt="Hitayu"
-                  width={160}
-                  height={120}
-                  style={{ objectFit: 'cover' }}
-                  priority
-                />
-                <div className="ht-htag">Technology · Innovation · Excellence</div>
+            {slides.length > 0 ? (
+              /* Image slider — images added from Admin → Hero Slides */
+              <HeroSlider slides={slides} />
+            ) : (
+              /* Fallback: original circular card when no slides are added yet */
+              <div className="ht-horb">
+                <div className="ht-hring" />
+                <div className="ht-hcard">
+                  <Image
+                    src="/logo.png"
+                    alt="Hitayu"
+                    width={160}
+                    height={120}
+                    style={{ objectFit: 'contain', mixBlendMode: 'screen' }}
+                    priority
+                  />
+                  <div className="ht-htag">Technology · Innovation · Excellence</div>
+                </div>
               </div>
-              {/* <div className="ht-fc ht-fc1">
-                <div className="ht-fci" style={{ background: 'rgba(0,200,232,.15)' }}>
-                  <i
-                    className="fas fa-cloud"
-                    style={{ color: 'var(--cyan)', fontSize: '0.8rem' }}
-                  />
-                </div>
-                <div className="ht-fcv">99.9%</div>
-                <div className="ht-fcl">Uptime SLA</div>
-              </div> */}
-              {/* <div className="ht-fc ht-fc2">
-                <div className="ht-fci" style={{ background: 'rgba(37,43,110,.3)' }}>
-                  <i
-                    className="fas fa-shield-alt"
-                    style={{ color: '#60A5FA', fontSize: '0.8rem' }}
-                  />
-                </div>
-                <div className="ht-fcv">ISO 27001</div>
-                <div className="ht-fcl">Certified</div>
-              </div> */}
-              {/* <div className="ht-fc ht-fc3">
-                <div className="ht-fci" style={{ background: 'rgba(0,200,232,.15)' }}>
-                  <i className="fas fa-bolt" style={{ color: 'var(--cyan)', fontSize: '0.8rem' }} />
-                </div>
-                <div className="ht-fcv">3× Faster</div>
-                <div className="ht-fcl">Deployment</div>
-              </div> */}
-              {/* <div className="ht-fc ht-fc4">
-                <div className="ht-fci" style={{ background: 'rgba(37,43,110,.3)' }}>
-                  <i className="fas fa-headset" style={{ color: '#60A5FA', fontSize: '0.8rem' }} />
-                </div>
-                <div className="ht-fcv">24/7</div>
-                <div className="ht-fcl">Expert Support</div>
-              </div> */}
-            </div>
+            )}
           </div>
         </div>
       </div>
-
-      {/* <div className="ht-hscroll">
-        <div className="ht-spill" />
-        <span>Scroll to explore</span>
-      </div> */}
     </section>
   )
 }

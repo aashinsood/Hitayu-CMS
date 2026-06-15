@@ -72,6 +72,7 @@ export interface Config {
     posts: Post;
     pages: Page;
     hero: Hero;
+    'hero-slides': HeroSlide;
     services: Service;
     'pricing-plans': PricingPlan;
     testimonials: Testimonial;
@@ -90,6 +91,7 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     hero: HeroSelect<false> | HeroSelect<true>;
+    'hero-slides': HeroSlidesSelect<false> | HeroSlidesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
@@ -226,6 +228,26 @@ export interface Hero {
   description: string;
   primaryButtonText?: string | null;
   secondaryButtonText?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Images displayed in the hero section image slider. Add multiple images — they will auto-slide every 3 seconds.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero-slides".
+ */
+export interface HeroSlide {
+  id: number;
+  image: number | Media;
+  /**
+   * Short description of the image (used for accessibility)
+   */
+  alt: string;
+  /**
+   * Lower numbers appear first
+   */
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -770,6 +792,10 @@ export interface PayloadLockedDocument {
         value: number | Hero;
       } | null)
     | ({
+        relationTo: 'hero-slides';
+        value: number | HeroSlide;
+      } | null)
+    | ({
         relationTo: 'services';
         value: number | Service;
       } | null)
@@ -905,6 +931,17 @@ export interface HeroSelect<T extends boolean = true> {
   description?: T;
   primaryButtonText?: T;
   secondaryButtonText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero-slides_select".
+ */
+export interface HeroSlidesSelect<T extends boolean = true> {
+  image?: T;
+  alt?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }

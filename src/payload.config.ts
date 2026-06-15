@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { Posts } from './collections/Posts'
 import { Pages } from './collections/Pages'
 import { Hero } from './collections/hero'
+import { HeroSlides } from './collections/HeroSlides'
 import { Services } from './collections/Services'
 import { PricingPlans } from './collections/PricingPlans'
 import { Testimonials } from './collections/Testimonials'
@@ -28,7 +29,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Pages, Hero, Services, PricingPlans, Testimonials, SiteSettings, AboutItems, FAQCollection],
+  collections: [Users, Media, Posts, Pages, Hero, HeroSlides, Services, PricingPlans, Testimonials, SiteSettings, AboutItems, FAQCollection],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

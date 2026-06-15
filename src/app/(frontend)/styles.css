@@ -324,13 +324,74 @@ input, select, textarea { font-family: inherit; }
 
 /* Hero visual */
 .ht-hvis { position: relative; }
+
+/* ── Hero Image Slider ─────────────────────────────────────── */
+.ht-slider {
+  position: relative;
+  width: 100%; max-width: 520px; margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1px solid rgba(0,200,232,.2);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.04),
+              0 32px 80px rgba(0,0,0,.45),
+              0 0 60px rgba(0,200,232,.08);
+}
+
+/* Each slide */
+.ht-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ht-slide.active { opacity: 1; }
+
+/* Gradient vignette at bottom of each slide */
+.ht-slide-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40%; pointer-events: none; z-index: 1;
+  background: linear-gradient(to top, rgba(13,16,48,.65), transparent);
+}
+
+/* Empty state */
+.ht-slider--empty {
+  background: rgba(255,255,255,.03);
+  border: 1px dashed rgba(0,200,232,.25);
+}
+.ht-slider-ph {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; color: rgba(255,255,255,.25); font-size: 0.82rem;
+}
+.ht-slider-ph i { font-size: 2.4rem; color: rgba(0,200,232,.3); }
+
+/* Dot indicators */
+.ht-dots {
+  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 7px; z-index: 2;
+}
+.ht-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  transition: all 0.35s var(--ease);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.ht-dot.active {
+  background: var(--cyan);
+  width: 26px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0,200,232,.6);
+}
+
+/* Old ring/card styles kept for reference, no longer rendered */
 .ht-horb { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin: 0 auto; }
 .ht-hring {
   position: absolute; inset: -16px; border-radius: 50%;
   background: conic-gradient(from 0deg, transparent, rgba(0,200,232,.35) 20%, transparent 40%, rgba(37,43,110,.25) 60%, transparent 80%);
   animation: htSpin 10s linear infinite;
 }
-@keyframes htSpin { to { transform: rotate(360deg); } }
 .ht-hcard {
   position: absolute; inset: 16px; border-radius: 50%;
   background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
@@ -339,18 +400,6 @@ input, select, textarea { font-family: inherit; }
 }
 .ht-hname { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.85rem; font-weight: 900; color: #fff; letter-spacing: 0.08em; }
 .ht-htag { font-size: 0.8rem; color: var(--cyan); letter-spacing: 0.04em; text-align: center; padding: 0 24px; }
-.ht-fc {
-  position: absolute; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
-  border-radius: var(--r-md); backdrop-filter: blur(14px); padding: 12px 16px;
-}
-.ht-fc1 { top: 4%; left: -14%; animation: htFy 4s ease-in-out infinite; }
-.ht-fc2 { top: 28%; right: -15%; animation: htFy 4.5s 1s ease-in-out infinite; }
-.ht-fc3 { bottom: 18%; left: -10%; animation: htFy 3.8s 2s ease-in-out infinite; }
-.ht-fc4 { bottom: 4%; right: -7%; animation: htFy 4.2s .5s ease-in-out infinite; }
-@keyframes htFy { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-.ht-fci { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; margin-bottom: 5px; }
-.ht-fcv { font-size: 0.95rem; font-weight: 800; color: #fff; }
-.ht-fcl { font-size: 0.65rem; color: white; }
 
 /* Scroll indicator */
 .ht-hscroll {
