@@ -303,7 +303,7 @@ input, select, textarea { font-family: inherit; }
 }
 @keyframes htGradShift { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
 .ht-type-cursor {
-  display: inline-block; width: 3px; height: 1em;
+  display: none; width: 3px; height: 1em;
   background: var(--cyan); margin-left: 3px; border-radius: 2px;
   vertical-align: middle; animation: htBlk 1s infinite;
 }

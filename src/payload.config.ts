@@ -16,7 +16,7 @@ import { Testimonials } from './collections/Testimonials'
 import { SiteSettings } from './collections/SiteSettings'
 import { AboutItems } from './collections/AboutItems'
 import { FAQCollection } from './collections/FAQ'
-
+import { CaseStudies } from './collections/CaseStudies'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
