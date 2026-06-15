@@ -16,14 +16,6 @@ interface Props {
 export default function HeroSlider({ slides, fullPage = false }: Props) {
   const [current, setCurrent] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length)
@@ -44,10 +36,6 @@ export default function HeroSlider({ slides, fullPage = false }: Props) {
   const wrapClass = fullPage ? 'ht-slider ht-slider--full' : 'ht-slider'
   const multiSlide = slides.length > 1
 
-  // Mobile: contain (show full image), Desktop: cover left-anchored
-  const imgFit = isMobile ? 'contain' : 'cover'
-  const imgPos = isMobile ? 'center center' : 'left center'
-
   return (
     <div
       className={wrapClass}
@@ -61,7 +49,7 @@ export default function HeroSlider({ slides, fullPage = false }: Props) {
             alt={slide.alt}
             fill
             sizes="100vw"
-            style={{ objectFit: imgFit, objectPosition: imgPos }}
+            style={{ objectFit: 'cover', objectPosition: 'left center' }}
             priority={i === 0}
           />
         </div>
