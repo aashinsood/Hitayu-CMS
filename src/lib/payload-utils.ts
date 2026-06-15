@@ -78,15 +78,17 @@ export async function getHeroSlides() {
     const { docs } = await payload.find({
       collection: 'hero-slides',
       sort: 'order',
-      depth: 1, // populate the image relationship
+      depth: 1,
     })
-    // Return only what the slider needs — filter guarantees url is string (not null)
     return docs
-      .map((doc: any) => ({
-        url: (doc.image as any)?.url as string | undefined,
-        alt: doc.alt as string,
-      }))
-      .filter((s): s is { url: string; alt: string } => typeof s.url === 'string')
+      .map((doc: any) => {
+        // Prefer pasted URL → fall back to uploaded file URL
+        const url: string | undefined =
+          (doc.imageUrl as string | undefined) ||
+          (doc.image as any)?.url as string | undefined
+        return { url, alt: (doc.alt as string) || 'Hero slide' }
+      })
+      .filter((s): s is { url: string; alt: string } => typeof s.url === 'string' && s.url.length > 0)
   } catch {
     return []
   }
