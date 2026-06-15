@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
+    
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
