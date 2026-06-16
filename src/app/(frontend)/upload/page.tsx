@@ -48,13 +48,32 @@ export default function UploadPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f6f9fd', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-      <div style={{ background: '#fff', borderRadius: 20, boxShadow: '0 8px 40px rgba(0,0,0,.10)', padding: 48, maxWidth: 540, width: '100%' }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        background: '#f6f9fd',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 24,
+      }}
+    >
+      <div
+        style={{
+          background: '#fff',
+          borderRadius: 20,
+          boxShadow: '0 8px 40px rgba(0,0,0,.10)',
+          padding: 48,
+          maxWidth: 540,
+          width: '100%',
+        }}
+      >
         <h1 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#252b6e', marginBottom: 6 }}>
           Image Uploader
         </h1>
         <p style={{ color: '#4a5568', fontSize: '0.9rem', marginBottom: 32 }}>
-          Upload an image → copy the URL → paste it in the admin panel (Hero Slides → Image URL field).
+          Upload an image → copy the URL → paste it in the admin panel (Hero Slides → Image URL
+          field).
         </p>
 
         {/* Drop zone */}
@@ -89,14 +108,26 @@ export default function UploadPage() {
             <>
               <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>📁</div>
               <p style={{ fontWeight: 700, color: '#252b6e' }}>Click or drag an image here</p>
-              <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: 6 }}>PNG, JPG, WebP — max 10 MB</p>
+              <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: 6 }}>
+                PNG, JPG, WebP — max 10 MB
+              </p>
             </>
           )}
         </div>
 
         {/* Error */}
         {status === 'error' && (
-          <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 10, padding: '12px 16px', marginBottom: 20, fontSize: '0.9rem' }}>
+          <div
+            style={{
+              background: '#FEF2F2',
+              border: '1px solid #FECACA',
+              color: '#B91C1C',
+              borderRadius: 10,
+              padding: '12px 16px',
+              marginBottom: 20,
+              fontSize: '0.9rem',
+            }}
+          >
             ❌ {error}
           </div>
         )}
@@ -104,7 +135,9 @@ export default function UploadPage() {
         {/* Success — URL */}
         {status === 'done' && url && (
           <div>
-            <p style={{ fontWeight: 700, color: '#252b6e', marginBottom: 10 }}>✅ Uploaded! Copy this URL:</p>
+            <p style={{ fontWeight: 700, color: '#252b6e', marginBottom: 10 }}>
+              ✅ Uploaded! Copy this URL:
+            </p>
             <div style={{ display: 'flex', gap: 10 }}>
               <input
                 readOnly
@@ -141,14 +174,36 @@ export default function UploadPage() {
             </div>
 
             {/* Preview */}
-            <div style={{ marginTop: 20, borderRadius: 12, overflow: 'hidden', border: '1.5px solid #dde6f0' }}>
+            <div
+              style={{
+                marginTop: 20,
+                borderRadius: 12,
+                overflow: 'hidden',
+                border: '1.5px solid #dde6f0',
+              }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={url} alt="Uploaded" style={{ width: '100%', maxHeight: 240, objectFit: 'cover', display: 'block' }} />
+              <img
+                src={url}
+                alt="Uploaded"
+                style={{ width: '100%', maxHeight: 240, objectFit: 'cover', display: 'block' }}
+              />
             </div>
 
             <button
-              onClick={() => { setStatus('idle'); setUrl(''); }}
-              style={{ marginTop: 16, color: '#009bb5', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}
+              onClick={() => {
+                setStatus('idle')
+                setUrl('')
+              }}
+              style={{
+                marginTop: 16,
+                color: '#009bb5',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                fontWeight: 600,
+                fontSize: '0.85rem',
+              }}
             >
               Upload another image →
             </button>

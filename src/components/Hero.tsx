@@ -94,7 +94,7 @@ export default async function Hero() {
                   alt="Hitayu"
                   width={160}
                   height={120}
-                  style={{ objectFit: 'contain', mixBlendMode: 'screen' }}
+                  style={{ objectFit: 'contain', mixBlendMode: 'screen', width: 'auto', height: 'auto' }}
                   priority
                 />
                 <div className="ht-htag">Technology · Innovation · Excellence</div>

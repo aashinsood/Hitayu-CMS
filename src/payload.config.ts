@@ -39,8 +39,13 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
-      connectionTimeoutMillis: 5000,
-      idleTimeoutMillis: 10000,
+      // Neon (cloud) needs SSL with rejectUnauthorized:false + longer timeout for cold starts
+      ssl: process.env.DATABASE_URL?.includes('neon.tech') ||
+           process.env.DATABASE_URL?.includes('sslmode=require')
+        ? { rejectUnauthorized: false }
+        : false,
+      connectionTimeoutMillis: 30000,
+      idleTimeoutMillis: 30000,
       max: 5,
       allowExitOnIdle: true,
     },

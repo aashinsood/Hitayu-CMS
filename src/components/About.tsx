@@ -14,7 +14,7 @@ export default function About() {
                 alt="Hitayu"
                 width={450}
                 height={800}
-                style={{ objectFit: 'cover', objectPosition: 'left center' }}
+                style={{ objectFit: 'cover', objectPosition: 'left center', width: '100%', height: 'auto' }}
                 priority
               />
             </div>
