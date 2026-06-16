@@ -104,3 +104,41 @@ export async function getSiteSettings() {
     return null
   }
 }
+
+export interface ContactSubmissionData {
+  name: string
+  email: string
+  phone?: string
+  company?: string
+  service?: string
+  message: string
+  ipAddress?: string
+}
+
+export async function createContactSubmission(data: ContactSubmissionData) {
+  const payload = await getPayloadInstance()
+  if (!payload) throw new Error('Payload not available')
+  // Cast to any until payload-types.ts is regenerated with contact-submissions
+  return (payload as any).create({
+    collection: 'contact-submissions',
+    data: {
+      ...data,
+      status: 'new',
+    },
+  })
+}
+
+export async function getContactSubmissions(limit = 50) {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await (payload as any).find({
+      collection: 'contact-submissions',
+      sort: '-createdAt',
+      limit,
+    })
+    return docs
+  } catch {
+    return []
+  }
+}

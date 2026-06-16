@@ -1,4 +1,5 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -18,6 +19,7 @@ import { SiteSettings } from './collections/SiteSettings'
 import { AboutItems } from './collections/AboutItems'
 import { FAQCollection } from './collections/FAQ'
 import { CaseStudies } from './collections/CaseStudies'
+import { ContactSubmissions } from './collections/ContactSubmissions'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,7 +31,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Pages, Hero, HeroSlides, Services, PricingPlans, Testimonials, SiteSettings, AboutItems, FAQCollection],
+  collections: [Users, Media, Posts, Pages, Hero, HeroSlides, Services, PricingPlans, Testimonials, SiteSettings, AboutItems, FAQCollection, ContactSubmissions],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -45,5 +47,13 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [],
+  plugins: [
+    vercelBlobStorage({
+      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+    }),
+  ],
 })

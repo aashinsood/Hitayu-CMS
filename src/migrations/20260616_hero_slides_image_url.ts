@@ -14,3 +14,6 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
     DROP COLUMN IF EXISTS "image_url";
   `)
 }
+//https://ibb.co/ZpB3RXQP
+//https://ibb.co/nMtTz43p
+//https://ibb.co/XxBfm19Q

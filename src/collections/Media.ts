@@ -12,5 +12,8 @@ export const Media: CollectionConfig = {
       required: true,
     },
   ],
-  upload: true,
+  upload: {
+    // On Vercel, local storage is disabled — files go to Vercel Blob instead
+    disableLocalStorage: true,
+  },
 }
