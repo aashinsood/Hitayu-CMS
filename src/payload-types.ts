@@ -232,20 +232,27 @@ export interface Hero {
   createdAt: string;
 }
 /**
- * Images displayed in the hero section image slider. Add multiple images — they will auto-slide every 3 seconds.
+ * Hero section slider images. Paste any image URL (easiest) OR upload a file.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hero-slides".
  */
 export interface HeroSlide {
   id: number;
-  image: number | Media;
   /**
-   * Short description of the image (used for accessibility)
+   * Paste a direct image URL (from Google Drive, Imgur, Cloudinary, etc.). Use this OR upload below — not both.
+   */
+  imageUrl?: string | null;
+  /**
+   * Upload a file if you do not have an external URL.
+   */
+  image?: (number | null) | Media;
+  /**
+   * Short description of the image
    */
   alt: string;
   /**
-   * Lower numbers appear first
+   * Lower numbers appear first (0, 1, 2...)
    */
   order?: number | null;
   updatedAt: string;
@@ -939,6 +946,7 @@ export interface HeroSelect<T extends boolean = true> {
  * via the `definition` "hero-slides_select".
  */
 export interface HeroSlidesSelect<T extends boolean = true> {
+  imageUrl?: T;
   image?: T;
   alt?: T;
   order?: T;
