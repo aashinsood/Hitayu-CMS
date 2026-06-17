@@ -8,7 +8,7 @@ export default function Careers() {
   ]
 
   return (
-    <section className="ht-section ht-section--light" id="careers" style={{ scrollMarginTop: 90 }}>
+    <section className="ht-section ht-section" id="careers" style={{ scrollMarginTop: 90 }}>
       <div className="ht-container">
         <div className="ht-about-g" style={{ gap: 60 }}>
           {/* Content */}

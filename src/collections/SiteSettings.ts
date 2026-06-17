@@ -444,6 +444,51 @@ export const SiteSettings: CollectionConfig = {
       ],
     },
 
+
+    // ─── CONTACT SECTION Home Page ─────────────────────────────────────────────────────
+    {
+  name: 'contactHomePage',
+  type: 'group',
+  label: '🏢 Contact Details (Home Page)',
+  fields: [
+    {
+      name: 'locations',
+      type: 'array',
+      label: 'Office Locations',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+          admin: {
+            description: 'e.g. Dubai UAE, Bengaluru India',
+          },
+        },
+        {
+          name: 'address',
+          type: 'textarea',
+          required: true,
+        },
+        {
+          name: 'icon',
+          type: 'text',
+          defaultValue: 'fas fa-map-marker-alt',
+        },
+      ],
+    },
+    {
+      name: 'businessHours',
+      type: 'text',
+      defaultValue: 'Mon–Fri: 9 AM – 6 PM IST',
+    },
+    {
+      name: 'emergencySupport',
+      type: 'text',
+      defaultValue: '24 × 7 × 365',
+    },
+  ],
+},
+
     // ─── FOOTER ──────────────────────────────────────────────────────────────
     { name: 'footerAddress', type: 'text' },
     { name: 'footerPhone', type: 'text' },

@@ -708,6 +708,21 @@ export interface SiteSetting {
     description?: string | null;
     formTitle?: string | null;
   };
+  contactHomePage?: {
+    locations?:
+      | {
+          /**
+           * e.g. Dubai UAE, Bengaluru India
+           */
+          title: string;
+          address: string;
+          icon?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    businessHours?: string | null;
+    emergencySupport?: string | null;
+  };
   footerAddress?: string | null;
   footerPhone?: string | null;
   footerEmail?: string | null;
@@ -1202,6 +1217,20 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         formTitle?: T;
+      };
+  contactHomePage?:
+    | T
+    | {
+        locations?:
+          | T
+          | {
+              title?: T;
+              address?: T;
+              icon?: T;
+              id?: T;
+            };
+        businessHours?: T;
+        emergencySupport?: T;
       };
   footerAddress?: T;
   footerPhone?: T;

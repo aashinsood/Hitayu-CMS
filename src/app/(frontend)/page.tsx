@@ -49,7 +49,7 @@ export default function HomePage() {
         <TechStack />
         <Partners />
         <CaseStudies />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Careers />
         <CTASection />
         <Contact />
