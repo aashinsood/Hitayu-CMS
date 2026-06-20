@@ -1,32 +1,24 @@
 import { getSiteSettings } from '@/lib/payload-utils'
 import ContactForm from './ContactForm'
 
-export  async function ContactComponet() {
+export async function ContactComponent() {
   const settings = await getSiteSettings()
+  const s = settings as any
 
-  const address = (settings?.contactAddress as string) || ''
-  // const phone = (settings?.contactPhone as string) || '+91 123 456 7890'
-  // const email = (settings?.contactEmail as string) || 'hello@hitayu.com'
-  const hours = (settings?.contactPhoneHours as string) || 'Mon–Fri: 9 AM – 6 PM IST'
+  const tag = s?.contactSection?.tag || 'Get In Touch'
+  const title = s?.contactSection?.title || "Let's Talk About\nYour Project"
+  const description =
+    s?.contactSection?.description ||
+    'Tell us about your project. Our team will respond within 24 hours with a tailored proposal and consultation schedule.'
+
+  const phone = s?.headerInfo?.phone || s?.contactPhone || '+91 98765 43210'
+  const email = s?.headerInfo?.email || s?.contactEmail || 'info@hitayu.com'
+  const hours = s?.contactHomePage?.businessHours || s?.contactPhoneHours || 'Mon–Fri: 9 AM – 6 PM IST'
 
   const infoItems = [
-    {
-      icon: 'fas fa-map-marker-alt',
-      title: 'Dubai UAE',
-      lines: ['Meydan Grandstand, 6th floor, Meydan Road, Nad AlSheba, Dubai, U.A.E'],
-    },
-    {
-      icon: 'fas fa-map-marker-alt',
-      title: 'Bengaluru India',
-      lines: [
-        'Nimbekayipura Road, Huskuru-Bommenhalli Budigere Cross, Bengaluru, Karnataka 562149, India',
-      ],
-    },
-    {
-      icon: 'fas fa-clock',
-      title: 'Business Hours',
-      lines: ['Mon - Fri 9:00 AM - 6:00 PM IST'],
-    },
+    { icon: 'fas fa-phone-alt', title: 'Phone', lines: [phone] },
+    { icon: 'fas fa-envelope', title: 'Email', lines: [email] },
+    { icon: 'fas fa-clock', title: 'Business Hours', lines: [hours] },
   ]
 
   // Pull social links from CMS (headerInfo.socialLinks) with fallback
@@ -55,16 +47,16 @@ export  async function ContactComponet() {
         <div className="ht-con-g">
           {/* Info */}
           <div>
-            <div className="ht-eyebrow ht-reveal">Get In Touch</div>
+            <div className="ht-eyebrow ht-reveal">{tag}</div>
             <h2 className="ht-title ht-reveal">
-              Let&apos;s Build Something
-              <br />
-              <span className="hi">Exceptional Together</span>
+              {title.split('\n').map((line: string, i: number) => (
+                <span key={i}>
+                  {i === title.split('\n').length - 1 ? <span className="hi">{line}</span> : line}
+                  {i < title.split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </h2>
-            <p className="ht-sub ht-reveal">
-              Tell us about your project. Our team will respond within 24 hours with a tailored
-              proposal and consultation schedule.
-            </p>
+            <p className="ht-sub ht-reveal">{description}</p>
 
             <div className="ht-con-info">
               {infoItems.map((item, i) => (

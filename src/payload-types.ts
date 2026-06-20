@@ -709,6 +709,10 @@ export interface SiteSetting {
     formTitle?: string | null;
   };
   contactHomePage?: {
+    pageEyebrow?: string | null;
+    pageTitle?: string | null;
+    officesEyebrow?: string | null;
+    officesTitle?: string | null;
     locations?:
       | {
           /**
@@ -716,6 +720,18 @@ export interface SiteSetting {
            */
           title: string;
           address: string;
+          /**
+           * Leave blank to use the global phone number above
+           */
+          phone?: string | null;
+          /**
+           * Office photo (uploaded)
+           */
+          image?: (number | null) | Media;
+          /**
+           * Used if no uploaded photo is set above
+           */
+          imageUrl?: string | null;
           icon?: string | null;
           id?: string | null;
         }[]
@@ -1221,11 +1237,18 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   contactHomePage?:
     | T
     | {
+        pageEyebrow?: T;
+        pageTitle?: T;
+        officesEyebrow?: T;
+        officesTitle?: T;
         locations?:
           | T
           | {
               title?: T;
               address?: T;
+              phone?: T;
+              image?: T;
+              imageUrl?: T;
               icon?: T;
               id?: T;
             };

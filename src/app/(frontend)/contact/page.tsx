@@ -1,14 +1,16 @@
+import ContactInfoBar from '@/components/ContactInfoBar'
+import { ContactComponent } from '@/components/ContactComponent'
 
-export default function ContactPage() {
+export const metadata = {
+  title: 'Contact Us – Hitayu',
+  description: 'Get in touch with Hitayu. Find our offices, contact details, and send us a message.',
+}
+
+export default async function ContactPage() {
   return (
-
-          <ContactComponent />
-
-    // <div>
-    //   <div className="contact-header">
-    //     <h1>Contact Us</h1>
-    //   </div>
-    //   <ContactComponent />
-    // </div>
+    <>
+      <ContactInfoBar />
+      <ContactComponent />
+    </>
   )
 }

@@ -1,8 +1,11 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function ClientShell() {
+  const pathname = usePathname()
+
   useEffect(() => {
     // ── Loader ──
     const loader = document.getElementById('ht-loader')
@@ -173,7 +176,10 @@ export default function ClientShell() {
       ro.disconnect()
       co.disconnect()
     }
-  }, [])
+    // Re-run on every route change so newly mounted pages (e.g. /contact)
+    // get their .ht-reveal / .ht-counter elements observed too — otherwise
+    // they stay stuck at opacity:0 since the layout doesn't remount on navigation.
+  }, [pathname])
 
   return null
 }

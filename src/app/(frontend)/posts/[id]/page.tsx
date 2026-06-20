@@ -1,9 +1,6 @@
 export const dynamic = 'force-dynamic'
 
-import { getSiteSettings } from '@/lib/payload-utils'
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import '../../styles.css'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -25,7 +22,6 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
 
   return (
     <>
-      <Navbar />
       <main style={{ minHeight: '80vh', padding: '120px 24px 80px', maxWidth: 800, margin: '0 auto' }}>
         {post ? (
           <article>
@@ -43,7 +39,6 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
           </div>
         )}
       </main>
-      <Footer />
     </>
   )
 }

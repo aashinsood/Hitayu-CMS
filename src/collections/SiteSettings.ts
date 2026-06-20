@@ -445,12 +445,36 @@ export const SiteSettings: CollectionConfig = {
     },
 
 
-    // ─── CONTACT SECTION Home Page ─────────────────────────────────────────────────────
+    // ─── CONTACT PAGE ───────────────────────────────────────────────────────
     {
   name: 'contactHomePage',
   type: 'group',
-  label: '🏢 Contact Details (Home Page)',
+  label: '📇 Contact Page',
   fields: [
+    {
+      name: 'pageEyebrow',
+      type: 'text',
+      label: 'Banner Eyebrow',
+      defaultValue: 'Get In Touch',
+    },
+    {
+      name: 'pageTitle',
+      type: 'text',
+      label: 'Banner Title',
+      defaultValue: 'Contact Us',
+    },
+    {
+      name: 'officesEyebrow',
+      type: 'text',
+      label: 'Offices Eyebrow',
+      defaultValue: 'Our Offices',
+    },
+    {
+      name: 'officesTitle',
+      type: 'text',
+      label: 'Offices Section Title',
+      defaultValue: 'All Locations',
+    },
     {
       name: 'locations',
       type: 'array',
@@ -468,6 +492,23 @@ export const SiteSettings: CollectionConfig = {
           name: 'address',
           type: 'textarea',
           required: true,
+        },
+        {
+          name: 'phone',
+          type: 'text',
+          admin: { description: 'Leave blank to use the global phone number above' },
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          admin: { description: 'Office photo (uploaded)' },
+        },
+        {
+          name: 'imageUrl',
+          type: 'text',
+          label: 'Office Photo URL',
+          admin: { description: 'Used if no uploaded photo is set above' },
         },
         {
           name: 'icon',

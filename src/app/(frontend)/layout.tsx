@@ -2,6 +2,7 @@ import React from 'react'
 import './styles.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ClientShell from '@/components/ClientShell'
 
 export const metadata = {
   title: 'Hitayu – Transforming Business Through Technology',
@@ -46,8 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="ht-ltxt">Loading Hitayu</div>
         </div> */}
 
+        <ClientShell />
         <Navbar />
-        
+
         {children}
         <Footer />
 

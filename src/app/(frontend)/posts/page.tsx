@@ -1,8 +1,6 @@
 export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import '../styles.css'
 
 export const metadata = {
@@ -24,7 +22,6 @@ export default async function PostsPage() {
 
   return (
     <>
-      <Navbar />
       <main style={{ minHeight: '80vh', padding: '120px 24px 80px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h1 style={{ fontSize: '2.4rem', fontWeight: 800, marginBottom: 12 }}>Blog &amp; Insights</h1>
@@ -53,7 +50,6 @@ export default async function PostsPage() {
           )}
         </div>
       </main>
-      <Footer />
     </>
   )
 }

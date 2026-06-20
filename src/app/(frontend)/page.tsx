@@ -12,9 +12,7 @@ import CaseStudies from '@/components/CaseStudies'
 import Testimonials from '@/components/Testimonials'
 import Careers from '@/components/Careers'
 import CTASection from '@/components/CTASection'
-import ContactComponent from '@/components/ContactComponent'
-import Footer from '@/components/Footer'
-import ClientShell from '@/components/ClientShell'
+import { ContactComponent } from '@/components/ContactComponent'
 import { getSiteSettings } from '@/lib/payload-utils'
 
 export const dynamic = 'force-dynamic'
@@ -34,9 +32,6 @@ export async function generateMetadata() {
 export default function HomePage() {
   return (
     <>
-      {/* ClientShell handles: scroll progress, loader, scroll reveal, counter, back-to-top */}
-      <ClientShell />
-
       <main>
         <Hero />
         <Marquee />
@@ -54,7 +49,6 @@ export default function HomePage() {
         <CTASection />
         <ContactComponent />
       </main>
-      <Footer />
     </>
   )
 }
