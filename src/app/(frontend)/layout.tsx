@@ -1,6 +1,7 @@
 import React from 'react'
 import './styles.css'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Hitayu – Transforming Business Through Technology',
@@ -46,7 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div> */}
 
         <Navbar />
+        
         {children}
+        <Footer />
 
         {/* Back to top */}
         <button id="ht-btt" aria-label="Back to top">

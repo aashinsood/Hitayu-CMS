@@ -1,7 +1,7 @@
 import { getSiteSettings } from '@/lib/payload-utils'
 import ContactForm from './ContactForm'
 
-export default async function Contact() {
+export  async function ContactComponet() {
   const settings = await getSiteSettings()
 
   const address = (settings?.contactAddress as string) || ''

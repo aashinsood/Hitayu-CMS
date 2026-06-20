@@ -12,7 +12,7 @@ import CaseStudies from '@/components/CaseStudies'
 import Testimonials from '@/components/Testimonials'
 import Careers from '@/components/Careers'
 import CTASection from '@/components/CTASection'
-import Contact from '@/components/Contact'
+import ContactComponent from '@/components/ContactComponent'
 import Footer from '@/components/Footer'
 import ClientShell from '@/components/ClientShell'
 import { getSiteSettings } from '@/lib/payload-utils'
@@ -52,7 +52,7 @@ export default function HomePage() {
         {/* <Testimonials /> */}
         <Careers />
         <CTASection />
-        <Contact />
+        <ContactComponent />
       </main>
       <Footer />
     </>
