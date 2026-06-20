@@ -708,6 +708,84 @@ export interface SiteSetting {
     description?: string | null;
     formTitle?: string | null;
   };
+  aboutPage?: {
+    eyebrow?: string | null;
+    titleLine1?: string | null;
+    titleHighlight?: string | null;
+    description?: string | null;
+    imageUrl?: string | null;
+    /**
+     * Uploaded image overrides the URL above
+     */
+    image?: (number | null) | Media;
+    badge1Title?: string | null;
+    badge1Sub?: string | null;
+    badge2Title?: string | null;
+    badge2Sub?: string | null;
+    features?:
+      | {
+          /**
+           * Font Awesome class, e.g. fas fa-rocket
+           */
+          icon?: string | null;
+          title: string;
+          id?: string | null;
+        }[]
+      | null;
+    ctaText?: string | null;
+    ctaUrl?: string | null;
+    agilityTitle?: string | null;
+    agilityDescription?: string | null;
+    agilityImageUrl?: string | null;
+    /**
+     * Uploaded image overrides the URL above
+     */
+    agilityImage?: (number | null) | Media;
+    mvvEyebrow?: string | null;
+    mvvTitleLine1?: string | null;
+    mvvTitleHighlight?: string | null;
+    mission?: string | null;
+    vision?: string | null;
+    values?: string | null;
+  };
+  careersPage?: {
+    eyebrow?: string | null;
+    titleLine1?: string | null;
+    titleHighlight?: string | null;
+    titleLine2?: string | null;
+    description?: string | null;
+    imageUrl?: string | null;
+    /**
+     * Uploaded image overrides the URL above
+     */
+    image?: (number | null) | Media;
+    benefitsEyebrow?: string | null;
+    benefitsTitle?: string | null;
+    benefits?:
+      | {
+          /**
+           * Font Awesome class, e.g. fas fa-chart-line
+           */
+          icon?: string | null;
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    traitsEyebrow?: string | null;
+    traitsTitle?: string | null;
+    traits?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    ctaTitle?: string | null;
+    ctaDescription?: string | null;
+    ctaButtonText?: string | null;
+    ctaButtonUrl?: string | null;
+    careersEmail?: string | null;
+  };
   contactHomePage?: {
     pageEyebrow?: string | null;
     pageTitle?: string | null;
@@ -1233,6 +1311,73 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         formTitle?: T;
+      };
+  aboutPage?:
+    | T
+    | {
+        eyebrow?: T;
+        titleLine1?: T;
+        titleHighlight?: T;
+        description?: T;
+        imageUrl?: T;
+        image?: T;
+        badge1Title?: T;
+        badge1Sub?: T;
+        badge2Title?: T;
+        badge2Sub?: T;
+        features?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              id?: T;
+            };
+        ctaText?: T;
+        ctaUrl?: T;
+        agilityTitle?: T;
+        agilityDescription?: T;
+        agilityImageUrl?: T;
+        agilityImage?: T;
+        mvvEyebrow?: T;
+        mvvTitleLine1?: T;
+        mvvTitleHighlight?: T;
+        mission?: T;
+        vision?: T;
+        values?: T;
+      };
+  careersPage?:
+    | T
+    | {
+        eyebrow?: T;
+        titleLine1?: T;
+        titleHighlight?: T;
+        titleLine2?: T;
+        description?: T;
+        imageUrl?: T;
+        image?: T;
+        benefitsEyebrow?: T;
+        benefitsTitle?: T;
+        benefits?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        traitsEyebrow?: T;
+        traitsTitle?: T;
+        traits?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        ctaTitle?: T;
+        ctaDescription?: T;
+        ctaButtonText?: T;
+        ctaButtonUrl?: T;
+        careersEmail?: T;
       };
   contactHomePage?:
     | T

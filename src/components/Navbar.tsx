@@ -35,7 +35,7 @@ export default async function Navbar() {
               </span>
               <div className="ht-mega">
                 <div className="ht-mega__head">Company</div>
-                <Link href="#about" className="ht-mitem">
+                <Link href="/about" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-building" />
                   </div>
@@ -44,7 +44,7 @@ export default async function Navbar() {
                     <p>Mission, vision & values</p>
                   </div>
                 </Link>
-                <Link href="#careers" className="ht-mitem">
+                <Link href="/careers" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-users" />
                   </div>
@@ -227,8 +227,8 @@ export default async function Navbar() {
       {/* Mobile menu */}
       <div className="ht-mob" id="ht-mob">
         <Link href="/">Home</Link>
-        <Link href="#about">About Us</Link>
-        <Link href="#careers">Careers</Link>
+        <Link href="/about">About Us</Link>
+        <Link href="/careers">Careers</Link>
         <Link href="#partners">Partners</Link>
         <Link href="#services">Services</Link>
         <Link href="#solutions">Solutions</Link>
