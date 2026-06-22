@@ -21,7 +21,6 @@ export default async function AboutPage() {
           <h1 className="ht-cbanner-title">About Us</h1>
         </div>
       </section>
-
       <AboutHeroSection />
       <AgilitySection />
       <MissionVisionValues />
