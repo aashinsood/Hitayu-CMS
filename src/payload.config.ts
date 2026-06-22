@@ -1,6 +1,5 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -58,13 +57,10 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [
-    vercelBlobStorage({
-      enabled: !!process.env.BLOB_READ_WRITE_TOKEN,
-      collections: {
-        media: true,
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN || '',
-    }),
-  ],
+  // NOTE: @payloadcms/storage-vercel-blob plugin is intentionally NOT used here.
+  // It has caused the entire /admin panel to fail (blank page / 500, no usable
+  // error in server or browser logs) every time it's been added to this project.
+  // Image uploads instead go through a custom /upload page + /api/upload route
+  // that calls @vercel/blob directly — see src/app/(frontend)/upload/page.tsx.
+  plugins: [],
 })

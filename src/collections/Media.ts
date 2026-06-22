@@ -12,9 +12,5 @@ export const Media: CollectionConfig = {
       required: true,
     },
   ],
-  upload: {
-    // Storage is handled by the vercelBlobStorage plugin (see payload.config.ts) —
-    // local disk storage doesn't work on Vercel's read-only filesystem.
-    disableLocalStorage: true,
-  },
+  upload: true,
 }
