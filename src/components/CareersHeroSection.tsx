@@ -1,9 +1,8 @@
 import Image from 'next/image'
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getCareersPage } from '@/lib/payload-utils'
 
 export default async function CareersHeroSection() {
-  const settings = await getSiteSettings()
-  const c = (settings as any)?.careersPage
+  const c = (await getCareersPage()) as any
 
   const eyebrow = c?.eyebrow || 'Careers'
   const titleLine1 = c?.titleLine1 || 'Build Your'

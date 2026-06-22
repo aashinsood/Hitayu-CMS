@@ -1,14 +1,7 @@
 import { getPartnersPage } from '@/lib/payload-utils'
 
-export default async function Partners() {
+export default async function PartnersLogos() {
   const p = (await getPartnersPage()) as any
-
-  const eyebrow = p?.eyebrow || 'Our Partners'
-  const titleLine1 = p?.titleLine1 || 'Cloud-Agnostic.'
-  const titleHighlight = p?.titleHighlight || 'Your Cloud,'
-  const titleLine2 = p?.titleLine2 || 'Your Choice, Our Expertise'
-  const shortDescription =
-    'We maintain a cloud-agnostic approach — giving you the freedom to choose the Cloud Service Provider that best fits your business needs. Our team brings deep in-house expertise across all leading cloud platforms.'
 
   const logosTitle = p?.logosTitle || 'Multi-Platform Excellence'
   const logosDescription =
@@ -27,19 +20,8 @@ export default async function Partners() {
         ]
 
   return (
-    <section className="ht-section" id="partners" style={{ scrollMarginTop: 90 }}>
+    <section className="ht-section ht-section--light" style={{ scrollMarginTop: 90 }}>
       <div className="ht-container">
-        <div className="ht-text-center" style={{ maxWidth: 680, margin: '0 auto' }}>
-          <div className="ht-eyebrow ht-eyebrow--center">{eyebrow}</div>
-          <h2 className="ht-title ht-reveal">
-            {titleLine1} <span className="hi">{titleHighlight}</span>
-            <br />
-            {titleLine2}
-          </h2>
-          <p className="ht-sub ht-reveal" style={{ margin: '16px auto 0' }}>
-            {shortDescription}
-          </p>
-        </div>
         <div className="ht-part-box ht-reveal">
           <div className="ht-part-inner">
             <div className="ht-part-text">

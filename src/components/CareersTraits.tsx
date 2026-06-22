@@ -1,8 +1,7 @@
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getCareersPage } from '@/lib/payload-utils'
 
 export default async function CareersTraits() {
-  const settings = await getSiteSettings()
-  const c = (settings as any)?.careersPage
+  const c = (await getCareersPage()) as any
 
   const traitsEyebrow = c?.traitsEyebrow || "Who We're Looking For"
   const traitsTitle = c?.traitsTitle || "We're always on the lookout for passionate individuals who are:"

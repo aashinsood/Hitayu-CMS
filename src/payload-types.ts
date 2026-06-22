@@ -74,6 +74,7 @@ export interface Config {
     hero: Hero;
     'hero-slides': HeroSlide;
     services: Service;
+    solutions: Solution;
     'pricing-plans': PricingPlan;
     testimonials: Testimonial;
     'site-settings': SiteSetting;
@@ -94,6 +95,7 @@ export interface Config {
     hero: HeroSelect<false> | HeroSelect<true>;
     'hero-slides': HeroSlidesSelect<false> | HeroSlidesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
+    solutions: SolutionsSelect<false> | SolutionsSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
@@ -109,8 +111,18 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'about-page': AboutPage;
+    'careers-page': CareersPage;
+    'partners-page': PartnersPage;
+    'contact-page': ContactPage;
+  };
+  globalsSelect: {
+    'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
+    'careers-page': CareersPageSelect<false> | CareersPageSelect<true>;
+    'partners-page': PartnersPageSelect<false> | PartnersPageSelect<true>;
+    'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -267,11 +279,11 @@ export interface HeroSlide {
 export interface Service {
   id: number;
   /**
-   * Emoji icon (e.g., 🌐, 🖥️, 🗄️) — used if Lucide Icon is not set
+   * Font Awesome class or emoji (e.g., fas fa-server, 🌐) — used if Lucide Icon is not set
    */
   icon?: string | null;
   /**
-   * Lucide icon — overrides emoji icon above
+   * Lucide icon — overrides emoji/Font Awesome icon above
    */
   iconName?:
     | (
@@ -306,22 +318,98 @@ export interface Service {
       )
     | null;
   title: string;
+  /**
+   * URL path: /services/your-slug — use lowercase, hyphens only
+   */
+  slug: string;
+  category: 'Managed Services' | 'Infrastructure Modernisation' | 'Data, Analytics & AI' | 'Application Modernisation';
+  /**
+   * Short subtitle shown under the title on the detail page
+   */
+  tagline?: string | null;
+  /**
+   * Short summary used on homepage cards and the services index page
+   */
   description: string;
   /**
-   * External image URL for the service card (optional)
+   * Full long-form content shown on the dedicated detail page
+   */
+  fullDescription?: string | null;
+  /**
+   * Optional bullet list of sub-features shown on the detail page
+   */
+  features?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * External image URL for the service card / detail page (optional)
    */
   imageUrl?: string | null;
   /**
-   * Upload an image for the service card (overrides URL)
+   * Upload an image (overrides URL above)
    */
   serviceImage?: (number | null) | Media;
   /**
-   * Link for the Learn More button
+   * Leave blank to auto-link to /services/[slug]
    */
   learnMoreUrl?: string | null;
   /**
    * Order in which services appear
    */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "solutions".
+ */
+export interface Solution {
+  id: number;
+  /**
+   * Font Awesome class, e.g. fas fa-box-open
+   */
+  icon?: string | null;
+  /**
+   * Short badge label shown above the title, e.g. "All-in-One"
+   */
+  tag?: string | null;
+  title: string;
+  /**
+   * URL path: /solutions/your-slug — use lowercase, hyphens only
+   */
+  slug: string;
+  /**
+   * Short subtitle shown under the title on the detail page
+   */
+  tagline?: string | null;
+  /**
+   * Short summary used on homepage cards and the solutions index page
+   */
+  description: string;
+  /**
+   * Full long-form content shown on the dedicated detail page
+   */
+  fullDescription?: string | null;
+  features?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * External image URL for the card / detail page (optional)
+   */
+  imageUrl?: string | null;
+  /**
+   * Upload an image (overrides URL above)
+   */
+  solutionImage?: (number | null) | Media;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -393,7 +481,7 @@ export interface Testimonial {
   createdAt: string;
 }
 /**
- * Global site configuration and home page content
+ * Site-wide basics (logo, header/footer, contact info) and homepage section content. Page-specific content (About/Careers/Partners/Contact) lives under Globals in the sidebar.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings".
@@ -708,115 +796,6 @@ export interface SiteSetting {
     description?: string | null;
     formTitle?: string | null;
   };
-  aboutPage?: {
-    eyebrow?: string | null;
-    titleLine1?: string | null;
-    titleHighlight?: string | null;
-    description?: string | null;
-    imageUrl?: string | null;
-    /**
-     * Uploaded image overrides the URL above
-     */
-    image?: (number | null) | Media;
-    badge1Title?: string | null;
-    badge1Sub?: string | null;
-    badge2Title?: string | null;
-    badge2Sub?: string | null;
-    features?:
-      | {
-          /**
-           * Font Awesome class, e.g. fas fa-rocket
-           */
-          icon?: string | null;
-          title: string;
-          id?: string | null;
-        }[]
-      | null;
-    ctaText?: string | null;
-    ctaUrl?: string | null;
-    agilityTitle?: string | null;
-    agilityDescription?: string | null;
-    agilityImageUrl?: string | null;
-    /**
-     * Uploaded image overrides the URL above
-     */
-    agilityImage?: (number | null) | Media;
-    mvvEyebrow?: string | null;
-    mvvTitleLine1?: string | null;
-    mvvTitleHighlight?: string | null;
-    mission?: string | null;
-    vision?: string | null;
-    values?: string | null;
-  };
-  careersPage?: {
-    eyebrow?: string | null;
-    titleLine1?: string | null;
-    titleHighlight?: string | null;
-    titleLine2?: string | null;
-    description?: string | null;
-    imageUrl?: string | null;
-    /**
-     * Uploaded image overrides the URL above
-     */
-    image?: (number | null) | Media;
-    benefitsEyebrow?: string | null;
-    benefitsTitle?: string | null;
-    benefits?:
-      | {
-          /**
-           * Font Awesome class, e.g. fas fa-chart-line
-           */
-          icon?: string | null;
-          title: string;
-          description?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-    traitsEyebrow?: string | null;
-    traitsTitle?: string | null;
-    traits?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-    ctaTitle?: string | null;
-    ctaDescription?: string | null;
-    ctaButtonText?: string | null;
-    ctaButtonUrl?: string | null;
-    careersEmail?: string | null;
-  };
-  contactHomePage?: {
-    pageEyebrow?: string | null;
-    pageTitle?: string | null;
-    officesEyebrow?: string | null;
-    officesTitle?: string | null;
-    locations?:
-      | {
-          /**
-           * e.g. Dubai UAE, Bengaluru India
-           */
-          title: string;
-          address: string;
-          /**
-           * Leave blank to use the global phone number above
-           */
-          phone?: string | null;
-          /**
-           * Office photo (uploaded)
-           */
-          image?: (number | null) | Media;
-          /**
-           * Used if no uploaded photo is set above
-           */
-          imageUrl?: string | null;
-          icon?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-    businessHours?: string | null;
-    emergencySupport?: string | null;
-  };
   footerAddress?: string | null;
   footerPhone?: string | null;
   footerEmail?: string | null;
@@ -941,6 +920,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'solutions';
+        value: number | Solution;
       } | null)
     | ({
         relationTo: 'pricing-plans';
@@ -1101,10 +1084,46 @@ export interface ServicesSelect<T extends boolean = true> {
   icon?: T;
   iconName?: T;
   title?: T;
+  slug?: T;
+  category?: T;
+  tagline?: T;
   description?: T;
+  fullDescription?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
   imageUrl?: T;
   serviceImage?: T;
   learnMoreUrl?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "solutions_select".
+ */
+export interface SolutionsSelect<T extends boolean = true> {
+  icon?: T;
+  tag?: T;
+  title?: T;
+  slug?: T;
+  tagline?: T;
+  description?: T;
+  fullDescription?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  imageUrl?: T;
+  solutionImage?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1312,94 +1331,6 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         description?: T;
         formTitle?: T;
       };
-  aboutPage?:
-    | T
-    | {
-        eyebrow?: T;
-        titleLine1?: T;
-        titleHighlight?: T;
-        description?: T;
-        imageUrl?: T;
-        image?: T;
-        badge1Title?: T;
-        badge1Sub?: T;
-        badge2Title?: T;
-        badge2Sub?: T;
-        features?:
-          | T
-          | {
-              icon?: T;
-              title?: T;
-              id?: T;
-            };
-        ctaText?: T;
-        ctaUrl?: T;
-        agilityTitle?: T;
-        agilityDescription?: T;
-        agilityImageUrl?: T;
-        agilityImage?: T;
-        mvvEyebrow?: T;
-        mvvTitleLine1?: T;
-        mvvTitleHighlight?: T;
-        mission?: T;
-        vision?: T;
-        values?: T;
-      };
-  careersPage?:
-    | T
-    | {
-        eyebrow?: T;
-        titleLine1?: T;
-        titleHighlight?: T;
-        titleLine2?: T;
-        description?: T;
-        imageUrl?: T;
-        image?: T;
-        benefitsEyebrow?: T;
-        benefitsTitle?: T;
-        benefits?:
-          | T
-          | {
-              icon?: T;
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-        traitsEyebrow?: T;
-        traitsTitle?: T;
-        traits?:
-          | T
-          | {
-              text?: T;
-              id?: T;
-            };
-        ctaTitle?: T;
-        ctaDescription?: T;
-        ctaButtonText?: T;
-        ctaButtonUrl?: T;
-        careersEmail?: T;
-      };
-  contactHomePage?:
-    | T
-    | {
-        pageEyebrow?: T;
-        pageTitle?: T;
-        officesEyebrow?: T;
-        officesTitle?: T;
-        locations?:
-          | T
-          | {
-              title?: T;
-              address?: T;
-              phone?: T;
-              image?: T;
-              imageUrl?: T;
-              icon?: T;
-              id?: T;
-            };
-        businessHours?: T;
-        emergencySupport?: T;
-      };
   footerAddress?: T;
   footerPhone?: T;
   footerEmail?: T;
@@ -1490,6 +1421,303 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page".
+ */
+export interface AboutPage {
+  id: number;
+  eyebrow?: string | null;
+  titleLine1?: string | null;
+  titleHighlight?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+  /**
+   * Uploaded image overrides the URL above
+   */
+  image?: (number | null) | Media;
+  badge1Title?: string | null;
+  badge1Sub?: string | null;
+  badge2Title?: string | null;
+  badge2Sub?: string | null;
+  features?:
+    | {
+        /**
+         * Font Awesome class, e.g. fas fa-rocket
+         */
+        icon?: string | null;
+        title: string;
+        id?: string | null;
+      }[]
+    | null;
+  ctaText?: string | null;
+  ctaUrl?: string | null;
+  agilityTitle?: string | null;
+  agilityDescription?: string | null;
+  agilityImageUrl?: string | null;
+  /**
+   * Uploaded image overrides the URL above
+   */
+  agilityImage?: (number | null) | Media;
+  mvvEyebrow?: string | null;
+  mvvTitleLine1?: string | null;
+  mvvTitleHighlight?: string | null;
+  mission?: string | null;
+  vision?: string | null;
+  values?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "careers-page".
+ */
+export interface CareersPage {
+  id: number;
+  eyebrow?: string | null;
+  titleLine1?: string | null;
+  titleHighlight?: string | null;
+  titleLine2?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+  /**
+   * Uploaded image overrides the URL above
+   */
+  image?: (number | null) | Media;
+  benefitsEyebrow?: string | null;
+  benefitsTitle?: string | null;
+  benefits?:
+    | {
+        /**
+         * Font Awesome class, e.g. fas fa-chart-line
+         */
+        icon?: string | null;
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  traitsEyebrow?: string | null;
+  traitsTitle?: string | null;
+  traits?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  ctaTitle?: string | null;
+  ctaDescription?: string | null;
+  ctaButtonText?: string | null;
+  ctaButtonUrl?: string | null;
+  careersEmail?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners-page".
+ */
+export interface PartnersPage {
+  id: number;
+  eyebrow?: string | null;
+  titleLine1?: string | null;
+  titleHighlight?: string | null;
+  titleLine2?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+  /**
+   * Uploaded image overrides the URL above
+   */
+  image?: (number | null) | Media;
+  logosEyebrow?: string | null;
+  logosTitle?: string | null;
+  logosDescription?: string | null;
+  logos?:
+    | {
+        /**
+         * Font Awesome class, e.g. fab fa-aws
+         */
+        icon?: string | null;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  tagline?: string | null;
+  ctaButtonText?: string | null;
+  ctaButtonUrl?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page".
+ */
+export interface ContactPage {
+  id: number;
+  pageEyebrow?: string | null;
+  pageTitle?: string | null;
+  officesEyebrow?: string | null;
+  officesTitle?: string | null;
+  locations?:
+    | {
+        /**
+         * e.g. Dubai UAE, Bengaluru India
+         */
+        title: string;
+        address: string;
+        /**
+         * Leave blank to use the global phone number
+         */
+        phone?: string | null;
+        /**
+         * Office photo (uploaded)
+         */
+        image?: (number | null) | Media;
+        /**
+         * Used if no uploaded photo is set above
+         */
+        imageUrl?: string | null;
+        icon?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  businessHours?: string | null;
+  emergencySupport?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page_select".
+ */
+export interface AboutPageSelect<T extends boolean = true> {
+  eyebrow?: T;
+  titleLine1?: T;
+  titleHighlight?: T;
+  description?: T;
+  imageUrl?: T;
+  image?: T;
+  badge1Title?: T;
+  badge1Sub?: T;
+  badge2Title?: T;
+  badge2Sub?: T;
+  features?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        id?: T;
+      };
+  ctaText?: T;
+  ctaUrl?: T;
+  agilityTitle?: T;
+  agilityDescription?: T;
+  agilityImageUrl?: T;
+  agilityImage?: T;
+  mvvEyebrow?: T;
+  mvvTitleLine1?: T;
+  mvvTitleHighlight?: T;
+  mission?: T;
+  vision?: T;
+  values?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "careers-page_select".
+ */
+export interface CareersPageSelect<T extends boolean = true> {
+  eyebrow?: T;
+  titleLine1?: T;
+  titleHighlight?: T;
+  titleLine2?: T;
+  description?: T;
+  imageUrl?: T;
+  image?: T;
+  benefitsEyebrow?: T;
+  benefitsTitle?: T;
+  benefits?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  traitsEyebrow?: T;
+  traitsTitle?: T;
+  traits?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  ctaTitle?: T;
+  ctaDescription?: T;
+  ctaButtonText?: T;
+  ctaButtonUrl?: T;
+  careersEmail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners-page_select".
+ */
+export interface PartnersPageSelect<T extends boolean = true> {
+  eyebrow?: T;
+  titleLine1?: T;
+  titleHighlight?: T;
+  titleLine2?: T;
+  description?: T;
+  imageUrl?: T;
+  image?: T;
+  logosEyebrow?: T;
+  logosTitle?: T;
+  logosDescription?: T;
+  logos?:
+    | T
+    | {
+        icon?: T;
+        label?: T;
+        id?: T;
+      };
+  tagline?: T;
+  ctaButtonText?: T;
+  ctaButtonUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page_select".
+ */
+export interface ContactPageSelect<T extends boolean = true> {
+  pageEyebrow?: T;
+  pageTitle?: T;
+  officesEyebrow?: T;
+  officesTitle?: T;
+  locations?:
+    | T
+    | {
+        title?: T;
+        address?: T;
+        phone?: T;
+        image?: T;
+        imageUrl?: T;
+        icon?: T;
+        id?: T;
+      };
+  businessHours?: T;
+  emergencySupport?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

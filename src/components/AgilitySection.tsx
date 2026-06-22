@@ -1,8 +1,7 @@
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getAboutPage } from '@/lib/payload-utils'
 
 export default async function AgilitySection() {
-  const settings = await getSiteSettings()
-  const a = (settings as any)?.aboutPage
+  const a = (await getAboutPage()) as any
 
   const title = a?.agilityTitle || 'Enabling Agility, Empowering Growth'
   const description =

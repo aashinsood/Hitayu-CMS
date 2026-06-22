@@ -1,8 +1,7 @@
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getCareersPage } from '@/lib/payload-utils'
 
 export default async function CareersCTA() {
-  const settings = await getSiteSettings()
-  const c = (settings as any)?.careersPage
+  const c = (await getCareersPage()) as any
 
   const ctaTitle = c?.ctaTitle || 'Join Our Team'
   const ctaDescription =

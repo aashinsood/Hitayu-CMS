@@ -1,11 +1,10 @@
 import AboutHeroSection from '@/components/AboutHeroSection'
 import AgilitySection from '@/components/AgilitySection'
 import MissionVisionValues from '@/components/MissionVisionValues'
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getAboutPage } from '@/lib/payload-utils'
 
 export async function generateMetadata() {
-  const settings = await getSiteSettings()
-  const a = (settings as any)?.aboutPage
+  const a = (await getAboutPage()) as any
   return {
     title: 'About Us – Hitayu',
     description:
@@ -15,10 +14,6 @@ export async function generateMetadata() {
 }
 
 export default async function AboutPage() {
-  const settings = await getSiteSettings()
-  const a = (settings as any)?.aboutPage
-  const bannerEyebrow = a?.eyebrow || 'About Hitayu'
-
   return (
     <>
       <section className="ht-cbanner">

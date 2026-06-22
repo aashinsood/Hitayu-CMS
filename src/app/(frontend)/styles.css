@@ -895,9 +895,17 @@ input, select, textarea { font-family: inherit; }
 .ht-career-check span { font-size: 0.88rem; color: rgba(255,255,255,.78); }
 
 .ht-benefit-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
+}
+.ht-benefit-grid > * {
+  flex: 1 1 250px;
+  max-width: 280px;
+}
+@media (max-width: 560px) {
+  .ht-benefit-grid > * { flex-basis: 100%; max-width: 100%; }
 }
 .ht-traits-grid {
   display: grid;
@@ -958,13 +966,6 @@ input, select, textarea { font-family: inherit; }
   .ht-stats-g { grid-template-columns: 1fr; }
   .ht-mvv-grid { grid-template-columns: 1fr; }
 }
-
-
-.contact-header {
-    height: 300px;
-    background: linear-gradient(135deg, var(--navy-deep) 0%, #131850 50%, var(--navy-mid) 100%);
-}
-
 
 .ht-logo {
   display: flex;

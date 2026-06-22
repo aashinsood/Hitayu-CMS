@@ -2,11 +2,10 @@ import CareersHeroSection from '@/components/CareersHeroSection'
 import CareersBenefits from '@/components/CareersBenefits'
 import CareersTraits from '@/components/CareersTraits'
 import CareersCTA from '@/components/CareersCTA'
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getCareersPage } from '@/lib/payload-utils'
 
 export async function generateMetadata() {
-  const settings = await getSiteSettings()
-  const c = (settings as any)?.careersPage
+  const c = (await getCareersPage()) as any
   return {
     title: 'Careers – Hitayu',
     description:
@@ -16,10 +15,6 @@ export async function generateMetadata() {
 }
 
 export default async function CareersPage() {
-  const settings = await getSiteSettings()
-  const c = (settings as any)?.careersPage
-  const bannerEyebrow = c?.eyebrow || 'Careers'
-
   return (
     <>
       <section className="ht-cbanner">

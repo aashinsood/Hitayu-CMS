@@ -1,8 +1,7 @@
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getAboutPage } from '@/lib/payload-utils'
 
 export default async function MissionVisionValues() {
-  const settings = await getSiteSettings()
-  const a = (settings as any)?.aboutPage
+  const a = (await getAboutPage()) as any
 
   const mvvEyebrow = a?.mvvEyebrow || 'Our Foundation'
   const mvvTitleLine1 = a?.mvvTitleLine1 || 'Mission, Vision &'

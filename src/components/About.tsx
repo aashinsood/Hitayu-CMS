@@ -1,9 +1,8 @@
 import Image from 'next/image'
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getAboutPage } from '@/lib/payload-utils'
 
 export default async function About() {
-  const settings = await getSiteSettings()
-  const a = (settings as any)?.aboutPage
+  const a = (await getAboutPage()) as any
 
   const eyebrow = a?.eyebrow || 'About Hitayu'
   const titleLine1 = a?.titleLine1 || 'Reimagine, digitize, and realize better'

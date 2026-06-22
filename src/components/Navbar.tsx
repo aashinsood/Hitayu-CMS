@@ -53,7 +53,7 @@ export default async function Navbar() {
                     <p>Join the Hitayu team</p>
                   </div>
                 </Link>
-                <Link href="#partners" className="ht-mitem">
+                <Link href="/partners" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-handshake" />
                   </div>
@@ -72,7 +72,7 @@ export default async function Navbar() {
               </span>
               <div className="ht-mega ht-mega--wide">
                 <div className="ht-mega__head">Our Services</div>
-                <Link href="#services" className="ht-mitem">
+                <Link href="/services#managed-services" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-server" />
                   </div>
@@ -81,7 +81,7 @@ export default async function Navbar() {
                     <p>End-to-end cloud management</p>
                   </div>
                 </Link>
-                <Link href="#services" className="ht-mitem">
+                <Link href="/services#infrastructure-modernisation" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-cloud-upload-alt" />
                   </div>
@@ -90,7 +90,7 @@ export default async function Navbar() {
                     <p>Migration, DR & DevOps</p>
                   </div>
                 </Link>
-                <Link href="#services" className="ht-mitem">
+                <Link href="/services#data-analytics-and-ai" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-brain" />
                   </div>
@@ -99,7 +99,7 @@ export default async function Navbar() {
                     <p>GenAI, ML & Data platforms</p>
                   </div>
                 </Link>
-                <Link href="#services" className="ht-mitem">
+                <Link href="/services/managed-security-services" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-shield-alt" />
                   </div>
@@ -108,7 +108,7 @@ export default async function Navbar() {
                     <p>SOC · SIEM · Zero Trust</p>
                   </div>
                 </Link>
-                <Link href="#services" className="ht-mitem">
+                <Link href="/services#application-modernisation" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-laptop-code" />
                   </div>
@@ -117,13 +117,22 @@ export default async function Navbar() {
                     <p>Cloud-native & microservices</p>
                   </div>
                 </Link>
-                <Link href="#services" className="ht-mitem">
+                <Link href="/services/cloud-cost-optimization" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-dollar-sign" />
                   </div>
                   <div className="ht-mtxt">
                     <h4>Cloud Cost Optimisation</h4>
                     <p>FinOps & rightsizing</p>
+                  </div>
+                </Link>
+                <Link href="/services" className="ht-mitem">
+                  <div className="ht-mico">
+                    <i className="fas fa-th-large" />
+                  </div>
+                  <div className="ht-mtxt">
+                    <h4>View All Services</h4>
+                    <p>Browse the full catalogue</p>
                   </div>
                 </Link>
               </div>
@@ -136,7 +145,7 @@ export default async function Navbar() {
               </span>
               <div className="ht-mega ht-mega--wide">
                 <div className="ht-mega__head">SMB Solutions</div>
-                <Link href="#solutions" className="ht-mitem">
+                <Link href="/solutions/smb-in-a-box" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-box-open" />
                   </div>
@@ -145,7 +154,7 @@ export default async function Navbar() {
                     <p>All-in-one business package</p>
                   </div>
                 </Link>
-                <Link href="#solutions" className="ht-mitem">
+                <Link href="/solutions/web-hosting-launch-kit" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-globe" />
                   </div>
@@ -154,7 +163,7 @@ export default async function Navbar() {
                     <p>Secure, managed hosting</p>
                   </div>
                 </Link>
-                <Link href="#solutions" className="ht-mitem">
+                <Link href="/solutions/dr-jumpstart-bundle" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-life-ring" />
                   </div>
@@ -163,7 +172,7 @@ export default async function Navbar() {
                     <p>30-min RTO, 15-min RPO</p>
                   </div>
                 </Link>
-                <Link href="#solutions" className="ht-mitem">
+                <Link href="/solutions/backup-solution-kit" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-archive" />
                   </div>
@@ -172,7 +181,7 @@ export default async function Navbar() {
                     <p>Cloud BaaS & archiving</p>
                   </div>
                 </Link>
-                <Link href="#solutions" className="ht-mitem">
+                <Link href="/solutions/database-starter-kit" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-database" />
                   </div>
@@ -181,13 +190,22 @@ export default async function Navbar() {
                     <p>RDS deployment</p>
                   </div>
                 </Link>
-                <Link href="#solutions" className="ht-mitem">
+                <Link href="/solutions/bi-solution-kit" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-chart-pie" />
                   </div>
                   <div className="ht-mtxt">
                     <h4>BI Solution Kit</h4>
                     <p>Analytics & visualisation</p>
+                  </div>
+                </Link>
+                <Link href="/solutions" className="ht-mitem">
+                  <div className="ht-mico">
+                    <i className="fas fa-th-large" />
+                  </div>
+                  <div className="ht-mtxt">
+                    <h4>View All Solutions</h4>
+                    <p>Browse the full catalogue</p>
                   </div>
                 </Link>
               </div>
@@ -210,7 +228,7 @@ export default async function Navbar() {
             {/* <a href={`tel:${phone.replace(/\s/g, '')}`} className="ht-nav-phone">
               <i className="fas fa-phone" style={{ color: 'var(--cyan)' }} /> {phone}
             </a> */}
-            <Link href="#contact" className="ht-nav-cta">
+            <Link href="/contact" className="ht-nav-cta">
               Get Started
             </Link>
           </div>
@@ -229,12 +247,12 @@ export default async function Navbar() {
         <Link href="/">Home</Link>
         <Link href="/about">About Us</Link>
         <Link href="/careers">Careers</Link>
-        <Link href="#partners">Partners</Link>
-        <Link href="#services">Services</Link>
-        <Link href="#solutions">Solutions</Link>
+        <Link href="/partners">Partners</Link>
+        <Link href="/services">Services</Link>
+        <Link href="/solutions">Solutions</Link>
         <Link href="#industries">Industries</Link>
-        <Link href="#contact">Contact Us</Link>
-        <Link href="#contact" className="ht-mob-cta">
+        <Link href="/contact">Contact Us</Link>
+        <Link href="/contact" className="ht-mob-cta">
           Get Started →
         </Link>
       </div>

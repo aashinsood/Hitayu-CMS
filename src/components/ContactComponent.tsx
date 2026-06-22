@@ -1,9 +1,10 @@
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getSiteSettings, getContactPage } from '@/lib/payload-utils'
 import ContactForm from './ContactForm'
 
 export async function ContactComponent() {
-  const settings = await getSiteSettings()
+  const [settings, contactPage] = await Promise.all([getSiteSettings(), getContactPage()])
   const s = settings as any
+  const cp = contactPage as any
 
   const tag = s?.contactSection?.tag || 'Get In Touch'
   const title = s?.contactSection?.title || "Let's Talk About\nYour Project"
@@ -13,7 +14,7 @@ export async function ContactComponent() {
 
   const phone = s?.headerInfo?.phone || s?.contactPhone || '+91 98765 43210'
   const email = s?.headerInfo?.email || s?.contactEmail || 'info@hitayu.com'
-  const hours = s?.contactHomePage?.businessHours || s?.contactPhoneHours || 'Mon–Fri: 9 AM – 6 PM IST'
+  const hours = cp?.businessHours || s?.contactPhoneHours || 'Mon–Fri: 9 AM – 6 PM IST'
 
   const infoItems = [
     { icon: 'fas fa-phone-alt', title: 'Phone', lines: [phone] },

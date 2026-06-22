@@ -14,6 +14,7 @@
     "db:down": "docker compose down",
     "db:reset": "docker compose down -v && docker compose up postgres -d --wait",
     "db:check": "tsx scripts/check-db.ts",
+    "seed:content": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed-services-solutions.ts",
     "migrate": "ts-node src/migrate.ts",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",

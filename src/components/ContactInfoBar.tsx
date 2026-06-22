@@ -1,4 +1,4 @@
-import { getSiteSettings } from '@/lib/payload-utils'
+import { getSiteSettings, getContactPage } from '@/lib/payload-utils'
 
 const FALLBACK_IMAGES = [
   'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
@@ -7,9 +7,9 @@ const FALLBACK_IMAGES = [
 ]
 
 export default async function ContactInfoBar() {
-  const settings = await getSiteSettings()
+  const [settings, contactPage] = await Promise.all([getSiteSettings(), getContactPage()])
   const s = settings as any
-  const c = s?.contactHomePage
+  const c = contactPage as any
 
   const pageEyebrow = c?.pageEyebrow || 'Get In Touch'
   const pageTitle = c?.pageTitle || 'Contact Us'

@@ -18,9 +18,9 @@ export default async function ServicesSection() {
           icon: s.icon || 'fas fa-cloud',
           title: s.title,
           description: s.description,
-          url: s.learnMoreUrl || '#contact',
+          url: s.slug ? `/services/${s.slug}` : s.learnMoreUrl || '/services',
         }))
-      : defaultServices.map((s) => ({ ...s, url: '#contact' }))
+      : defaultServices.map((s) => ({ ...s, url: '/services' }))
 
   return (
     <section className="ht-section ht-section--light" id="services" style={{ scrollMarginTop: 90 }}>
@@ -32,7 +32,7 @@ export default async function ServicesSection() {
               End-to-End <span className="hi">Technology</span> Solutions<br />That Drive Real Outcomes
             </h2>
           </div>
-          <a href="#contact" className="ht-btn ht-btn-od ht-reveal ht-d2">
+          <a href="/services" className="ht-btn ht-btn-od ht-reveal ht-d2">
             All Services <i className="fas fa-arrow-right" />
           </a>
         </div>

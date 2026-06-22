@@ -20,10 +20,51 @@ export async function getServices() {
   try {
     const payload = await getPayloadInstance()
     if (!payload) return []
-    const { docs } = await payload.find({ collection: 'services', sort: 'order' })
+    const { docs } = await payload.find({ collection: 'services', sort: 'order', limit: 200 })
     return docs
   } catch {
     return []
+  }
+}
+
+export async function getServiceBySlug(slug: string) {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return null
+    const { docs } = await payload.find({
+      collection: 'services',
+      where: { slug: { equals: slug } },
+      limit: 1,
+    })
+    return docs[0] || null
+  } catch {
+    return null
+  }
+}
+
+export async function getSolutions() {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return []
+    const { docs } = await (payload as any).find({ collection: 'solutions', sort: 'order', limit: 200 })
+    return docs
+  } catch {
+    return []
+  }
+}
+
+export async function getSolutionBySlug(slug: string) {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return null
+    const { docs } = await (payload as any).find({
+      collection: 'solutions',
+      where: { slug: { equals: slug } },
+      limit: 1,
+    })
+    return docs[0] || null
+  } catch {
+    return null
   }
 }
 
@@ -57,6 +98,46 @@ export async function getAboutItems() {
     return docs
   } catch {
     return []
+  }
+}
+
+export async function getAboutPage() {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return null
+    return await payload.findGlobal({ slug: 'about-page' })
+  } catch {
+    return null
+  }
+}
+
+export async function getCareersPage() {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return null
+    return await payload.findGlobal({ slug: 'careers-page' })
+  } catch {
+    return null
+  }
+}
+
+export async function getPartnersPage() {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return null
+    return await payload.findGlobal({ slug: 'partners-page' })
+  } catch {
+    return null
+  }
+}
+
+export async function getContactPage() {
+  try {
+    const payload = await getPayloadInstance()
+    if (!payload) return null
+    return await payload.findGlobal({ slug: 'contact-page' })
+  } catch {
+    return null
   }
 }
 

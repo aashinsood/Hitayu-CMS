@@ -12,6 +12,7 @@ import { Pages } from './collections/Pages'
 import { Hero } from './collections/hero'
 import { HeroSlides } from './collections/HeroSlides'
 import { Services } from './collections/Services'
+import { Solutions } from './collections/Solutions'
 import { PricingPlans } from './collections/PricingPlans'
 import { Testimonials } from './collections/Testimonials'
 import { SiteSettings } from './collections/SiteSettings'
@@ -19,6 +20,10 @@ import { AboutItems } from './collections/AboutItems'
 import { FAQCollection } from './collections/FAQ'
 import { CaseStudies } from './collections/CaseStudies'
 import { ContactSubmissions } from './collections/ContactSubmissions'
+import { AboutPageGlobal } from './globals/AboutPage'
+import { CareersPageGlobal } from './globals/CareersPage'
+import { PartnersPageGlobal } from './globals/PartnersPage'
+import { ContactPageGlobal } from './globals/ContactPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -30,7 +35,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Pages, Hero, HeroSlides, Services, PricingPlans, Testimonials, SiteSettings, AboutItems, FAQCollection, ContactSubmissions],
+  collections: [Users, Media, Posts, Pages, Hero, HeroSlides, Services, Solutions, PricingPlans, Testimonials, SiteSettings, AboutItems, FAQCollection, ContactSubmissions],
+  globals: [AboutPageGlobal, CareersPageGlobal, PartnersPageGlobal, ContactPageGlobal],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
