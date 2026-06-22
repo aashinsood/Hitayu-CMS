@@ -12,7 +12,8 @@ export const Services: CollectionConfig = {
       name: 'icon',
       type: 'text',
       admin: {
-        description: 'Font Awesome class or emoji (e.g., fas fa-server, 🌐) — used if Lucide Icon is not set',
+        description:
+          'Font Awesome class or emoji (e.g., fas fa-server, 🌐) — used if Lucide Icon is not set',
       },
     },
     {
