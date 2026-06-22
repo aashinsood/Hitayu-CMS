@@ -16,6 +16,7 @@
     "db:check": "tsx scripts/check-db.ts",
     "seed:content": "cross-env NODE_OPTIONS=\"--no-deprecation --dns-result-order=ipv4first\" tsx scripts/seed-services-solutions.ts",
     "migrate": "ts-node src/migrate.ts",
+    "migrate:retry": "cross-env NODE_OPTIONS=\"--no-deprecation --dns-result-order=ipv4first\" node scripts/migrate-retry.mjs",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=\"--no-deprecation --dns-result-order=ipv4first\" next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=\"--no-deprecation --dns-result-order=ipv4first\" payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=\"--no-deprecation --dns-result-order=ipv4first\" payload generate:types",

@@ -50,7 +50,7 @@ export default buildConfig({
            process.env.DATABASE_URL?.includes('sslmode=require')
         ? { rejectUnauthorized: false }
         : false,
-      connectionTimeoutMillis: 30000,
+      connectionTimeoutMillis: 60000,
       idleTimeoutMillis: 30000,
       max: 5,
       allowExitOnIdle: true,
