@@ -4,6 +4,7 @@ import * as migration_20260616_contact_submissions from './20260616_contact_subm
 import * as migration_20260616_hero_slides_image_url from './20260616_hero_slides_image_url';
 import * as migration_20260620_114543_contact_about_pages from './20260620_114543_contact_about_pages';
 import * as migration_20260620_121048 from './20260620_121048';
+import * as migration_20260622_063925 from './20260622_063925';
 
 export const migrations = [
   {
@@ -34,6 +35,11 @@ export const migrations = [
   {
     up: migration_20260620_121048.up,
     down: migration_20260620_121048.down,
-    name: '20260620_121048'
+    name: '20260620_121048',
+  },
+  {
+    up: migration_20260622_063925.up,
+    down: migration_20260622_063925.down,
+    name: '20260622_063925'
   },
 ];
