@@ -8,7 +8,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="ht-section ht-section--light">
+    <section className="ht-section ht-section">
       <div className="ht-container">
         <div className="ht-text-center" style={{ maxWidth: 620, margin: '0 auto' }}>
           <div className="ht-eyebrow ht-eyebrow--center">Our Process</div>

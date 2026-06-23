@@ -62,7 +62,7 @@ export default async function ContactInfoBar() {
           <h1 className="ht-cbanner-title">{pageTitle}</h1>
         </div>
 
-        <div className="ht-container ht-cinfo-row">
+        {/* <div className="ht-container ht-cinfo-row">
           {infoCards.map((item, i) => (
             <div key={i} className="ht-cinfo-card">
               <div className="ht-cinfo-ico">
@@ -74,7 +74,7 @@ export default async function ContactInfoBar() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </section>
 
       {/* All Locations */}

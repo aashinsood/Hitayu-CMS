@@ -60,7 +60,7 @@ export default async function Careers() {
               {titleLine1} <span className="hi">{titleHighlight}</span> {titleLine2}
             </h2>
             <p className="ht-sub ht-reveal">{description}</p>
-            <div className="ht-feat-l">
+            {/* <div className="ht-feat-l">
               {benefits.map((b: any, i: number) => (
                 <div key={i} className={`ht-feat ht-reveal ht-d${i + 1}`}>
                   <div className="ht-ftic">
@@ -72,7 +72,7 @@ export default async function Careers() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
             <div style={{ marginTop: 36, display: 'flex', gap: 14 }} className="ht-reveal ht-d4">
               <a href={ctaUrlSafe(ctaButtonUrl)} className="ht-btn ht-btn-p">
                 Apply Now <i className="fas fa-arrow-right" />
@@ -111,7 +111,7 @@ export default async function Careers() {
                   </div>
                 ))}
               </div>
-              <div
+              {/* <div
                 style={{
                   marginTop: 32,
                   padding: '20px',
@@ -121,10 +121,10 @@ export default async function Careers() {
                 }}
               >
                 <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,.7)', lineHeight: 1.7 }}>
-                  Ready to take the next step? We&apos;d love to hear from you. Send your resume and a
-                  brief intro to <strong style={{ color: 'var(--cyan)' }}>{careersEmail}</strong>
+                  Ready to take the next step? We would love to hear from you. Send your resume and a
+                  brief introduction by filling out the form below.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

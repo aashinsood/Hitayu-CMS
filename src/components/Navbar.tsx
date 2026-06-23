@@ -18,8 +18,8 @@ export default async function Navbar() {
             <Image
               src={logoUrl}
               alt="Hitayu"
-              width={48}
-              height={48}
+              width={55}
+              height={55}
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
               priority
             />
@@ -53,7 +53,7 @@ export default async function Navbar() {
                     <p>Join the Hitayu team</p>
                   </div>
                 </Link>
-                <Link href="/partners" className="ht-mitem">
+                {/* <Link href="/partners" className="ht-mitem">
                   <div className="ht-mico">
                     <i className="fas fa-handshake" />
                   </div>
@@ -61,7 +61,7 @@ export default async function Navbar() {
                     <h4>Partners</h4>
                     <p>Cloud-agnostic ecosystem</p>
                   </div>
-                </Link>
+                </Link> */}
               </div>
             </li>
 

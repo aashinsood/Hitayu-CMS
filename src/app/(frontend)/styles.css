@@ -82,15 +82,15 @@ input, select, textarea { font-family: inherit; }
 /* ══════════════════ TYPOGRAPHY ══════════════════ */
 .ht-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--cyan); margin-bottom: 18px;
+  font-size: 18px; font-weight: 700; letter-spacing: 0.12em;
+  color: var(--cyan); margin-bottom: 10px;
 }
-.ht-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--cyan); border-radius: 2px; }
+/* .ht-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--cyan); border-radius: 2px; } */
 .ht-eyebrow--center { justify-content: center; }
 
 .ht-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+  font-size: 30px;
   font-weight: 900; line-height: 1.12; letter-spacing: -0.025em;
 }
 .ht-title .hi { color: var(--cyan); }
@@ -148,7 +148,7 @@ input, select, textarea { font-family: inherit; }
   height: 76px; padding: 0 36px;
 }
 .ht-logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
-.ht-logo img { display: block; height: 48px; width: auto; max-width: 170px; object-fit: contain; mix-blend-mode: screen; }
+.ht-logo img { display: block; height: 55px; width: auto; max-width: 170px; object-fit: contain; mix-blend-mode: screen; }
 .ht-logo-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: 0.04em;
@@ -788,7 +788,7 @@ input, select, textarea { font-family: inherit; }
 }
 .ht-cta-inn h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.75rem, 2.8vw, 2.4rem); font-weight: 900; color: #fff; line-height: 1.18; }
 .ht-cta-inn h2 span { color: var(--cyan); }
-.ht-cta-inn p { color: rgba(255,255,255,.55); margin-top: 10px; font-size: 0.97rem; }
+.ht-cta-inn p { color: white; margin-top: 10px; font-size: 0.97rem; }
 .ht-cta-acts { display: flex; gap: 14px; flex-wrap: wrap; }
 
 /* ══════════════════ CONTACT ══════════════════ */
@@ -847,9 +847,9 @@ input, select, textarea { font-family: inherit; }
 /* ══════════════════ FOOTER ══════════════════ */
 .ht-footer { background: var(--navy-deep); color: rgba(255,255,255,.52); }
 .ht-footer-top { padding: 84px 0 56px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
-.ht-fbrand p { font-size: 0.85rem; line-height: 1.85; margin-top: 18px; max-width: 280px; }
+.ht-fbrand p { font-size: 0.85rem; line-height: 1.85; margin-top: 18px; max-width: 280px; color:white;}
 .ht-fnl { margin-top: 26px; }
-.ht-fnl p { font-size: 0.76rem; font-weight: 700; color: rgba(255,255,255,.52); margin-bottom: 10px; }
+.ht-fnl p { font-size: 0.76rem; font-weight: 700; color: rgba(255,255,255,.52); margin-bottom: 10px; color:white; }
 .ht-fnf { display: flex; gap: 7px; }
 .ht-fnf input {
   flex: 1; padding: 10px 13px; border: 1px solid rgba(255,255,255,.1); border-radius: var(--r-sm);
@@ -862,15 +862,15 @@ input, select, textarea { font-family: inherit; }
 .ht-fcol h5 { color: #fff; font-size: 0.85rem; font-weight: 800; margin-bottom: 20px; position: relative; padding-bottom: 12px; }
 .ht-fcol h5::after { content: ''; position: absolute; bottom: 0; left: 0; width: 22px; height: 2px; background: var(--cyan); border-radius: 2px; }
 .ht-fcol ul { display: flex; flex-direction: column; gap: 9px; }
-.ht-fcol ul li a { font-size: 0.84rem; color: rgba(255,255,255,.48); transition: color var(--t), padding-left var(--t); display: block; }
+.ht-fcol ul li a { font-size: 0.84rem; color: white; transition: color var(--t), padding-left var(--t); display: block; }
 .ht-fcol ul li a:hover { color: var(--cyan); padding-left: 4px; }
 .ht-footer-bot {
   padding: 22px 0; border-top: 1px solid rgba(255,255,255,.06);
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; color:white;
 }
 .ht-footer-bot p { font-size: 0.77rem; }
 .ht-fbl { display: flex; gap: 22px; }
-.ht-fbl a { font-size: 0.77rem; transition: color var(--t); }
+.ht-fbl a { font-size: 0.77rem; transition: color white; }
 .ht-fbl a:hover { color: var(--cyan); }
 
 /* ══════════════════ BACK TO TOP ══════════════════ */
