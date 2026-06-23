@@ -88,6 +88,11 @@ input, select, textarea { font-family: inherit; }
 /* .ht-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--cyan); border-radius: 2px; } */
 .ht-eyebrow--center { justify-content: center; }
 
+.heading_css {
+    display: block;
+    text-align: center;
+}
+
 .ht-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 30px;
@@ -95,7 +100,7 @@ input, select, textarea { font-family: inherit; }
 }
 .ht-title .hi { color: var(--cyan); }
 .ht-sub { font-size: 1rem; color: var(--g600); max-width: 660px; margin-top: 16px; line-height: 1.82; }
-.ht-sub--w { color: rgba(255,255,255,.6); }
+.ht-sub--w { color: black; }
 
 /* ══════════════════ BUTTONS ══════════════════ */
 .ht-btn {
@@ -1045,12 +1050,12 @@ input, select, textarea { font-family: inherit; }
 .ht-cloc-img { height: 200px; overflow: hidden; }
 .ht-cloc-img img { width: 100%; height: 100%; object-fit: cover; }
 .ht-cloc-body { padding: 22px 22px 26px; }
-.ht-cloc-body h4 { font-size: 1.05rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; }
+.ht-cloc-body h4 { font-size: 20px; font-weight: 600; color: var(--navy-dark); margin-bottom: 12px; }
 .ht-cloc-addr, .ht-cloc-phone {
-  font-size: 0.85rem; color: var(--g600); line-height: 1.6; margin-bottom: 8px;
+  font-size: 16px; color: black; line-height: 1.6; margin-bottom: 8px;
   display: flex; gap: 8px; align-items: flex-start;
 }
-.ht-cloc-addr i, .ht-cloc-phone i { color: var(--cyan); margin-top: 3px; flex-shrink: 0; }
+.ht-cloc-addr i, .ht-cloc-phone i { color: #00c8e8; margin-top: 3px; flex-shrink: 0; }
 .ht-cloc-link {
   display: inline-flex; align-items: center; gap: 6px;
   margin-top: 8px; font-size: 0.82rem; font-weight: 700; color: var(--cyan);
@@ -1065,3 +1070,4 @@ input, select, textarea { font-family: inherit; }
 @media (max-width: 560px) {
   .ht-cinfo-row { grid-template-columns: 1fr; }
 }
+

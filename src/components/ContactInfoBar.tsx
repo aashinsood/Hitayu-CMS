@@ -80,7 +80,7 @@ export default async function ContactInfoBar() {
       {/* All Locations */}
       <section className="ht-section ht-section--light">
         <div className="ht-container">
-          <div className="ht-eyebrow ht-eyebrow--center">{officesEyebrow}</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center heading_css">{officesEyebrow}</div> */}
           <h2 className="ht-title" style={{ textAlign: 'center', marginBottom: 48 }}>
             {officesTitle}
           </h2>
@@ -100,17 +100,17 @@ export default async function ContactInfoBar() {
                     <p className="ht-cloc-addr">
                       <i className="fas fa-map-marker-alt" /> {loc.address}
                     </p>
-                    <p className="ht-cloc-phone">
+                    {/* <p className="ht-cloc-phone">
                       <i className="fas fa-phone-alt" /> {locPhone}
-                    </p>
-                    <a
+                    </p> */}
+                    {/* <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ht-cloc-link"
                     >
                       Get Directions <i className="fas fa-arrow-right" />
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               )

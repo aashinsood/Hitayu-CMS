@@ -45,7 +45,7 @@ export default function HomePage() {
         {/* <Partners /> */}
         <CaseStudies />
         {/* <Testimonials /> */}
-        <Careers />
+        <Careers source="homepage" />       
         <CTASection />
         {/* <ContactComponent /> */}
       </main>

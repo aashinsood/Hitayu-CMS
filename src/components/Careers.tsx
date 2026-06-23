@@ -1,6 +1,10 @@
 import { getCareersPage } from '@/lib/payload-utils'
 
-export default async function Careers() {
+type Props = {
+  source?: string
+}
+
+export default async function Careers({ source }: Props) {
   const c = (await getCareersPage()) as any
 
   const eyebrow = c?.eyebrow || 'Careers'
@@ -49,6 +53,11 @@ export default async function Careers() {
   const careersEmail = c?.careersEmail || 'careers@hitayu.com'
   const ctaButtonUrl = c?.ctaButtonUrl || '/contact'
 
+  const displayDescription =
+    source === 'homepage'
+      ? `${description.slice(0, 200)}${description.length > 200 ? '...' : ''}`
+      : description
+
   return (
     <section className="ht-section ht-section" id="careers" style={{ scrollMarginTop: 90 }}>
       <div className="ht-container">
@@ -59,7 +68,21 @@ export default async function Careers() {
             <h2 className="ht-title ht-reveal">
               {titleLine1} <span className="hi">{titleHighlight}</span> {titleLine2}
             </h2>
-            <p className="ht-sub ht-reveal">{description}</p>
+            {/* <p className="ht-sub ht-reveal">{displayDescription}</p> */}
+
+            <p className="ht-sub ht-reveal">{displayDescription}</p>
+
+            {/* {source === 'homepage' && description.length > 200 && (
+              <a
+                href="/careers"
+                className="ht-btn ht-btn-p"
+                style={{ marginTop: 16, display: 'inline-flex' }}
+              >
+                Read More <i className="fas fa-arrow-right" />
+              </a>
+            )} */}
+
+
             {/* <div className="ht-feat-l">
               {benefits.map((b: any, i: number) => (
                 <div key={i} className={`ht-feat ht-reveal ht-d${i + 1}`}>

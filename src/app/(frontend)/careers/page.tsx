@@ -3,6 +3,7 @@ import CareersBenefits from '@/components/CareersBenefits'
 import CareersTraits from '@/components/CareersTraits'
 import CareersCTA from '@/components/CareersCTA'
 import { getCareersPage } from '@/lib/payload-utils'
+import Careers from '@/components/Careers'
 
 export async function generateMetadata() {
   const c = (await getCareersPage()) as any
@@ -22,7 +23,6 @@ export default async function CareersPage() {
           <h1 className="ht-cbanner-title">Careers</h1>
         </div>
       </section>
-
       <CareersHeroSection />
       <CareersBenefits />
       <CareersTraits />
