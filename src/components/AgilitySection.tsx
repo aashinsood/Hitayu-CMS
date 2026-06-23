@@ -18,7 +18,7 @@ export default async function AgilitySection() {
         <div className="ht-about-g">
           {/* Text first — image on the right this time, for visual rhythm */}
           <div>
-            <div className="ht-eyebrow ht-reveal">Our Philosophy</div>
+            {/* <div className="ht-eyebrow ht-reveal">Our Philosophy</div> */}
             <h2 className="ht-title ht-reveal">{title}</h2>
             <p className="ht-sub ht-reveal">{description}</p>
           </div>

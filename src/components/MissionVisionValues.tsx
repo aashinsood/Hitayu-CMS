@@ -20,7 +20,7 @@ export default async function MissionVisionValues() {
     <section className="ht-section" style={{ scrollMarginTop: 90 }}>
       <div className="ht-container">
         <div style={{ textAlign: 'center' }}>
-          <div className="ht-eyebrow ht-eyebrow--center">{mvvEyebrow}</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center">{mvvEyebrow}</div> */}
           <h2 className="ht-title ht-reveal">
             {mvvTitleLine1} <span className="hi">{mvvTitleHighlight}</span>
           </h2>
