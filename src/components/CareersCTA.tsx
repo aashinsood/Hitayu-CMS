@@ -26,9 +26,9 @@ export default async function CareersCTA() {
             <a href={ctaButtonUrl} className="ht-btn ht-btn-p">
               {ctaButtonText} <i className="fas fa-arrow-right" />
             </a>
-            <a href={`mailto:${careersEmail}`} className="ht-btn ht-btn-o">
+            {/* <a href={`mailto:${careersEmail}`} className="ht-btn ht-btn-o">
               <i className="fas fa-envelope" /> {careersEmail}
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

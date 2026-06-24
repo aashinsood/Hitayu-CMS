@@ -27,7 +27,7 @@ export default async function CareersHeroSection() {
                 alt="Careers at Hitayu"
                 width={450}
                 height={800}
-                style={{ objectFit: 'cover', objectPosition: 'center', width: '100%', height: 'auto' }}
+                style={{ objectFit: 'cover', objectPosition: 'center', width: '100%', height: '100%' }}
                 priority
               />
             </div>
@@ -35,7 +35,7 @@ export default async function CareersHeroSection() {
 
           {/* Text */}
           <div>
-            <div className="ht-eyebrow ht-reveal">{eyebrow}</div>
+            {/* <div className="ht-eyebrow ht-reveal">{eyebrow}</div> */}
             <h1 className="ht-title ht-reveal">
               {titleLine1} <span className="hi">{titleHighlight}</span> {titleLine2}
             </h1>

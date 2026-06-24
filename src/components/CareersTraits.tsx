@@ -20,7 +20,7 @@ export default async function CareersTraits() {
     <section className="ht-section ht-section--dark" style={{ scrollMarginTop: 90 }}>
       <div className="ht-container" style={{ maxWidth: 880 }}>
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <div className="ht-eyebrow ht-eyebrow--center ht-reveal">{traitsEyebrow}</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center ht-reveal">{traitsEyebrow}</div> */}
           <h2 className="ht-title ht-reveal">{traitsTitle}</h2>
         </div>
         <div className="ht-traits-grid">

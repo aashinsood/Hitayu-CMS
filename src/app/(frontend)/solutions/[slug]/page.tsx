@@ -27,7 +27,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
     <>
       <section className="ht-cbanner">
         <div className="ht-container">
-          <div className="ht-eyebrow ht-eyebrow--center">{solution.tag || 'SMB Solutions'}</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center">{solution.tag || 'SMB Solutions'}</div> */}
           <h1 className="ht-cbanner-title">{solution.title}</h1>
         </div>
       </section>
@@ -43,16 +43,16 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                   alt={solution.title}
                   width={450}
                   height={800}
-                  style={{ objectFit: 'cover', objectPosition: 'center', width: '100%', height: 'auto' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center', width: '100%', height: '100%' }}
                   priority
                 />
               </div>
             </div>
             <div>
-              <div className="ht-eyebrow ht-reveal">
+              {/* <div className="ht-eyebrow ht-reveal">
                 <i className={solution.icon || 'fas fa-box-open'} style={{ marginRight: 8 }} />
                 {solution.tag || 'SMB Solutions'}
-              </div>
+              </div> */}
               {solution.tagline && <h2 className="ht-title ht-reveal">{solution.tagline}</h2>}
               <p className="ht-sub ht-reveal">{solution.fullDescription || solution.description}</p>
               <div style={{ marginTop: 36 }} className="ht-reveal ht-d4">

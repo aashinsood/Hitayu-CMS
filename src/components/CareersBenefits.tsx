@@ -31,18 +31,13 @@ export default async function CareersBenefits() {
             title: 'Flexible Work Environment',
             description: 'We support work-life balance and modern ways of working.',
           },
-          {
-            icon: 'fas fa-rocket',
-            title: 'Impactful Careers',
-            description: 'Contribute to solutions that help businesses grow and succeed.',
-          },
         ]
 
   return (
     <section className="ht-section ht-section--light" style={{ scrollMarginTop: 90 }}>
       <div className="ht-container">
         <div style={{ textAlign: 'center' }}>
-          <div className="ht-eyebrow ht-eyebrow--center">{benefitsEyebrow}</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center">{benefitsEyebrow}</div> */}
           <h2 className="ht-title ht-reveal" style={{ marginBottom: 48 }}>
             {benefitsTitle}
           </h2>
