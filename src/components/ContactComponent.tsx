@@ -2,7 +2,11 @@ import { getSiteSettings, getContactPage } from '@/lib/payload-utils'
 import ContactForm from './ContactForm'
 
 export async function ContactComponent() {
-  const [settings, contactPage] = await Promise.all([getSiteSettings(), getContactPage()])
+  const [settings, contactPage] = await Promise.all([
+    getSiteSettings(),
+    getContactPage(),
+  ])
+
   const s = settings as any
   const cp = contactPage as any
 
@@ -14,7 +18,10 @@ export async function ContactComponent() {
 
   const phone = s?.headerInfo?.phone || s?.contactPhone || '+91 98765 43210'
   const email = s?.headerInfo?.email || s?.contactEmail || 'info@hitayu.com'
-  const hours = cp?.businessHours || s?.contactPhoneHours || 'Mon–Fri: 9 AM – 6 PM IST'
+  const hours =
+    cp?.businessHours ||
+    s?.contactPhoneHours ||
+    'Mon–Fri: 9 AM – 6 PM IST'
 
   const infoItems = [
     { icon: 'fas fa-phone-alt', title: 'Phone', lines: [phone] },
@@ -22,7 +29,6 @@ export async function ContactComponent() {
     { icon: 'fas fa-clock', title: 'Business Hours', lines: [hours] },
   ]
 
-  // Pull social links from CMS (headerInfo.socialLinks) with fallback
   const cmsLinks = (settings as any)?.headerInfo?.socialLinks as
     | { label: string; url: string; icon: string }[]
     | undefined
@@ -43,28 +49,52 @@ export async function ContactComponent() {
         ]
 
   return (
-    <section className="ht-section" id="contact" style={{ scrollMarginTop: 90 }}>
+    <section
+      className="ht-section"
+      id="contact"
+      style={{ scrollMarginTop: 90 }}
+    >
       <div className="ht-container">
-        <div className="ht-con-g">
-          {/* Info */}
+        <div
+          className="ht-con-g"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          {/*
+          =====================================================
+          LEFT SIDE CONTENT (TEMPORARILY HIDDEN)
+          =====================================================
+
           <div>
             <div className="ht-eyebrow ht-reveal">{tag}</div>
+
             <h2 className="ht-title ht-reveal">
               {title.split('\n').map((line: string, i: number) => (
                 <span key={i}>
-                  {i === title.split('\n').length - 1 ? <span className="hi">{line}</span> : line}
+                  {i === title.split('\n').length - 1 ? (
+                    <span className="hi">{line}</span>
+                  ) : (
+                    line
+                  )}
                   {i < title.split('\n').length - 1 && <br />}
                 </span>
               ))}
             </h2>
+
             <p className="ht-sub ht-reveal">{description}</p>
 
             <div className="ht-con-info">
               {infoItems.map((item, i) => (
-                <div key={i} className={`ht-cii ht-reveal ht-d${i + 1}`}>
+                <div
+                  key={i}
+                  className={`ht-cii ht-reveal ht-d${i + 1}`}
+                >
                   <div className="ht-ciico">
                     <i className={item.icon} />
                   </div>
+
                   <div>
                     <strong>{item.title}</strong>
                     <p>{item.lines.join(' · ')}</p>
@@ -88,9 +118,16 @@ export async function ContactComponent() {
               ))}
             </div>
           </div>
+          */}
 
-          {/* Form */}
-          <div className="ht-reveal ht-d2">
+          {/* FORM ONLY */}
+          <div
+            className="ht-reveal"
+            style={{
+              width: '100%',
+              maxWidth: '700px',
+            }}
+          >
             <ContactForm />
           </div>
         </div>

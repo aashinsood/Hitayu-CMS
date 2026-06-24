@@ -11,7 +11,7 @@ export default async function AboutHeroSection() {
     a?.description ||
     'At Hitayu, we specialize in delivering impactful technology solutions that enable businesses to grow and thrive. Our experience in supporting organizations across various sectors allows us to craft solutions that are both innovative and results oriented. By partnering with us, you gain access to a dedicated team of skilled professionals committed to bringing your ideas to life with precision and expertise. We take pride in our commitment to quality and customer satisfaction. Every solution we design, develop or deliver is thoroughly tested and refined to meet the highest standards before delivery—ensuring dependable performance and outstanding results for our customers.'
   const imageSrc =
-    a?.image?.url || a?.imageUrl || 'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/new-header.png'
+    a?.image?.url || a?.imageUrl || 'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/about-img.webp'
   const badge1Title = a?.badge1Title || 'Award Winning'
   const badge1Sub = a?.badge1Sub || 'Best IT Partner 2024'
   const badge2Title = a?.badge2Title || 'ISO 27001'
@@ -42,10 +42,10 @@ export default async function AboutHeroSection() {
                 width={450}
                 height={800}
                 style={{
-                  objectFit: 'cover',
+                  // objectFit: '',
                   objectPosition: 'left center',
                   width: '100%',
-                  height: 'auto',
+                  height: '100%',
                 }}
                 priority
               />
@@ -72,12 +72,12 @@ export default async function AboutHeroSection() {
 
           {/* Text */}
           <div>
-            <div className="ht-eyebrow ht-reveal">{eyebrow}</div>
+            {/* <div className="ht-eyebrow ht-reveal">{eyebrow}</div> */}
             <h1 className="ht-title ht-reveal">
               {titleLine1} <span className="hi">{titleHighlight}</span>
             </h1>
             <p className="ht-sub ht-reveal">{description}</p>
-            <div className="ht-feat-l">
+            {/* <div className="ht-feat-l">
               {features.map((f: any, i: number) => (
                 <div key={i} className={`ht-feat ht-reveal ht-d${i + 1}`}>
                   <div className="ht-ftic">
@@ -88,12 +88,12 @@ export default async function AboutHeroSection() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div style={{ marginTop: 36 }} className="ht-reveal ht-d4">
+            </div> */}
+            {/* <div style={{ marginTop: 36 }} className="ht-reveal ht-d4">
               <a href={ctaUrl} className="ht-btn ht-btn-p">
                 {ctaText} <i className="fas fa-arrow-right" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

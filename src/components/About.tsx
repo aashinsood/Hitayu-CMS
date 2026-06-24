@@ -9,7 +9,7 @@ export default async function About() {
   const titleHighlight = a?.titleHighlight || 'business outcomes'
   const description =
     a?.description ||
-    'At Hitayu, we specialize in delivering impactful technology solutions that enable businesses to grow and thrive. Our experience in supporting organizations across various sectors allows us to craft solutions that are both innovative and results oriented. By partnering with us, you gain access to a dedicated team of skilled professionals committed to bringing your ideas to life with precision and expertise. We take pride in our commitment to quality and customer satisfaction. Every solution we design, develop or deliver is thoroughly tested and refined to meet the highest standards before delivery—ensuring dependable performance and outstanding results for our customers.'
+    'At Hitayu, we specialize in delivering impactful technology solutions that enable businesses to grow and thrive. Our experience in supporting organizations across various sectors allows us to craft solutions that are both innovative and results oriented.'
   const imageSrc = a?.image?.url || a?.imageUrl || 'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/new-header.png'
   const badge1Title = a?.badge1Title || 'Award Winning'
   const badge1Sub = a?.badge1Sub || 'Best IT Partner 2024'
@@ -80,7 +80,7 @@ export default async function About() {
 
           {/* Content */}
           <div>
-            <div className="ht-eyebrow ht-reveal">{eyebrow}</div>
+            {/* <div className="ht-eyebrow ht-reveal">{eyebrow}</div> */}
             <h2 className="ht-title ht-reveal">
               {titleLine1} <span className="hi">{titleHighlight}</span>
             </h2>
@@ -107,7 +107,7 @@ export default async function About() {
 
         {/* MVV */}
         <div style={{ marginTop: 88, textAlign: 'center' }}>
-          <div className="ht-eyebrow ht-eyebrow--center">{mvvEyebrow}</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center">{mvvEyebrow}</div> */}
           <h2 className="ht-title ht-reveal">
             {mvvTitleLine1} <span className="hi">{mvvTitleHighlight}</span>
           </h2>

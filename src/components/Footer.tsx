@@ -16,8 +16,8 @@ export default async function Footer() {
               <Image
                 src={"https://demo.web-glaze.com/108/wp-content/uploads/2026/06/hitayus-logo-new.png"}
                 alt="Hitayu"
-                width={140}
-                height={50}
+                width={200}
+                height={130}
                 style={{ objectFit: 'cover', objectPosition: 'left center' }}
               />
             </a>

@@ -9,7 +9,7 @@ export default function CTASection() {
           </div>
           <div className="ht-cta-acts">
             <a href="#contact" className="ht-btn ht-btn-p">Free Consultation <i className="fas fa-arrow-right" /></a>
-            <a href="tel:+911234567890" className="ht-btn ht-btn-o"><i className="fas fa-phone" /> Call Us Now</a>
+            {/* <a href="tel:+911234567890" className="ht-btn ht-btn-o"><i className="fas fa-phone" /> Call Us Now</a> */}
           </div>
         </div>
       </div>

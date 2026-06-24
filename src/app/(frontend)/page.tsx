@@ -42,12 +42,12 @@ export default function HomePage() {
         <Solutions />
         <Industries />
         <TechStack />
-        <Partners />
+        {/* <Partners /> */}
         <CaseStudies />
         {/* <Testimonials /> */}
-        <Careers />
+        <Careers source="homepage" />       
         <CTASection />
-        <ContactComponent />
+        {/* <ContactComponent /> */}
       </main>
     </>
   )

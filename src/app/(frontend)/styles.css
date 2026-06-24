@@ -82,20 +82,25 @@ input, select, textarea { font-family: inherit; }
 /* ══════════════════ TYPOGRAPHY ══════════════════ */
 .ht-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--cyan); margin-bottom: 18px;
+  font-size: 18px; font-weight: 700; letter-spacing: 0.12em;
+  color: var(--cyan); margin-bottom: 10px;
 }
-.ht-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--cyan); border-radius: 2px; }
+/* .ht-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--cyan); border-radius: 2px; } */
 .ht-eyebrow--center { justify-content: center; }
+
+.heading_css {
+    display: block;
+    text-align: center;
+}
 
 .ht-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+  font-size: 30px;
   font-weight: 900; line-height: 1.12; letter-spacing: -0.025em;
 }
 .ht-title .hi { color: var(--cyan); }
 .ht-sub { font-size: 1rem; color: var(--g600); max-width: 660px; margin-top: 16px; line-height: 1.82; }
-.ht-sub--w { color: rgba(255,255,255,.6); }
+.ht-sub--w { color: black; }
 
 /* ══════════════════ BUTTONS ══════════════════ */
 .ht-btn {
@@ -148,7 +153,7 @@ input, select, textarea { font-family: inherit; }
   height: 76px; padding: 0 36px;
 }
 .ht-logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
-.ht-logo img { display: block; height: 48px; width: auto; max-width: 170px; object-fit: contain; mix-blend-mode: screen; }
+.ht-logo img { display: block; height: 55px; width: auto; max-width: 170px; object-fit: contain; mix-blend-mode: screen; }
 .ht-logo-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: 0.04em;
@@ -788,7 +793,7 @@ input, select, textarea { font-family: inherit; }
 }
 .ht-cta-inn h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.75rem, 2.8vw, 2.4rem); font-weight: 900; color: #fff; line-height: 1.18; }
 .ht-cta-inn h2 span { color: var(--cyan); }
-.ht-cta-inn p { color: rgba(255,255,255,.55); margin-top: 10px; font-size: 0.97rem; }
+.ht-cta-inn p { color: white; margin-top: 10px; font-size: 0.97rem; }
 .ht-cta-acts { display: flex; gap: 14px; flex-wrap: wrap; }
 
 /* ══════════════════ CONTACT ══════════════════ */
@@ -847,9 +852,9 @@ input, select, textarea { font-family: inherit; }
 /* ══════════════════ FOOTER ══════════════════ */
 .ht-footer { background: var(--navy-deep); color: rgba(255,255,255,.52); }
 .ht-footer-top { padding: 84px 0 56px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
-.ht-fbrand p { font-size: 0.85rem; line-height: 1.85; margin-top: 18px; max-width: 280px; }
+.ht-fbrand p { font-size: 0.85rem; line-height: 1.85; margin-top: 18px; max-width: 280px; color:white;}
 .ht-fnl { margin-top: 26px; }
-.ht-fnl p { font-size: 0.76rem; font-weight: 700; color: rgba(255,255,255,.52); margin-bottom: 10px; }
+.ht-fnl p { font-size: 0.76rem; font-weight: 700; color: rgba(255,255,255,.52); margin-bottom: 10px; color:white; }
 .ht-fnf { display: flex; gap: 7px; }
 .ht-fnf input {
   flex: 1; padding: 10px 13px; border: 1px solid rgba(255,255,255,.1); border-radius: var(--r-sm);
@@ -862,15 +867,15 @@ input, select, textarea { font-family: inherit; }
 .ht-fcol h5 { color: #fff; font-size: 0.85rem; font-weight: 800; margin-bottom: 20px; position: relative; padding-bottom: 12px; }
 .ht-fcol h5::after { content: ''; position: absolute; bottom: 0; left: 0; width: 22px; height: 2px; background: var(--cyan); border-radius: 2px; }
 .ht-fcol ul { display: flex; flex-direction: column; gap: 9px; }
-.ht-fcol ul li a { font-size: 0.84rem; color: rgba(255,255,255,.48); transition: color var(--t), padding-left var(--t); display: block; }
+.ht-fcol ul li a { font-size: 0.84rem; color: white; transition: color var(--t), padding-left var(--t); display: block; }
 .ht-fcol ul li a:hover { color: var(--cyan); padding-left: 4px; }
 .ht-footer-bot {
   padding: 22px 0; border-top: 1px solid rgba(255,255,255,.06);
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; color:white;
 }
 .ht-footer-bot p { font-size: 0.77rem; }
 .ht-fbl { display: flex; gap: 22px; }
-.ht-fbl a { font-size: 0.77rem; transition: color var(--t); }
+.ht-fbl a { font-size: 0.77rem; transition: color white; }
 .ht-fbl a:hover { color: var(--cyan); }
 
 /* ══════════════════ BACK TO TOP ══════════════════ */
@@ -992,9 +997,8 @@ input, select, textarea { font-family: inherit; }
 .ht-cbanner .ht-eyebrow { justify-content: center; margin-bottom: 14px; }
 .ht-cbanner-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-size: 35px;
   font-weight: 800;
-  margin-bottom: 48px;
   color: #fff;
 }
 
@@ -1045,12 +1049,12 @@ input, select, textarea { font-family: inherit; }
 .ht-cloc-img { height: 200px; overflow: hidden; }
 .ht-cloc-img img { width: 100%; height: 100%; object-fit: cover; }
 .ht-cloc-body { padding: 22px 22px 26px; }
-.ht-cloc-body h4 { font-size: 1.05rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; }
+.ht-cloc-body h4 { font-size: 20px; font-weight: 600; color: var(--navy-dark); margin-bottom: 12px; }
 .ht-cloc-addr, .ht-cloc-phone {
-  font-size: 0.85rem; color: var(--g600); line-height: 1.6; margin-bottom: 8px;
+  font-size: 16px; color: black; line-height: 1.6; margin-bottom: 8px;
   display: flex; gap: 8px; align-items: flex-start;
 }
-.ht-cloc-addr i, .ht-cloc-phone i { color: var(--cyan); margin-top: 3px; flex-shrink: 0; }
+.ht-cloc-addr i, .ht-cloc-phone i { color: #00c8e8; margin-top: 3px; flex-shrink: 0; }
 .ht-cloc-link {
   display: inline-flex; align-items: center; gap: 6px;
   margin-top: 8px; font-size: 0.82rem; font-weight: 700; color: var(--cyan);
@@ -1065,3 +1069,4 @@ input, select, textarea { font-family: inherit; }
 @media (max-width: 560px) {
   .ht-cinfo-row { grid-template-columns: 1fr; }
 }
+
