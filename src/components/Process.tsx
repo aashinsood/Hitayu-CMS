@@ -11,7 +11,7 @@ export default function Process() {
     <section className="ht-section ht-section">
       <div className="ht-container">
         <div className="ht-text-center" style={{ maxWidth: 620, margin: '0 auto' }}>
-          <div className="ht-eyebrow ht-eyebrow--center">Our Process</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center">Our Process</div> */}
           <h2 className="ht-title ht-reveal">Five Steps to <span className="hi">Guaranteed Success</span></h2>
           <p className="ht-sub ht-reveal" style={{ margin: '16px auto 0' }}>A proven, repeatable framework that has delivered results across 200+ enterprise engagements.</p>
         </div>

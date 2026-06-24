@@ -4,10 +4,9 @@ import { getSiteSettings } from '@/lib/payload-utils'
 
 export default async function Navbar() {
   const settings = await getSiteSettings()
-  const phone = settings?.headerInfo?.phone || '+91 123 456 7890'
-  const logoUrl: string =
+
+  const logoUrl =
     'https://demo.web-glaze.com/108/wp-content/uploads/2026/06/hitayus-logo-new.png'
-  // (settings as any)?.logo?.url || '/logo.png'
 
   return (
     <>
@@ -20,49 +19,27 @@ export default async function Navbar() {
               alt="Hitayu"
               width={55}
               height={55}
-              style={{ objectFit: 'contain', objectPosition: 'left center' }}
               priority
             />
-             <span className="ht-logo-text">Hitayu</span>
+            <span className="ht-logo-text">Hitayu</span>
           </Link>
 
-          {/* Desktop links */}
+          {/* Desktop Menu */}
           <ul className="ht-nav__links">
             {/* Company */}
             <li className="ht-nitem">
               <span className="ht-na">
                 Company <i className="fas fa-chevron-down" />
               </span>
-              <div className="ht-mega">
-                <div className="ht-mega__head">Company</div>
-                <Link href="/about" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-building" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>About Us</h4>
-                    <p>Mission, vision & values</p>
-                  </div>
-                </Link>
-                <Link href="/careers" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-users" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Careers</h4>
-                    <p>Join the Hitayu team</p>
-                  </div>
-                </Link>
-                {/* <Link href="/partners" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-handshake" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Partners</h4>
-                    <p>Cloud-agnostic ecosystem</p>
-                  </div>
-                </Link> */}
-              </div>
+
+              <ul className="ht-dropdown">
+                <li>
+                  <Link href="/about">About</Link>
+                </li>
+                <li>
+                  <Link href="/careers">Career</Link>
+                </li>
+              </ul>
             </li>
 
             {/* Services */}
@@ -70,72 +47,32 @@ export default async function Navbar() {
               <span className="ht-na">
                 Services <i className="fas fa-chevron-down" />
               </span>
-              <div className="ht-mega ht-mega--wide">
-                <div className="ht-mega__head">Our Services</div>
-                <Link href="/services#managed-services" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-server" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Managed Services</h4>
-                    <p>End-to-end cloud management</p>
-                  </div>
-                </Link>
-                <Link href="/services#infrastructure-modernisation" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-cloud-upload-alt" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Infrastructure Modernisation</h4>
-                    <p>Migration, DR & DevOps</p>
-                  </div>
-                </Link>
-                <Link href="/services#data-analytics-and-ai" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-brain" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Data, Analytics & AI</h4>
-                    <p>GenAI, ML & Data platforms</p>
-                  </div>
-                </Link>
-                <Link href="/services/managed-security-services" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-shield-alt" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Managed Security</h4>
-                    <p>SOC · SIEM · Zero Trust</p>
-                  </div>
-                </Link>
-                <Link href="/services#application-modernisation" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-laptop-code" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>App Modernisation</h4>
-                    <p>Cloud-native & microservices</p>
-                  </div>
-                </Link>
-                <Link href="/services/cloud-cost-optimization" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-dollar-sign" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Cloud Cost Optimisation</h4>
-                    <p>FinOps & rightsizing</p>
-                  </div>
-                </Link>
-                <Link href="/services" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-th-large" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>View All Services</h4>
-                    <p>Browse the full catalogue</p>
-                  </div>
-                </Link>
-              </div>
+
+              <ul className="ht-dropdown">
+                <li>
+                  <Link href="/services#managed-services">
+                    Managed Services
+                  </Link>
+                </li>
+
+                <li>
+                  <Link href="/services#infrastructure-modernisation">
+                    Infrastructure Modernisation Services
+                  </Link>
+                </li>
+
+                <li>
+                  <Link href="/services#data-analytics-and-ai">
+                    Data, Analytics and AI Services
+                  </Link>
+                </li>
+
+                <li>
+                  <Link href="/services#application-modernisation">
+                    Application Modernisation
+                  </Link>
+                </li>
+              </ul>
             </li>
 
             {/* Solutions */}
@@ -143,79 +80,69 @@ export default async function Navbar() {
               <span className="ht-na">
                 Solutions <i className="fas fa-chevron-down" />
               </span>
-              <div className="ht-mega ht-mega--wide">
-                <div className="ht-mega__head">SMB Solutions</div>
-                <Link href="/solutions/smb-in-a-box" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-box-open" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>SMB-in-a-Box</h4>
-                    <p>All-in-one business package</p>
-                  </div>
-                </Link>
-                <Link href="/solutions/web-hosting-launch-kit" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-globe" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Web Hosting Kit</h4>
-                    <p>Secure, managed hosting</p>
-                  </div>
-                </Link>
-                <Link href="/solutions/dr-jumpstart-bundle" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-life-ring" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>DR Jumpstart Bundle</h4>
-                    <p>30-min RTO, 15-min RPO</p>
-                  </div>
-                </Link>
-                <Link href="/solutions/backup-solution-kit" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-archive" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Backup Solution Kit</h4>
-                    <p>Cloud BaaS & archiving</p>
-                  </div>
-                </Link>
-                <Link href="/solutions/database-starter-kit" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-database" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>Database Starter Kit</h4>
-                    <p>RDS deployment</p>
-                  </div>
-                </Link>
-                <Link href="/solutions/bi-solution-kit" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-chart-pie" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>BI Solution Kit</h4>
-                    <p>Analytics & visualisation</p>
-                  </div>
-                </Link>
-                <Link href="/solutions" className="ht-mitem">
-                  <div className="ht-mico">
-                    <i className="fas fa-th-large" />
-                  </div>
-                  <div className="ht-mtxt">
-                    <h4>View All Solutions</h4>
-                    <p>Browse the full catalogue</p>
-                  </div>
-                </Link>
-              </div>
+
+              <ul className="ht-dropdown">
+                <li className="ht-submenu">
+                  <span>
+                    SMB Solutions
+                    <i className="fas fa-chevron-right" />
+                  </span>
+
+                  <ul className="ht-dropdown-sub">
+                    <li>
+                      <Link href="/solutions/smb-in-a-box">
+                        Ready to run SMB package
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link href="/solutions/web-hosting-launch-kit">
+                        Webhosting Launch Kit
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link href="/solutions/dr-jumpstart-bundle">
+                        DR Jumpstart Bundle
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link href="/solutions/backup-solution-kit">
+                        Backup Solution Kit
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link href="/solutions/database-starter-kit">
+                        Database Starter Kit
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link href="/solutions/storage-kit">
+                        Storage Kit for SMBs
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link href="/solutions/bi-solution-kit">
+                        Business Intelligence
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </li>
 
+            {/* Industries */}
             <li className="ht-nitem">
-              <Link href="#industries" className="ht-na">
+              <Link href="/industries" className="ht-na">
                 Industries
               </Link>
             </li>
+
+            {/* Contact */}
             <li className="ht-nitem">
               <Link href="/contact" className="ht-na">
                 Contact Us
@@ -223,17 +150,14 @@ export default async function Navbar() {
             </li>
           </ul>
 
-          {/* Actions */}
+          {/* CTA */}
           <div className="ht-nav__act">
-            {/* <a href={`tel:${phone.replace(/\s/g, '')}`} className="ht-nav-phone">
-              <i className="fas fa-phone" style={{ color: 'var(--cyan)' }} /> {phone}
-            </a> */}
             <Link href="/contact" className="ht-nav-cta">
               Get Started
             </Link>
           </div>
 
-          {/* Hamburger */}
+          {/* Mobile Toggle */}
           <button className="ht-ham" id="ht-ham" aria-label="Toggle menu">
             <span />
             <span />
@@ -242,16 +166,59 @@ export default async function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       <div className="ht-mob" id="ht-mob">
-        <Link href="/">Home</Link>
-        <Link href="/about">About Us</Link>
-        <Link href="/careers">Careers</Link>
-        <Link href="/partners">Partners</Link>
-        <Link href="/services">Services</Link>
-        <Link href="/solutions">Solutions</Link>
-        <Link href="#industries">Industries</Link>
+        <Link href="/about">About</Link>
+        <Link href="/careers">Career</Link>
+
+        <Link href="/services#managed-services">
+          Managed Services
+        </Link>
+
+        <Link href="/services#infrastructure-modernisation">
+          Infrastructure Modernisation Services
+        </Link>
+
+        <Link href="/services#data-analytics-and-ai">
+          Data, Analytics and AI Services
+        </Link>
+
+        <Link href="/services#application-modernisation">
+          Application Modernisation
+        </Link>
+
+        <Link href="/solutions/smb-in-a-box">
+          Ready to run SMB package
+        </Link>
+
+        <Link href="/solutions/web-hosting-launch-kit">
+          Webhosting Launch Kit
+        </Link>
+
+        <Link href="/solutions/dr-jumpstart-bundle">
+          DR Jumpstart Bundle
+        </Link>
+
+        <Link href="/solutions/backup-solution-kit">
+          Backup Solution Kit
+        </Link>
+
+        <Link href="/solutions/database-starter-kit">
+          Database Starter Kit
+        </Link>
+
+        <Link href="/solutions/storage-kit">
+          Storage Kit for SMBs
+        </Link>
+
+        <Link href="/solutions/bi-solution-kit">
+          Business Intelligence
+        </Link>
+
+        <Link href="/industries">Industries</Link>
+
         <Link href="/contact">Contact Us</Link>
+
         <Link href="/contact" className="ht-mob-cta">
           Get Started →
         </Link>

@@ -64,7 +64,7 @@ export default async function Careers({ source }: Props) {
         <div className="ht-about-g" style={{ gap: 60 }}>
           {/* Content */}
           <div>
-            <div className="ht-eyebrow ht-reveal">{eyebrow}</div>
+            {/* <div className="ht-eyebrow ht-reveal">{eyebrow}</div> */}
             <h2 className="ht-title ht-reveal">
               {titleLine1} <span className="hi">{titleHighlight}</span> {titleLine2}
             </h2>

@@ -28,7 +28,7 @@ export default function CaseStudies() {
       <div className="ht-container">
         <div className="ht-svc-head">
           <div>
-            <div className="ht-eyebrow">Case Studies</div>
+            {/* <div className="ht-eyebrow">Case Studies</div> */}
             <h2 className="ht-title ht-reveal">Results That <span className="hi">Speak</span> for Themselves</h2>
           </div>
           <a href="#contact" className="ht-btn ht-btn-od ht-reveal ht-d2">All Cases <i className="fas fa-arrow-right" /></a>

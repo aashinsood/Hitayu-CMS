@@ -1070,3 +1070,278 @@ input, select, textarea { font-family: inherit; }
   .ht-cinfo-row { grid-template-columns: 1fr; }
 }
 
+
+
+
+/* menu css dropdown */
+
+/* =========================
+   Navigation Links
+========================= */
+
+.ht-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ht-nitem {
+  position: relative;
+  list-style: none;
+}
+
+.ht-na {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ht-na:hover,
+.ht-na.active {
+  color: var(--cyan);
+}
+
+.ht-na i {
+  font-size: 10px;
+  transition: transform 0.25s ease;
+}
+
+.ht-nitem:hover > .ht-na i {
+  transform: rotate(180deg);
+}
+
+/* =========================
+   First Level Dropdown
+========================= */
+
+.ht-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+
+  min-width: 260px;
+
+  background: #fff;
+  border-radius: 12px;
+
+  padding: 8px 0;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+
+  z-index: 999;
+}
+
+.ht-nitem:hover > .ht-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.ht-dropdown li {
+  position: relative;
+  list-style: none;
+}
+
+.ht-dropdown a,
+.ht-dropdown span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 12px 18px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #23344d;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.ht-dropdown a:hover,
+.ht-dropdown span:hover {
+  background: #f5f8fc;
+  color: var(--cyan);
+}
+
+/* =========================
+   Nested Submenu
+========================= */
+
+.ht-submenu {
+  position: relative;
+}
+
+.ht-submenu > span i {
+  font-size: 10px;
+}
+
+.ht-dropdown-sub {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 4px);
+
+  min-width: 280px;
+
+  background: #fff;
+  border-radius: 12px;
+
+  padding: 8px 0;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+
+  z-index: 1000;
+}
+
+.ht-submenu:hover > .ht-dropdown-sub {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.ht-nav__act {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ht-nav-cta {
+  padding: 10px 20px;
+
+  background: linear-gradient(
+    135deg,
+    var(--cyan),
+    var(--cyan-dk)
+  );
+
+  color: #fff;
+  border-radius: var(--r-md);
+
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  transition: all 0.25s ease;
+}
+
+.ht-nav-cta:hover {
+  transform: translateY(-2px);
+
+  background: linear-gradient(
+    135deg,
+    var(--cyan-lt),
+    var(--cyan)
+  );
+
+  box-shadow: 0 8px 24px rgba(0, 200, 232, 0.35);
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 992px) {
+  .ht-nav__links {
+    display: none;
+  }
+
+  .ht-ham {
+    display: flex;
+  }
+}
+
+/* =========================
+   Mobile Menu
+========================= */
+
+.ht-mob {
+  position: fixed;
+  inset: 0;
+
+  background: var(--navy-deep);
+
+  padding: 90px 28px 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+
+  z-index: 999;
+  pointer-events: none;
+}
+
+.ht-mob.open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.ht-mob a {
+  padding: 14px 0;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: all 0.2s ease;
+}
+
+.ht-mob a:hover {
+  color: var(--cyan);
+  padding-left: 8px;
+}
+
+.ht-mob-cta {
+  margin-top: 20px;
+
+  border: none !important;
+
+  color: var(--cyan) !important;
+  font-weight: 700 !important;
+}
+
+.ht-dropdown {
+  min-width: 320px;
+}
+
+.ht-dropdown-sub {
+  min-width: 320px;
+}

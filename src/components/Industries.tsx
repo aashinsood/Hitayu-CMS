@@ -14,9 +14,9 @@ export default function Industries() {
     <section className="ht-section ht-section--light" id="industries" style={{ scrollMarginTop: 90 }}>
       <div className="ht-container">
         <div className="ht-text-center" style={{ maxWidth: 680, margin: '0 auto' }}>
-          <div className="ht-eyebrow ht-eyebrow--center">Industries We Serve</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center">Industries We Serve</div> */}
           <h2 className="ht-title ht-reveal">Deep Expertise Across<br /><span className="hi">Every Sector</span></h2>
-          <p className="ht-sub ht-reveal" style={{ margin: '16px auto 0' }}>Our vertical expertise means we understand your regulatory landscape, operational challenges, and growth opportunities — delivering solutions beyond generic IT.</p>
+          <p className="ht-sub ht-reveal" style={{ margin: '16px auto 0' }}>Our vertical expertise means we understand your regulatory landscape, operational challenges, and growth opportunities delivering solutions beyond generic IT.</p>
         </div>
         <div className="ht-ind-g">
           {industries.map((ind, i) => (

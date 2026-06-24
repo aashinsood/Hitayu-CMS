@@ -2,12 +2,12 @@ import Link from 'next/link'
 import { getSolutions } from '@/lib/payload-utils'
 
 const defaultSolutions = [
-  { icon: 'fas fa-box-open', tag: 'All-in-One', title: 'SMB-in-a-Box', desc: 'Everything SMBs need in one package — ERP, CRM, Microsoft Office licenses, website hosting, domain registration, and professional onboarding support. Delivered via flexible per-user pricing with 1 year dedicated support.', slug: 'smb-in-a-box' },
-  { icon: 'fas fa-globe', tag: 'Hosting', title: 'Web Hosting Launch Kit', desc: 'Secure, scalable, fully managed hosting — advanced data encryption, professional database management, email support, static and dynamic content delivery, with flexible cloud provider selection.', slug: 'web-hosting-launch-kit' },
+  { icon: 'fas fa-box-open', tag: 'All-in-One', title: 'SMB in a Box', desc: 'Everything SMBs need in one package ERP, CRM, Microsoft Office licenses, website hosting, domain registration, and professional onboarding support. Delivered via flexible per-user pricing with 1 year dedicated support.', slug: 'smb-in-a-box' },
+  { icon: 'fas fa-globe', tag: 'Hosting', title: 'Web Hosting Launch Kit', desc: 'Secure, scalable, fully managed hosting advanced data encryption, professional database management, email support, static and dynamic content delivery, with flexible cloud provider selection.', slug: 'web-hosting-launch-kit' },
   { icon: 'fas fa-life-ring', tag: 'Resilience', title: 'DR Jumpstart Bundle', desc: 'Guaranteed RTO of 30 minutes and RPO of 15 minutes. Fully managed replication server, real-time data synchronization, continuous monitoring alerts, and audit logging for complete visibility.', slug: 'dr-jumpstart-bundle' },
   { icon: 'fas fa-archive', tag: 'Backup', title: 'Backup Solution Kit', desc: 'Cloud Backup as a Service replacing physical tape libraries. Hot and archival storage tiers, HIPAA & PCI compliant, virtual tape systems in the cloud, and fully managed by our experts.', slug: 'backup-solution-kit' },
   { icon: 'fas fa-database', tag: 'Data', title: 'Database Starter Kit', desc: 'Greenfield cloud database deployment with minimal downtime. RDS with redundancy, SAP B1 support, automated backups, high-speed transfer, audit logging, and annual performance reports.', slug: 'database-starter-kit' },
-  { icon: 'fas fa-chart-pie', tag: 'Analytics', title: 'BI Solution Kit', desc: 'Subscription-based cloud BI — data integration from ERP, CRM, APIs & IoT, cloud data warehouse setup, interactive dashboards, automated reporting, and AI-driven insights.', slug: 'bi-solution-kit' },
+  { icon: 'fas fa-chart-pie', tag: 'Analytics', title: 'BI Solution Kit', desc: 'Subscription-based cloud BI data integration from ERP, CRM, APIs & IoT, cloud data warehouse setup, interactive dashboards, automated reporting, and AI-driven insights.', slug: 'bi-solution-kit' },
 ]
 
 export default async function Solutions() {
@@ -29,9 +29,9 @@ export default async function Solutions() {
       <div className="ht-container">
         <div className="ht-svc-head">
           <div>
-            <div className="ht-eyebrow">SMB Solutions</div>
+            {/* <div className="ht-eyebrow">SMB Solutions</div> */}
             <h2 className="ht-title ht-reveal">
-              Ready-to-Run Packages for
+              Ready to Run Packages for
               <br />
               <span className="hi">Small &amp; Medium Businesses</span>
             </h2>
