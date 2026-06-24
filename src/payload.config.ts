@@ -28,6 +28,16 @@ import { ContactPageGlobal } from './globals/ContactPage'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+// Strip sslmode / channel_binding from the URL so pg-connection-string doesn't
+// emit the "SSL modes treated as aliases" warning. SSL is configured explicitly below.
+const rawDbUrl = process.env.DATABASE_URL || ''
+const cleanDbUrl = rawDbUrl
+  .replace(/[?&]sslmode=[^&]*/g, '')
+  .replace(/[?&]channel_binding=[^&]*/g, '')
+  .replace(/\?&/g, '?')
+  .replace(/[?&]$/, '')
+const needsSSL = rawDbUrl.includes('neon.tech') || rawDbUrl.includes('sslmode=')
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -44,12 +54,8 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
-      // Neon (cloud) needs SSL with rejectUnauthorized:false + longer timeout for cold starts
-      ssl: process.env.DATABASE_URL?.includes('neon.tech') ||
-           process.env.DATABASE_URL?.includes('sslmode=require')
-        ? { rejectUnauthorized: false }
-        : false,
+      connectionString: cleanDbUrl,
+      ssl: needsSSL ? { rejectUnauthorized: false } : false,
       connectionTimeoutMillis: 30000,
       idleTimeoutMillis: 30000,
       max: 5,
