@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { put } from '@vercel/blob'
+import { uploadFile } from '@/lib/storage'
 
 export async function POST(req: NextRequest) {
   try {
-    const token = process.env.BLOB_READ_WRITE_TOKEN
-    if (!token) {
-      return NextResponse.json(
-        { success: false, error: 'Blob storage not configured.' },
-        { status: 500 },
-      )
-    }
+    const providerParam = req.nextUrl.searchParams.get('provider') as
+      | 'blob'
+      | 'cloudinary'
+      | null
 
     const form = await req.formData()
     const file = form.get('file') as File | null
@@ -18,15 +15,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'No file provided.' }, { status: 400 })
     }
 
-    // Only allow images
-    if (!file.type.startsWith('image/')) {
+    if (!file.type.startsWith('image/') && !file.type.startsWith('video/') && file.type !== 'application/pdf') {
       return NextResponse.json(
-        { success: false, error: 'Only image files are allowed.' },
+        { success: false, error: 'Only images, videos, and PDFs are allowed.' },
         { status: 400 },
       )
     }
 
-    // 10 MB limit
     if (file.size > 10 * 1024 * 1024) {
       return NextResponse.json(
         { success: false, error: 'File too large. Max 10 MB.' },
@@ -34,14 +29,19 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const blob = await put(`uploads/${Date.now()}-${file.name}`, file, {
-      access: 'public',
-      token,
-    })
+    const url = await uploadFile(file, providerParam ?? undefined)
 
-    return NextResponse.json({ success: true, url: blob.url })
+    if (!url) {
+      const name = providerParam === 'blob' ? 'Vercel Blob' : providerParam === 'cloudinary' ? 'Cloudinary' : 'storage'
+      return NextResponse.json(
+        { success: false, error: `${name} is not configured. Add the required env vars and restart.` },
+        { status: 500 },
+      )
+    }
+
+    return NextResponse.json({ success: true, url, provider: providerParam })
   } catch (err) {
-    console.error('[blob-upload]', err)
+    console.error('[storage-upload]', err)
     return NextResponse.json(
       { success: false, error: 'Upload failed. Please try again.' },
       { status: 500 },
