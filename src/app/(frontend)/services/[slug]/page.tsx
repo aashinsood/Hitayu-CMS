@@ -27,7 +27,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     <>
       <section className="ht-cbanner">
         <div className="ht-container">
-          <div className="ht-eyebrow ht-eyebrow--center">{service.category}</div>
+          {/* <div className="ht-eyebrow ht-eyebrow--center">{service.category}</div> */}
           <h1 className="ht-cbanner-title">{service.title}</h1>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                   alt={service.title}
                   width={450}
                   height={800}
-                  style={{ objectFit: 'cover', objectPosition: 'center', width: '100%', height: 'auto' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center', width: '100%', height: '100%' }}
                   priority
                 />
               </div>
@@ -69,7 +69,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         <section className="ht-section ht-section--light" style={{ scrollMarginTop: 90 }}>
           <div className="ht-container">
             <div style={{ textAlign: 'center', marginBottom: 40 }}>
-              <div className="ht-eyebrow ht-eyebrow--center">Key Capabilities</div>
+              {/* <div className="ht-eyebrow ht-eyebrow--center">Key Capabilities</div> */}
               <h2 className="ht-title ht-reveal">What&apos;s Included</h2>
             </div>
             <div className="ht-benefit-grid">
