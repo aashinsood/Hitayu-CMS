@@ -49,9 +49,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               </div>
             </div>
             <div>
-              <div className="ht-reveal">
-                <i className={service.icon || 'fas fa-cloud'} style={{ marginRight: 8 }} />
-                {service.category}
+              <div className="ht-eyebrow ht-reveal">
+                {/* <i className={service.icon || 'fas fa-cloud'} style={{ marginRight: 8 }} />
+                {service.category} */}
               </div>
               {service.tagline && <h2 className="ht-title ht-reveal">{service.tagline}</h2>}
               <p className="ht-sub ht-reveal">{service.fullDescription || service.description}</p>
