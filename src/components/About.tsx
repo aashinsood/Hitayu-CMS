@@ -5,8 +5,8 @@ export default async function About() {
   const a = (await getAboutPage()) as any
 
   const eyebrow = a?.eyebrow || 'About Hitayu'
-  const titleLine1 = a?.titleLine1 || 'Reimagine, digitize, and realize better'
-  const titleHighlight = a?.titleHighlight || 'business outcomes'
+  const titleLine1 = a?.titleLine1 || 'Reimagine, Digitize, and Realize Better'
+  const titleHighlight = a?.titleHighlight || 'Business Outcomes'
   const description =
     a?.description ||
     'At Hitayu, we specialize in delivering impactful technology solutions that enable businesses to grow and thrive. Our experience in supporting organizations across various sectors allows us to craft solutions that are both innovative and results oriented.'
@@ -58,7 +58,7 @@ export default async function About() {
                 priority
               />
             </div>
-            <div className="ht-afl ht-afl1">
+            {/* <div className="ht-afl ht-afl1">
               <div className="ht-afli ht-afli-c">
                 <i className="fas fa-trophy" />
               </div>
@@ -66,8 +66,8 @@ export default async function About() {
                 <strong>{badge1Title}</strong>
                 <span>{badge1Sub}</span>
               </div>
-            </div>
-            <div className="ht-afl ht-afl2">
+            </div> */}
+            {/* <div className="ht-afl ht-afl2">
               <div className="ht-afli ht-afli-n">
                 <i className="fas fa-certificate" />
               </div>
@@ -75,7 +75,7 @@ export default async function About() {
                 <strong>{badge2Title}</strong>
                 <span>{badge2Sub}</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Content */}

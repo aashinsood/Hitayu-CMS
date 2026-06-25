@@ -29,7 +29,7 @@ export default async function ServicesSection() {
           <div>
             {/* <div className="ht-eyebrow">Our Services</div> */}
             <h2 className="ht-title ht-reveal">
-              End-to-End <span className="hi">Technology</span> Solutions<br />That Drive Real Outcomes
+              End to End <span className="hi">Technology</span> Solutions<br />That Drive Real Outcomes
             </h2>
           </div>
           <a href="/services" className="ht-btn ht-btn-od ht-reveal ht-d2">

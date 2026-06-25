@@ -3,7 +3,7 @@ import { getSiteSettings } from '@/lib/payload-utils'
 
 export default async function Footer() {
   const settings = await getSiteSettings()
-  const desc = settings?.companyDescription || 'Hitayu is a next-generation IT solutions company delivering Cloud, AI, Cybersecurity, and DevOps excellence to enterprises across India and beyond.'
+  const desc = settings?.companyDescription || ''
   const logoUrl: string = (settings as any)?.logo?.url || '/logo.png'
 
   return (
@@ -16,8 +16,8 @@ export default async function Footer() {
               <Image
                 src={"https://demo.web-glaze.com/108/wp-content/uploads/2026/06/hitayus-logo-new.png"}
                 alt="Hitayu"
-                width={200}
-                height={130}
+                width={350}
+                height={170}
                 style={{ objectFit: 'cover', objectPosition: 'left center' }}
               />
             </a>
@@ -66,12 +66,12 @@ export default async function Footer() {
         </div>
 
         <div className="ht-footer-bot">
-          <p>© 2026 Hitayu Technologies Pvt. Ltd. All rights reserved</p>
-          <div className="ht-fbl">
+          <p>© 2026 Hitayu FZE LLC</p>
+          {/* <div className="ht-fbl">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
             <a href="#">Cookie Policy</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
