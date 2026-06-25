@@ -49,7 +49,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               </div>
             </div>
             <div>
-              <div className="ht-eyebrow ht-reveal">
+              <div className="ht-reveal">
                 <i className={service.icon || 'fas fa-cloud'} style={{ marginRight: 8 }} />
                 {service.category}
               </div>
