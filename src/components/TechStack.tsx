@@ -22,7 +22,7 @@ export default function TechStack() {
             {/* <div className="ht-eyebrow">Technology Stack</div> */}
             <h2 className="ht-title ht-reveal" style={{ color: '#fff' }}>We Master <span className="hi">Best in Class</span><br />Tools &amp; Platforms</h2>
           </div>
-          <p className="ht-sub ht-sub--w ht-reveal ht-d2" style={{ maxWidth: 360 }}>50+ active certifications across leading cloud platforms, security frameworks, and developer tools.</p>
+          {/* <p className="ht-sub ht-sub--w ht-reveal ht-d2" style={{ maxWidth: 360 }}>50+ active certifications across leading cloud platforms, security frameworks, and developer tools.</p> */}
         </div>
         <div className="ht-tech-g">
           {techs.map((t, i) => (
