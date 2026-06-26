@@ -1,10 +1,10 @@
 import CareersHeroSection from '@/components/CareersHeroSection'
 import CareersBenefits from '@/components/CareersBenefits'
 import CareersTraits from '@/components/CareersTraits'
-import CareersCTA from '@/components/CareersCTA'
+// import CareersCTA from '@/components/CareersCTA'
 import { getCareersPage } from '@/lib/payload-utils'
 import Careers from '@/components/Careers'
-
+import { CareerComponent } from '@/components/CareerComponent'
 export async function generateMetadata() {
   const c = (await getCareersPage()) as any
   return {
@@ -26,7 +26,8 @@ export default async function CareersPage() {
       <CareersHeroSection />
       <CareersBenefits />
       <CareersTraits />
-      <CareersCTA />
+      <CareerComponent />
+      {/* <CareersCTA /> */}
     </>
   )
 }

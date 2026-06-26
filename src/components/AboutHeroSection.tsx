@@ -50,7 +50,7 @@ export default async function AboutHeroSection() {
                 priority
               />
             </div>
-            <div className="ht-afl ht-afl1">
+            {/* <div className="ht-afl ht-afl1">
               <div className="ht-afli ht-afli-c">
                 <i className="fas fa-trophy" />
               </div>
@@ -58,8 +58,8 @@ export default async function AboutHeroSection() {
                 <strong>{badge1Title}</strong>
                 <span>{badge1Sub}</span>
               </div>
-            </div>
-            <div className="ht-afl ht-afl2">
+            </div> */}
+            {/* <div className="ht-afl ht-afl2">
               <div className="ht-afli ht-afli-n">
                 <i className="fas fa-certificate" />
               </div>
@@ -67,7 +67,7 @@ export default async function AboutHeroSection() {
                 <strong>{badge2Title}</strong>
                 <span>{badge2Sub}</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Text */}

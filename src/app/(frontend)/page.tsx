@@ -8,7 +8,7 @@ import Solutions from '@/components/Solutions'
 import Industries from '@/components/Industries'
 import TechStack from '@/components/TechStack'
 import Partners from '@/components/Partners'
-import CaseStudies from '@/components/CaseStudies'
+// import CaseStudies from '@/components/CaseStudies'
 import Testimonials from '@/components/Testimonials'
 import Careers from '@/components/Careers'
 import CTASection from '@/components/CTASection'
@@ -43,7 +43,7 @@ export default function HomePage() {
         <Industries />
         <TechStack />
         {/* <Partners /> */}
-        <CaseStudies />
+        {/* <CaseStudies /> */}
         {/* <Testimonials /> */}
         <Careers source="homepage" />       
         <CTASection />

@@ -261,7 +261,7 @@ input, select, textarea { font-family: inherit; }
 /* Mobile: wrap height to image aspect ratio (1830×860 ≈ 2.13:1) */
 @media (max-width: 767px) {
   .ht-hero--full {
-    height: 650px;
+    height: 300px;
     /* aspect-ratio: 1830 / 860; */
     /* min-height: unset; */
     max-height: 150vw; 
@@ -989,7 +989,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ══════════════════ CONTACT PAGE — INFO BAR / LOCATIONS ══════════════════ */
 .ht-cbanner {
-  padding: 158px 0 64px;
+  padding: 100px 0 64px;
   background: linear-gradient(160deg, var(--navy-deep) 0%, #131850 50%, var(--navy-mid) 100%);
   color: #fff;
   text-align: center;
