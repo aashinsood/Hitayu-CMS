@@ -43,37 +43,144 @@ export default async function Navbar() {
             </li>
 
             {/* Services */}
-            <li className="ht-nitem">
-              <span className="ht-na">
-                Services <i className="fas fa-chevron-down" />
-              </span>
+            {/* Services */}
+<li className="ht-nitem">
+  <span className="ht-na">
+    Services <i className="fas fa-chevron-down" />
+  </span>
 
-              <ul className="ht-dropdown">
-                <li>
-                  <Link href="/services#managed-services">
-                    Managed Services
-                  </Link>
-                </li>
+  <ul className="ht-dropdown">
+    {/* Managed Services */}
+    <li className="ht-submenu">
+      <span>
+        Managed Services
+        <i className="fas fa-chevron-right" />
+      </span>
 
-                <li>
-                  <Link href="/services#infrastructure-modernisation">
-                    Infrastructure Modernisation Services
-                  </Link>
-                </li>
+      <ul className="ht-dropdown-sub">
+        <li>
+          <Link href="/services/end-to-end-cloud-management">
+            End-to-End Cloud Management
+          </Link>
+        </li>
 
-                <li>
-                  <Link href="/services#data-analytics-and-ai">
-                    Data, Analytics and AI Services
-                  </Link>
-                </li>
+        <li>
+          <Link href="/services/managed-infrastructure-services">
+            Managed Infrastructure Services
+          </Link>
+        </li>
 
-                <li>
-                  <Link href="/services#application-modernisation">
-                    Application Modernisation
-                  </Link>
-                </li>
-              </ul>
-            </li>
+        <li>
+          <Link href="/services/managed-security-services">
+            Managed Security Services
+          </Link>
+        </li>
+
+        <li>
+          <Link href="/services/multi-cloud-hybrid-cloud-managed-services">
+            Multi-Cloud/Hybrid Cloud Managed Services
+          </Link>
+        </li>
+      </ul>
+    </li>
+
+    {/* Infrastructure Modernisation */}
+            <li className="ht-submenu">
+                <span>
+                  Infrastructure Modernisation
+                  <i className="fas fa-chevron-right" />
+                </span>
+
+                <ul className="ht-dropdown-sub">
+                  <li>
+                    <Link href="/services/cloud-migration-services">
+                      Cloud Migration Services
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/modernization">
+                      Modernization
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/disaster-recovery-services">
+                      Disaster Recovery Services
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/devops-automation-services">
+                      DevOps Automation Services
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/cloud-cost-optimization">
+                      Cloud Cost Optimization
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/backup-as-a-service">
+                      Backup as a Service (BaaS)
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              {/* Data, Analytics & AI */}
+              <li className="ht-submenu">
+                <span>
+                  Data, Analytics &amp; AI
+                  <i className="fas fa-chevron-right" />
+                </span>
+
+                <ul className="ht-dropdown-sub">
+                  <li>
+                    <Link href="/services/generative-ai-services">
+                      Generative AI Services
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/data-and-analytics">
+                      Data and Analytics
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/machine-learning-services">
+                      Machine Learning (ML) Services
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              {/* Application Modernisation */}
+              <li className="ht-submenu">
+                <span>
+                  Application Modernisation
+                  <i className="fas fa-chevron-right" />
+                </span>
+
+                <ul className="ht-dropdown-sub">
+                  <li>
+                    <Link href="/services/application-development">
+                      Application Development
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/services/application-modernisation">
+                      Application Modernisation
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
 
             {/* Solutions */}
             <li className="ht-nitem">
